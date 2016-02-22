@@ -36,6 +36,12 @@ angular
 				templateUrl: 'views/about.html',
 				controller: 'AboutCtrl',
 				controllerAs: 'about'
+			})
+			.state('provider', {
+				url: '/provider',
+				templateUrl: 'views/provider.html',
+				controller: 'ProviderCtrl',
+				controllerAs: 'provider'
 			});
 
 
