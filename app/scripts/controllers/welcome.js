@@ -8,10 +8,10 @@
  * Controller of the webPlayerApp
  */
 angular.module('webPlayerApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+	.controller('WelcomeController', function ($state) {
+		this.goUnbundled = function () {
+			console.log('go unbundled');
+			$state.go('unbundled');
+		}
+
+	});

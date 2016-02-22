@@ -26,9 +26,9 @@ angular
 		$stateProvider
 			.state('welcome', {
 				url: '/welcome',
-				templateUrl: 'views/main.html',
-				controller: 'MainCtrl',
-				controllerAs: 'main'
+				templateUrl: 'views/welcome.html',
+				controller: 'WelcomeController',
+				controllerAs: 'welcome'
 
 			})
 			.state('login', {
@@ -36,6 +36,12 @@ angular
 				templateUrl: 'views/about.html',
 				controller: 'AboutCtrl',
 				controllerAs: 'about'
+			})
+			.state('unbundled', {
+				url: '/unbundled',
+				templateUrl: 'views/unbundled.html',
+				controller: 'UnbundledController',
+				controllerAs: 'unbundled'
 			})
 			.state('provider', {
 				url: '/provider',
