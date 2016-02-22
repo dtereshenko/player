@@ -2,13 +2,15 @@
 	<h1>{{title}}</h1>
 	<div class="row">
 		<div ng-repeat="provider in providers | limitTo: providersLimit">
-				<div class="col-md-6">
-					<button class="btn btn-info">{{provider.title}}</button>
+				<div class="col-md-6 text-center">
+					<a href="#/verify" ng-click="setSelectedProvider(provider)">
+						<button class="btn btn-info">{{provider.title}}</button>
+					</a>
 				</div>
 		</div>
 	</div>
 	<div class="row" ng-if="providersLimit != providers.length">
-		<div class="col-md-12">
+		<div class="col-md-12 text-center">
 			<a href="" ng-click="seeAllOperators()">All operators ></a>
 		</div>
 	</div>

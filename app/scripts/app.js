@@ -42,6 +42,12 @@ angular
 				templateUrl: 'views/provider.html',
 				controller: 'ProviderCtrl',
 				controllerAs: 'provider'
+			})
+			.state('verify', {
+				url: '/verify',
+				templateUrl: 'views/verify.html',
+				controller: 'VerifyCtrl',
+				controllerAs: 'verify'
 			});
 
 
