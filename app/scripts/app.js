@@ -16,22 +16,23 @@ angular
 		'ngResource',
 		'ui.router',
 		'ngSanitize',
-		'ngTouch'
+		'ngTouch',
+		'navigation'
 	])
 	.config(function ($stateProvider, $urlRouterProvider) {
 
-		$urlRouterProvider.otherwise('/main');
+		$urlRouterProvider.otherwise('/welcome');
 
 		$stateProvider
-			.state('main', {
-				url: '/main',
+			.state('welcome', {
+				url: '/welcome',
 				templateUrl: 'views/main.html',
 				controller: 'MainCtrl',
 				controllerAs: 'main'
 
 			})
-			.state('about', {
-				url: '/about',
+			.state('login', {
+				url: '/login',
 				templateUrl: 'views/about.html',
 				controller: 'AboutCtrl',
 				controllerAs: 'about'
