@@ -1,12 +1,13 @@
 <div>
 	<h1>{{title}}</h1>
+
 	<div class="row">
 		<div ng-repeat="provider in providers | limitTo: providersLimit">
-				<div class="col-md-6 text-center">
-					<a role="button" ui-sref="verify" class="btn btn-info" ng-click="setSelectedProvider(provider)">
-						{{provider.title}}
-					</a>
-				</div>
+			<div class="col-md-6 text-center">
+				<a role="button" ui-sref="verify" class="btn btn-info" ng-click="setSelectedProvider(provider)">
+					{{provider.title}}
+				</a>
+			</div>
 		</div>
 	</div>
 	<div class="row" ng-if="providersLimit != providers.length">
@@ -21,6 +22,7 @@
 	<div class="row">
 		<div class="col-md-12 text-center">
 			<p>Don't see your operator?</p>
+
 			<p><strong>Change countries (Argentina)</strong></p>
 		</div>
 	</div>
