@@ -8,7 +8,7 @@
  * Controller of the webPlayerApp
  */
 angular.module('webPlayerApp')
-	.controller('ProviderCtrl', function ($scope, providersFactory) {
+	.controller('ProviderCtrl', ['$scope', 'providersFactory', function ($scope, providersFactory) {
 		$scope.title = 'SELECT YOUR PROVIDER';
 		$scope.providersLimit = 6;
 		$scope.providers = providersFactory.providers;
@@ -19,12 +19,12 @@ angular.module('webPlayerApp')
 		$scope.setSelectedProvider = function(provider){
 			providersFactory.selectedProvider = provider;
 		}
-	})
-	.controller('VerifyCtrl', function ($scope, providersFactory) {
+	}])
+	.controller('VerifyCtrl', ['$scope', 'providersFactory', function ($scope, providersFactory) {
 		$scope.title = 'Verify';
 		$scope.provider = providersFactory.selectedProvider;
 
-	})
+	}])
 	.factory('providersFactory', function(){
 		return {
 			selectedProvider: null,

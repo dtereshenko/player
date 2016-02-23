@@ -2,9 +2,9 @@
 
 /**
  * @ngdoc function
- * @name webPlayerApp.controller:MainCtrl
+ * @name webPlayerApp.controller:WelcomeController
  * @description
- * # MainCtrl
+ * # WelcomeController
  * Controller of the webPlayerApp
  */
 angular.module('webPlayerApp')
@@ -13,5 +13,6 @@ angular.module('webPlayerApp')
 			console.log('go unbundled');
 			$state.go('unbundled');
 		}
+
 
 	});
