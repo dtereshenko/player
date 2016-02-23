@@ -3,8 +3,8 @@
 	<div class="row">
 		<div ng-repeat="provider in providers | limitTo: providersLimit">
 				<div class="col-md-6 text-center">
-					<a href="#/verify" ng-click="setSelectedProvider(provider)">
-						<button class="btn btn-info">{{provider.title}}</button>
+					<a role="button" ui-sref="verify" class="btn btn-info" ng-click="setSelectedProvider(provider)">
+						{{provider.title}}
 					</a>
 				</div>
 		</div>
