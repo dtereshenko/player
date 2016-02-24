@@ -1,7 +1,5 @@
-$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
-// bower:scss
-@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-// endbower
+$icon-font-path: "../assets/fonts/bootstrap/";
+
 
 .browsehappy {
 	margin: 0.2em 0;
@@ -89,3 +87,8 @@ body {
 	}
 
 }
+
+
+@import "common/mixins";
+@import "common/loader";
+

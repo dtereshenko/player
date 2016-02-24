@@ -7,12 +7,9 @@
  * # WelcomeController
  * Controller of the webPlayerApp
  */
-angular.module('webPlayerApp')
-	.controller('WelcomeController', function ($state) {
-		this.goUnbundled = function () {
-			console.log('go unbundled');
-			$state.go('unbundled');
-		}
-
-
-	});
+angular.module('webPlayerApp').controller('WelcomeCtrl', function ($scope, $state) {
+	$scope.goUnbundled = function () {
+		console.log('go unbundled');
+		$state.go('root.unbundled');
+	}
+});
