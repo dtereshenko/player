@@ -1,0 +1,33 @@
+.loader-container{
+	position:relative;
+
+	.loader-rotate-element {
+		border: 2px solid rgb(204,204,204);
+		border-left-color: rgb(0,0,0);
+		border-radius: 50%;
+		height: 50px;
+		width: 50px;
+		animation: loader-rotate 1150ms linear infinite;
+	}
+
+	@keyframes loader-rotate {
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+}
+
+.fullscreen-loader-container{
+	@include vertical-centring-before();
+
+	text-align: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: white;
+
+}
+
+

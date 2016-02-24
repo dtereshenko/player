@@ -7,7 +7,6 @@
  * # UnbundledCtrl
  * Controller of the webPlayerApp
  */
-angular.module('webPlayerApp')
-	.controller('UnbundledController', function () {
+angular.module('webPlayerApp').controller('UnbundledCtrl', function () {
 
-	});
+});

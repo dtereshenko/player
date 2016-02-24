@@ -18,7 +18,7 @@ angular.module('webPlayerApp')
 
 		$scope.setSelectedProvider = function (provider) {
 			providersFactory.selectedProvider = provider;
-		}
+		};
 	}])
 	.controller('VerifyCtrl', ['$scope', 'providersFactory', function ($scope, providersFactory) {
 		$scope.title = 'Verify';
@@ -68,5 +68,5 @@ angular.module('webPlayerApp')
 				}
 			]
 
-		}
+		};
 	});

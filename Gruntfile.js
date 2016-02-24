@@ -47,9 +47,13 @@ module.exports = function (grunt) {
                     livereload: '<%= connect.options.livereload %>'
                 }
             },
-            sass: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*.scss'],
-                tasks: ['sass:server', 'postcss:server']
+            sass_main: {
+				files: ['<%= yeoman.app %>/styles/{,*/}*.scss'],
+				tasks: ['sass:server_main', 'postcss:server_main']
+			},
+			sass_bootstrap: {
+				files: ['<%= yeoman.app %>/styles/bootstrap/{,*/}*.scss', '<%= yeoman.app %>/styles/bootstrap.scss'],
+				tasks: ['sass:server_bootstrap', 'postcss:server_bootstrap']
             },
             jsTest: {
                 files: ['test/spec/{,*/}*.js'],
@@ -181,20 +185,31 @@ module.exports = function (grunt) {
         postcss: {
             options: {
                 processors: [
-                    require('autoprefixer-core')({browsers: ['last 1 version']})
+                    require('autoprefixer-core')({browsers: ['last 2 version']})
                 ]
             },
-            server: {
+            server_main: {
                 options: {
                     map: true
                 },
                 files: [{
                     expand: true,
                     cwd: '<%= yeoman.app %>/styles/',
-                    src: '{,*/}*.css',
+                    src: 'main.css',
                     dest: '<%= yeoman.app %>/styles/'
                 }]
             },
+			server_bootstrap: {
+				options: {
+					map: true
+				},
+				files: [{
+					expand: true,
+					cwd: '<%= yeoman.app %>/styles/',
+					src: 'bootstrap.css',
+					dest: '<%= yeoman.app %>/styles/'
+				}]
+			},
             dist: {
                 files: [{
                     expand: true,
@@ -285,12 +300,17 @@ module.exports = function (grunt) {
 					'<%= yeoman.tmp %>/styles/bootstrap.css': '<%= yeoman.app %>/styles/bootstrap.scss'
                 }
             },
-            server: {
-                files: {
-                    '<%= yeoman.app %>/styles/main.css': '<%= yeoman.app %>/styles/main.scss',
+
+			server_bootstrap:{
+				files: {
 					'<%= yeoman.app %>/styles/bootstrap.css': '<%= yeoman.app %>/styles/bootstrap.scss'
-                }
-            }
+				}
+			},
+			server_main:{
+				files: {
+					'<%= yeoman.app %>/styles/main.css': '<%= yeoman.app %>/styles/main.scss',
+				}
+			}
         },
 
 
@@ -473,11 +493,13 @@ module.exports = function (grunt) {
         concurrent: {
             server: [
                 //'compass:server'
-                'sass:server'
+                'sass:server_bootstrap',
+                'sass:server_main'
             ],
             test: [
                 //'compass'
-                'sass:server'
+				'sass:server_bootstrap',
+				'sass:server_main'
             ],
             dist: [
                 //'compass:dist',
@@ -506,7 +528,8 @@ module.exports = function (grunt) {
             'clean:server',
             'wiredep',
             'concurrent:server',
-            'postcss:server',
+            'postcss:server_main',
+            'postcss:server_bootstrap',
             'connect:livereload',
             'watch'
         ]);
@@ -521,7 +544,8 @@ module.exports = function (grunt) {
         'clean:server',
         'wiredep',
         'concurrent:test',
-        'postcss',
+		'postcss:server_main',
+		'postcss:server_bootstrap',
         'connect:test',
         'karma'
     ]);
