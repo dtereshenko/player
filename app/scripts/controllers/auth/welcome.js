@@ -8,8 +8,5 @@
  * Controller of the webPlayerApp
  */
 angular.module('webPlayerApp').controller('WelcomeCtrl', function ($scope, $state) {
-	$scope.goUnbundled = function () {
-		console.log('go unbundled');
-		$state.go('root.unbundled');
-	}
+
 });

@@ -1,0 +1,30 @@
+.modal {
+	display: block;
+	text-align: center;
+	background-color: rgba(#000000, 0.5);
+
+	&:before {
+		content: "";
+		display: inline-block;
+		vertical-align: middle;
+		height: 100%;
+	}
+
+
+	.modal-dialog {
+		display: inline-block;
+		box-sizing: border-box;
+		vertical-align: middle;
+
+		.modal-content {
+			.modal-header {
+				padding: 3px 15px;
+				border-bottom: none;
+			}
+
+			.modal-content-transcluded {
+				@include push-for-float();
+			}
+		}
+	}
+}

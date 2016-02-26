@@ -1,0 +1,46 @@
+#welcome-page {
+	#first-caption {
+		margin: 7em 0;
+	}
+
+	#second-caption {
+		margin-bottom: 1em;
+	}
+
+	#go-unbundled-button {
+		margin: 1em;
+	}
+
+	#welcome-footer {
+		border-top: 1px solid #aaaaaa;
+		padding: 4em;
+	}
+}
+
+.providers-container {
+	.providers-list {
+		.providers-list-item {
+			margin: 10px 0;
+			font-size: 1rem;
+			color: #000;
+			border: solid 1px rgba(0, 0, 0, 0.7);
+			padding: 10px 20px;
+			width: 100%;
+			overflow: hidden;
+			display: block;
+		}
+	}
+
+	.row{
+		padding-top: 10px;
+	}
+
+	.change-country {
+		padding: 40px 20px;
+		border-bottom: solid 1px rgba(0, 0, 0, 0.7);
+
+		& > a{
+			font-weight: bold;
+		}
+	}
+}

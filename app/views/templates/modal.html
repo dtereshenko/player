@@ -1,0 +1,17 @@
+<div ng-click="closeModal($event)"
+	 class="modal">
+
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button ng-click="closeModal($event)"
+					type = "button"
+					class="close">x</button>
+			</div>
+			<div ng-transclude="ng-transclude"
+				 class="modal-content-transcluded"
+				 id="modal-content-{{modalId}}"></div>
+
+		</div>
+	</div>
+</div>
