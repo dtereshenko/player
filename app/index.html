@@ -11,8 +11,8 @@
 	<!-- endbower -->
 	<!-- endbuild -->
 	<!-- build:css(.tmp) styles/main.css -->
-	<link rel="stylesheet" href="styles/main.css">
 	<link rel="stylesheet" href="styles/bootstrap.css">
+	<link rel="stylesheet" href="styles/main.css">
 	<!-- endbuild -->
 </head>
 <body ng-app="webPlayerApp">
@@ -26,8 +26,7 @@
 
 
 
-	<div class="container">
-		<div ui-view></div>
+	<div class="container" ui-view>
 	</div>
 
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -54,19 +53,29 @@
 	<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 	<script src="bower_components/angular-touch/angular-touch.js"></script>
 	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	<script src="bower_components/underscore/underscore.js"></script>
+	<script src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
 	<!-- endbower -->
 	<!-- endbuild -->
 
 	<!-- build:js({.tmp,app}) scripts/scripts.js -->
 	<script src="scripts/app.js"></script>
-	<script src="scripts/controllers/welcome.js"></script>
 	<script src="scripts/controllers/navigation.js"></script>
 	<script src="scripts/controllers/unbundled.js"></script>
-	<script src="scripts/controllers/provider.js"></script>
-	<script src="scripts/directives/loader.js"></script>
+
 	<script src="scripts/controllers/home.js"></script>
-<script src="scripts/controllers/root.js"></script>
-<script src="scripts/controllers/login.js"></script>
+	<script src="scripts/controllers/root.js"></script>
+	<script src="scripts/controllers/auth/welcome.js"></script>
+	<script src="scripts/controllers/auth/providers.js"></script>
+	<script src="scripts/controllers/auth/verify.js"></script>
+	<script src="scripts/controllers/auth/login.js"></script>
+
+
+	<script src="scripts/services/providers.js"></script>
+	<script src="scripts/directives/loader.js"></script>
+	<script src="scripts/directives/modal.js"></script>
+	<script src="scripts/directives/controllers/modal.js"></script>
+
 	<!-- endbuild -->
 	</body>
 </html>

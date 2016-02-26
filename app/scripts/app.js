@@ -17,48 +17,10 @@ angular
 		'ui.router',
 		'ngSanitize',
 		'ngTouch',
+		'underscore',
 		'navigation'
 	])
 	.config(function ($stateProvider, $urlRouterProvider) {
-
-		//$urlRouterProvider.otherwise('/welcome');
-
-		//$stateProvider
-		//	.state('welcome', {
-		//		url: '/welcome',
-		//		templateUrl: 'views/welcome.html',
-		//		controller: 'WelcomeController',
-		//		controllerAs: 'welcome'
-		//
-		//	})
-		//	.state('login', {
-		//		url: '/login',
-		//		templateUrl: 'views/about.html',
-		//		controller: 'AboutCtrl',
-		//		controllerAs: 'about'
-		//	})
-		//	.state('unbundled', {
-		//		url: '/unbundled',
-		//		templateUrl: 'views/unbundled.html',
-		//		controller: 'UnbundledController',
-		//		controllerAs: 'unbundled'
-		//	})
-		//	.state('provider', {
-		//		url: '/provider',
-		//		templateUrl: 'views/provider.html',
-		//		controller: 'ProviderCtrl',
-		//		controllerAs: 'provider'
-		//	})
-		//	.state('verify', {
-		//		url: '/verify',
-		//		templateUrl: 'views/verify.html',
-		//		controller: 'VerifyCtrl',
-		//		controllerAs: 'verify'
-		//	});
-
-
-
-
 
 		$stateProvider.state({
 			name: 'root',
@@ -69,17 +31,7 @@ angular
 					controller: 'RootCtrl'
 				},
 				'mainContent@root': {
-					templateUrl: '../views/home.html',
-					controller: 'HomeCtrl'
-				}
-			}
-		})
-		.state({
-			name: 'root.welcome',
-			url: '/welcome',
-			views:{
-				'mainContent@root': {
-					templateUrl: 'views/welcome.html',
+					templateUrl: '../views/auth/welcome.html',
 					controller: 'WelcomeCtrl'
 				}
 			}
@@ -89,7 +41,7 @@ angular
 			url: '/login',
 			views:{
 				'mainContent@root': {
-					templateUrl: 'views/login.html',
+					templateUrl: 'views/auth/login.html',
 					controller: 'LoginCtrl'
 				}
 			}
@@ -99,27 +51,27 @@ angular
 			url: '/unbundled',
 			views:{
 				'mainContent@root': {
-					templateUrl: 'views/unbundled.html',
+					templateUrl: 'views/auth/unbundled.html',
 					controller: 'UnbundledCtrl'
 				}
 			}
 		})
 		.state({
-			name: 'root.provider',
-			url: '/provider',
+			name: 'root.providers',
+			url: '/providers',
 			views:{
 				'mainContent@root': {
-					templateUrl: 'views/provider.html',
+					templateUrl: 'views/auth/providers.html',
 					controller: 'ProviderCtrl'
 				}
 			}
 		})
 		.state({
-			name: 'root.verify',
+			name: 'root.providers.verify',
 			url: '/verify',
 			views:{
 				'mainContent@root': {
-					templateUrl: 'views/verify.html',
+					templateUrl: 'views/auth/verify.html',
 					controller: 'VerifyCtrl'
 				}
 			}

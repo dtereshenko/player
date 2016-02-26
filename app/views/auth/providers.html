@@ -1,0 +1,64 @@
+<div class="providers-container">
+	<h3 class="text-center">{{title}}</h3>
+
+	<div class="row">
+		<div ng-repeat="provider in providers | limitTo: providersLimit" class = "providers-list">
+			<div class="col-md-6 text-center">
+				<a role="button" ui-sref="root.providers.verify" class="btn btn-default providers-list-item" ng-click="setSelectedProvider(provider)">
+					{{provider.title}}
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="row" ng-if="providersLimit != providers.length">
+		<div class="col-md-12 text-center">
+			<a href="" ng-click="seeAllOperators()">All operators ></a>
+		</div>
+	</div>
+
+	<div class="row change-country">
+		<div class="col-md-12 text-center">
+			<div>Don't see your operator?</div>
+			<a href="" ng-click="changeCountry()">
+				Change countries (Argentina)
+			</a>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<button class="btn btn-info">Validate later</button>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<p>Invitados | Empleados</p>
+		</div>
+	</div>
+
+	<div modal
+		 ng-show="showAllProviders"
+		 callback = "closeModals">
+		<div ng-repeat="provider in providers" class = "providers-list">
+			<div class="col-md-6 text-center">
+				<a role="button" ui-sref="root.providers.verify"
+				   class="btn btn-default providers-list-item"
+				   ng-click="setSelectedProvider(provider)">
+					{{provider.title}}
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div modal
+		 ng-show="showChangeCountries"
+		 callback = "closeModals">
+		Here will change countries
+	</div>
+</div>
+
+
