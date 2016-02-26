@@ -17,8 +17,7 @@ angular
 		'ui.router',
 		'ngSanitize',
 		'ngTouch',
-		'underscore',
-		'navigation'
+		'underscore'
 	])
 	.config(function ($stateProvider, $urlRouterProvider) {
 
@@ -79,6 +78,27 @@ angular
 
 		;
 		$urlRouterProvider.otherwise('');
+	})
+	.run(function navigationHandler ($state, $rootScope) {
+		var routes = [];
+		var isFromBackButton = false;
 
+		$rootScope.$on('$stateChangeStart', function (e, toState, toParams, fromState, fromParams) {
+			var fromName = fromState.name;
 
+			if (fromName && !isFromBackButton) {
+				routes.unshift(fromName);
+			}
+			isFromBackButton = false;
+		});
+
+		$rootScope.isBackAvailable = function () {
+			return !!routes.length;
+		};
+
+		$rootScope.back = function back() {
+			var route = routes.shift();
+			isFromBackButton = true;
+			$state.go(route);
+		};
 	});
