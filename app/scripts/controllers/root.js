@@ -10,7 +10,11 @@
 angular.module('webPlayerApp').controller('RootCtrl', function ($scope, $timeout) {
 	$scope.showFullScreenLoader = true;
 
+	$scope.toggleLoader = function(){
+		$scope.showFullScreenLoader = !$scope.showFullScreenLoader;
+	};
+
 	$timeout(function(){
-		$scope.showFullScreenLoader = false;
+		$scope.toggleLoader()
 	}, 1000);
 });

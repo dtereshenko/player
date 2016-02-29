@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: HomeCtrl', function () {
+describe('Controller: VerifyCtrl', function () {
 
 	// load the controller's module
 	beforeEach(module('webPlayerApp'));
 
-	var HomeCtrl, scope;
+	var VerifyCtrl, scope;
 
 	// Initialize the controller and a mock scope
 	beforeEach(inject(function ($controller, $rootScope, $httpBackend) {
 		scope = $rootScope.$new();
-		HomeCtrl = $controller('HomeCtrl', {$scope: scope});
+		VerifyCtrl = $controller('VerifyCtrl', {$scope: scope});
 		$httpBackend.whenGET(/\.html$/).respond('');
+		//spyOn(scope, "toggleLoader").and.callThrough();
 	}));
-
 });

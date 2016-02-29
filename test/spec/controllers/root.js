@@ -2,21 +2,37 @@
 
 describe('Controller: RootCtrl', function () {
 
-  // load the controller's module
-  beforeEach(module('webPlayerApp'));
+	// load the controller's module
+	beforeEach(module('webPlayerApp'));
 
-  var RootCtrl,
-    scope;
+	var RootCtrl, scope;
 
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    RootCtrl = $controller('RootCtrl', {
-      $scope: scope
-    });
-  }));
+	// Initialize the controller and a mock scope
+	beforeEach(inject(function ($controller, $rootScope, $httpBackend) {
+		scope = $rootScope.$new();
+		RootCtrl = $controller('RootCtrl', {$scope: scope});
+		$httpBackend.whenGET(/\.html$/).respond('');
+		spyOn(scope, 'toggleLoader').and.callThrough();
+	}));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
+	it('loader should be visible', function () {
+		expect(scope.showFullScreenLoader).toBe(true);
+	});
+
+	it('loader should be invisible after 1 second', inject(function($timeout) {
+		expect(scope.showFullScreenLoader).toBe(true);
+		$timeout.flush(1000);
+		expect(scope.toggleLoader).toHaveBeenCalledTimes(1);
+		expect(scope.showFullScreenLoader).toBe(false);
+	}));
+
+	it('toogleLoader should be change loader state', function() {
+		expect(scope.showFullScreenLoader).toBe(true);
+		scope.toggleLoader();
+		expect(scope.toggleLoader).toHaveBeenCalledTimes(1);
+		expect(scope.showFullScreenLoader).toBe(false);
+		scope.toggleLoader();
+		expect(scope.toggleLoader).toHaveBeenCalledTimes(2);
+		expect(scope.showFullScreenLoader).toBe(true);
+	});
 });
