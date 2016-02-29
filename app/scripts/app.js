@@ -80,7 +80,7 @@ angular
 		});
 
 	})
-	.run(function navigationHandler ($state, $rootScope) {
+	.run(function navigationHandler ($state, $rootScope, $location) {
 		var routes = [];
 		var isFromBackButton = false;
 
@@ -102,4 +102,12 @@ angular
 			isFromBackButton = true;
 			$state.go(route);
 		};
+
+		$rootScope.$on('$locationChangeSuccess', function() {
+			var path = $location.path();
+			dataLayer.push({
+				'event':'pageview',
+				'virtualUrl': path
+			});
+		});
 	});
