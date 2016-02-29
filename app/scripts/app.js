@@ -103,11 +103,4 @@ angular
 			$state.go(route);
 		};
 
-		$rootScope.$on('$locationChangeSuccess', function() {
-			var path = $location.path();
-			dataLayer.push({
-				'event':'pageview',
-				'virtualUrl': path
-			});
-		});
 	});
