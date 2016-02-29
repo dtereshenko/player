@@ -8,10 +8,10 @@ describe('Controller: HomeCtrl', function () {
 	var HomeCtrl, scope;
 
 	// Initialize the controller and a mock scope
-	beforeEach(inject(function ($controller, $rootScope) {
+	beforeEach(inject(function ($controller, $rootScope, $httpBackend) {
 		scope = $rootScope.$new();
 		HomeCtrl = $controller('HomeCtrl', {$scope: scope});
-		$httpBackend.whenGET(/\.html$/).respond("");
+		$httpBackend.whenGET(/\.html$/).respond('');
 	}));
 
 });

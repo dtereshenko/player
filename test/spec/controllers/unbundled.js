@@ -11,6 +11,6 @@ describe('Controller: UnbundledCtrl', function () {
 	beforeEach(inject(function ($controller, $rootScope, $httpBackend) {
 		scope = $rootScope.$new();
 		UnbundledCtrl = $controller('UnbundledCtrl', {$scope: scope});
-		$httpBackend.whenGET(/\.html$/).respond("");
+		$httpBackend.whenGET(/\.html$/).respond('');
 	}));
 });

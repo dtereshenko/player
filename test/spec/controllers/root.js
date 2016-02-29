@@ -11,8 +11,8 @@ describe('Controller: RootCtrl', function () {
 	beforeEach(inject(function ($controller, $rootScope, $httpBackend) {
 		scope = $rootScope.$new();
 		RootCtrl = $controller('RootCtrl', {$scope: scope});
-		$httpBackend.whenGET(/\.html$/).respond("");
-		spyOn(scope, "toggleLoader").and.callThrough();
+		$httpBackend.whenGET(/\.html$/).respond('');
+		spyOn(scope, 'toggleLoader').and.callThrough();
 	}));
 
 	it('loader should be visible', function () {
@@ -26,7 +26,7 @@ describe('Controller: RootCtrl', function () {
 		expect(scope.showFullScreenLoader).toBe(false);
 	}));
 
-	it('toogleLoader should be change loader state', inject(function($timeout) {
+	it('toogleLoader should be change loader state', function() {
 		expect(scope.showFullScreenLoader).toBe(true);
 		scope.toggleLoader();
 		expect(scope.toggleLoader).toHaveBeenCalledTimes(1);
@@ -34,5 +34,5 @@ describe('Controller: RootCtrl', function () {
 		scope.toggleLoader();
 		expect(scope.toggleLoader).toHaveBeenCalledTimes(2);
 		expect(scope.showFullScreenLoader).toBe(true);
-	}));
+	});
 });

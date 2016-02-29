@@ -11,7 +11,7 @@ describe('Controller: ProvidersCtrl', function () {
 	beforeEach(inject(function ($controller, $rootScope, $httpBackend) {
 		scope = $rootScope.$new();
 		ProvidersCtrl = $controller('ProvidersCtrl', {$scope: scope});
-		$httpBackend.whenGET(/\.html$/).respond("");
+		$httpBackend.whenGET(/\.html$/).respond('');
 		//spyOn(scope, "toggleLoader").and.callThrough();
 	}));
 });

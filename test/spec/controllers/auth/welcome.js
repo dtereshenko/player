@@ -11,7 +11,7 @@ describe('Controller: WelcomeCtrl', function () {
 	beforeEach(inject(function ($controller, $rootScope, $httpBackend) {
 		scope = $rootScope.$new();
 		WelcomeCtrl = $controller('WelcomeCtrl', {$scope: scope});
-		$httpBackend.whenGET(/\.html$/).respond("");
+		$httpBackend.whenGET(/\.html$/).respond('');
 		//spyOn(scope, "toggleLoader").and.callThrough();
 	}));
 });

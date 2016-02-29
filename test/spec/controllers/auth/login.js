@@ -11,7 +11,7 @@ describe('Controller: LoginCtrl', function () {
 	beforeEach(inject(function ($controller, $rootScope, $httpBackend) {
 		scope = $rootScope.$new();
 		LoginCtrl = $controller('LoginCtrl', {$scope: scope});
-		$httpBackend.whenGET(/\.html$/).respond("");
+		$httpBackend.whenGET(/\.html$/).respond('');
 		//spyOn(scope, "toggleLoader").and.callThrough();
 	}));
 });

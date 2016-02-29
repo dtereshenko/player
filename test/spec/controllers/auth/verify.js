@@ -11,7 +11,7 @@ describe('Controller: VerifyCtrl', function () {
 	beforeEach(inject(function ($controller, $rootScope, $httpBackend) {
 		scope = $rootScope.$new();
 		VerifyCtrl = $controller('VerifyCtrl', {$scope: scope});
-		$httpBackend.whenGET(/\.html$/).respond("");
+		$httpBackend.whenGET(/\.html$/).respond('');
 		//spyOn(scope, "toggleLoader").and.callThrough();
 	}));
 });

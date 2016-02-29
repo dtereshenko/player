@@ -10,7 +10,8 @@
   "node": true,
   "strict": true,
   "undef": true,
-  "unused": true,
+  "unused": false,
+  "quotmark": true,
   "globals": {
     "angular": false,
     "inject": false
