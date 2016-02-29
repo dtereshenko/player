@@ -1,17 +1,17 @@
-#welcome-page {
-	#first-caption {
+.welcome-container {
+	.first-caption {
 		margin: 7em 0;
 	}
 
-	#second-caption {
+	.second-caption {
 		margin-bottom: 1em;
 	}
 
-	#go-unbundled-button {
+	.go-unbundled-button {
 		margin: 1em;
 	}
 
-	#welcome-footer {
+	.welcome-footer {
 		border-top: 1px solid #aaaaaa;
 		padding: 4em;
 	}
@@ -43,4 +43,24 @@
 			font-weight: bold;
 		}
 	}
+
+	.validate-later{
+		padding: 20px 20px 40px;
+		border-bottom: solid 1px rgba(0, 0, 0, 0.7);
+
+		.btn{
+			width: 90%;
+			max-width: 250px;
+			padding: 10px 20px;
+		}
+	}
+}
+
+.verify-provider-container{
+	.verify-provider-container-top{
+		padding: 80px 10px;
+		border-bottom: solid 1px rgba(0, 0, 0, 0.7);
+		text-align: center;
+	}
+
 }

@@ -30,17 +30,17 @@
 	</div>
 
 	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-	<script>
-		!function (A, n, g, u, l, a, r) {
-			A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {
-				(A[l].q = A[l].q || []).push(arguments)
-			}, A[l].l = +new Date, a = n.createElement(g),
-				r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
-		}(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+	<!--<script>-->
+		<!--!function (A, n, g, u, l, a, r) {-->
+			<!--A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {-->
+				<!--(A[l].q = A[l].q || []).push(arguments)-->
+			<!--}, A[l].l = +new Date, a = n.createElement(g),-->
+				<!--r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)-->
+		<!--}(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');-->
 
-		ga('create', 'UA-XXXXX-X');
-		ga('send', 'pageview');
-	</script>
+		<!--ga('create', 'UA-XXXXX-X');-->
+<!--//		ga('send', 'pageview');-->
+	<!--</script>-->
 
 	<!-- build:js(.) scripts/vendor.js -->
 	<!-- bower:js -->
@@ -72,10 +72,25 @@
 
 
 	<script src="scripts/services/providers.js"></script>
+	<script src="scripts/services/countries.js"></script>
 	<script src="scripts/directives/loader.js"></script>
 	<script src="scripts/directives/modal.js"></script>
 	<script src="scripts/directives/controllers/modal.js"></script>
-
+	<script>
+		dataLayer = [{
+			'pageCategory': 'DomLoaded',
+			'visitorType': 'high-value'
+		}];
+	</script>
+	<!-- Google Tag Manager -->
+	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-N8PRR2"
+					  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-N8PRR2');</script>
+	<!-- End Google Tag Manager -->
 	<!-- endbuild -->
 	</body>
 </html>

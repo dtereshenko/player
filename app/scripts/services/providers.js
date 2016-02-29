@@ -4,7 +4,7 @@ angular.module('webPlayerApp').service('ProvidersService', function () {
 	var self = this;
 	function providers() {
 		var i = 0, arr = [];
-		for(i; i< 50; i++){
+		for(i; i< 25; i++){
 			arr.push({
 				"title": "Provider" + i,
 				"link": "provider" + i,

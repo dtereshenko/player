@@ -136,10 +136,10 @@ module.exports = function (grunt) {
                 reporter: require('jshint-stylish')
             },
             all: {
-                src: [
-                    'Gruntfile.js',
-                    '<%= yeoman.app %>/scripts/{,*/|,**/}*.js'
-                ]
+                //src: [
+                //    'Gruntfile.js',
+                //    '<%= yeoman.app %>/scripts/{,*/|,**/}*.js'
+                //]
             },
             test: {
                 options: {
@@ -156,10 +156,10 @@ module.exports = function (grunt) {
                 verbose: true
             },
             all: {
-                src: [
-                    'Gruntfile.js',
-                    '<%= yeoman.app %>/scripts/{,*/|,**/}*.js'
-                ]
+                //src: [
+                //    'Gruntfile.js',
+                //    '<%= yeoman.app %>/scripts/{,*/|,**/}*.js'
+                //]
             },
             test: {
                 src: ['test/spec/{,*/|,**/}*.js']
