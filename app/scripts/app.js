@@ -19,11 +19,14 @@ angular
 		'ngTouch',
 		'underscore'
 	])
-	.config(function ($stateProvider, $urlRouterProvider) {
+	.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+
+		$urlRouterProvider.otherwise('/');
+		$locationProvider.html5Mode(true);
 
 		$stateProvider.state({
 			name: 'root',
-			url: '',
+			url: '/',
 			views: {
 				'@': {
 					templateUrl: '../views/root.html',
@@ -74,10 +77,8 @@ angular
 					controller: 'VerifyCtrl'
 				}
 			}
-		})
+		});
 
-		;
-		$urlRouterProvider.otherwise('');
 	})
 	.run(function navigationHandler ($state, $rootScope) {
 		var routes = [];
