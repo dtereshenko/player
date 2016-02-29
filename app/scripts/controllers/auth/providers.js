@@ -7,10 +7,13 @@
  * # ProviderCtrl
  * Controller of the webPlayerApp
  */
-angular.module('webPlayerApp').controller('ProviderCtrl', function ($scope, ProvidersService) {
+angular.module('webPlayerApp').controller('ProviderCtrl', function ($scope, ProvidersService, CountriesService) {
 	$scope.title = 'SELECT YOUR PROVIDER';
 	$scope.providersLimit = 6;
 	$scope.providers = ProvidersService.providers;
+	$scope.countries = CountriesService.countries;
+	$scope.currentCountry = CountriesService.selectedCountry;
+
 
 	$scope.closeModals = function(){
 		$scope.showAllProviders = false;
@@ -27,6 +30,12 @@ angular.module('webPlayerApp').controller('ProviderCtrl', function ($scope, Prov
 
 	$scope.setSelectedProvider = function (provider) {
 		ProvidersService.selectedProvider = provider;
+	};
+
+	$scope.setSelectedCountry = function (country) {
+		CountriesService.selectedCountry = country;
+		$scope.currentCountry = CountriesService.selectedCountry;
+		$scope.closeModals()
 	};
 
 	$scope.closeModals();
