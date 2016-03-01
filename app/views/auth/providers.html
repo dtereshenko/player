@@ -4,7 +4,7 @@
 	<div class="row">
 		<div ng-repeat="provider in providers | limitTo: providersLimit" class = "providers-list">
 			<div class="col-md-6 text-center">
-				<a role="button" ui-sref="root.providers.verify" class="btn btn-default providers-list-item" ng-click="setSelectedProvider(provider)">
+				<a role="button" ui-sref="root.providers.provider({providerId: provider.title})" class="btn btn-default providers-list-item" ng-click="setSelectedProvider(provider)">
 					{{provider.title}}
 				</a>
 			</div>

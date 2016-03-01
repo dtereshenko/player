@@ -13,8 +13,16 @@ angular.module('webPlayerApp').service('ProvidersService', function () {
 		}
 		return arr;
 	}
+	function findProvider(name){
+		return _.find(self.providers, function(provider){
+			if(provider.title === name){
+				return true
+			}
+		});
 
-	self.selectedProvider = null;
+	}
+
 	self.providers = providers();
-
+	self.selectedProvider = null;
+	self.findProvider = findProvider
 });
