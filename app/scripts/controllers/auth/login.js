@@ -8,5 +8,5 @@
  * Controller of the webPlayerApp
  */
 angular.module('webPlayerApp').controller('LoginCtrl', function ($scope) {
-	$scope.x =0;
+
 });
