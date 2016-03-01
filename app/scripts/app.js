@@ -19,11 +19,14 @@ angular
 		'ngTouch',
 		'underscore'
 	])
-	.config(function ($stateProvider, $urlRouterProvider) {
+	.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+
+		$urlRouterProvider.otherwise('/');
+		$locationProvider.html5Mode(true);
 
 		$stateProvider.state({
 			name: 'root',
-			url: '',
+			url: '/',
 			views: {
 				'@': {
 					templateUrl: '../views/root.html',
@@ -37,7 +40,7 @@ angular
 		})
 		.state({
 			name: 'root.login',
-			url: '/login',
+			url: 'login',
 			views:{
 				'mainContent@root': {
 					templateUrl: 'views/auth/login.html',
@@ -47,7 +50,7 @@ angular
 		})
 		.state({
 			name: 'root.unbundled',
-			url: '/unbundled',
+			url: 'unbundled',
 			views:{
 				'mainContent@root': {
 					templateUrl: 'views/auth/unbundled.html',
@@ -57,7 +60,7 @@ angular
 		})
 		.state({
 			name: 'root.providers',
-			url: '/providers',
+			url: 'providers',
 			views:{
 				'mainContent@root': {
 					templateUrl: 'views/auth/providers.html',
@@ -74,12 +77,10 @@ angular
 					controller: 'VerifyCtrl'
 				}
 			}
-		})
+		});
 
-		;
-		$urlRouterProvider.otherwise('');
 	})
-	.run(function navigationHandler ($state, $rootScope) {
+	.run(function navigationHandler ($state, $rootScope, $location) {
 		var routes = [];
 		var isFromBackButton = false;
 
@@ -101,4 +102,5 @@ angular
 			isFromBackButton = true;
 			$state.go(route);
 		};
+
 	});

@@ -5,6 +5,7 @@
 	<title></title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width">
+	<base href="/">
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<!-- build:css(.) styles/vendor.css -->
 	<!-- bower:css -->
@@ -16,6 +17,22 @@
 	<!-- endbuild -->
 </head>
 <body ng-app="webPlayerApp">
+	<script>
+		dataLayer = [{
+			'pageCategory': 'DomLoaded',
+			'visitorType': 'high-value'
+		}];
+	</script>
+	<!-- Google Tag Manager -->
+	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-N8PRR2"
+					  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-TWB2RP');</script>
+	<!-- End Google Tag Manager -->
+
 	<!--[if lte IE 8]>
 	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
 		your browser</a> to improve your experience.</p>
@@ -23,24 +40,8 @@
 
 	<!-- Add your site or application content here -->
 
-
-
-
 	<div class="container" ui-view>
 	</div>
-
-	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-	<!--<script>-->
-		<!--!function (A, n, g, u, l, a, r) {-->
-			<!--A.GoogleAnalyticsObject = l, A[l] = A[l] || function () {-->
-				<!--(A[l].q = A[l].q || []).push(arguments)-->
-			<!--}, A[l].l = +new Date, a = n.createElement(g),-->
-				<!--r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)-->
-		<!--}(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');-->
-
-		<!--ga('create', 'UA-XXXXX-X');-->
-<!--//		ga('send', 'pageview');-->
-	<!--</script>-->
 
 	<!-- build:js(.) scripts/vendor.js -->
 	<!-- bower:js -->
@@ -75,21 +76,7 @@
 	<script src="scripts/directives/loader.js"></script>
 	<script src="scripts/directives/modal.js"></script>
 	<script src="scripts/directives/controllers/modal.js"></script>
-	<script>
-		dataLayer = [{
-			'pageCategory': 'DomLoaded',
-			'visitorType': 'high-value'
-		}];
-	</script>
-	<!-- Google Tag Manager -->
-	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-N8PRR2"
-					  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-N8PRR2');</script>
-	<!-- End Google Tag Manager -->
+
 	<!-- endbuild -->
 	</body>
 </html>
