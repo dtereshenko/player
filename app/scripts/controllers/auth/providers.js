@@ -35,7 +35,7 @@ angular.module('webPlayerApp').controller('ProviderCtrl', function ($scope, Prov
 	$scope.setSelectedCountry = function (country) {
 		CountriesService.selectedCountry = country;
 		$scope.currentCountry = CountriesService.selectedCountry;
-		$scope.closeModals()
+		$scope.closeModals();
 	};
 
 	$scope.closeModals();

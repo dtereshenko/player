@@ -69,8 +69,8 @@ angular
 			}
 		})
 		.state({
-			name: 'root.providers.verify',
-			url: '/verify',
+			name: 'root.providers.provider',
+			url: '/:providerId',
 			views:{
 				'mainContent@root': {
 					templateUrl: 'views/auth/verify.html',
