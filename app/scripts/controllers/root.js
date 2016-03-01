@@ -16,5 +16,5 @@ angular.module('webPlayerApp').controller('RootCtrl', function ($scope, $timeout
 
 	$timeout(function(){
 		$scope.toggleLoader()
-	}, 1000);
+	}, 10);
 });
