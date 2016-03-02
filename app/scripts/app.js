@@ -39,16 +39,6 @@ angular
 			}
 		})
 		.state({
-			name: 'root.login',
-			url: 'login',
-			views:{
-				'mainContent@root': {
-					templateUrl: 'views/auth/login.html',
-					controller: 'LoginCtrl'
-				}
-			}
-		})
-		.state({
 			name: 'root.unbundled',
 			url: 'unbundled',
 			views:{
@@ -75,6 +65,16 @@ angular
 				'mainContent@root': {
 					templateUrl: 'views/auth/verify.html',
 					controller: 'VerifyCtrl'
+				}
+			}
+		})
+		.state({
+			name: 'root.providers.provider.login',
+			url: '/login',
+			views:{
+				'mainContent@root': {
+					templateUrl: 'views/auth/login.html',
+					controller: 'LoginCtrl'
 				}
 			}
 		});

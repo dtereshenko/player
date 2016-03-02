@@ -72,6 +72,7 @@ module.exports = function (grunt) {
                 },
                 files: [
                     '<%= yeoman.app %>/{,*/|,**/}*.html',
+                    '<%= yeoman.tmp %>/styles/{,*/|,**/}*.css',
                     '<%= yeoman.app %>/styles/{,*/|,**/}*.css',
                     '<%= yeoman.app %>/assets/images/{,*/|,**/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
@@ -99,7 +100,7 @@ module.exports = function (grunt) {
                             ),
                             connect().use(
                                 '/app/styles',
-                                connect.static('./app/styles')
+                                connect.static('./.tmp/styles')
                             ),
                             connect.static(appConfig.app)
                         ];
@@ -191,9 +192,9 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= yeoman.app %>/styles/',
+                    cwd: '<%= yeoman.tmp %>/styles/',
                     src: 'main.css',
-                    dest: '<%= yeoman.app %>/styles/'
+                    dest: '<%= yeoman.tmp %>/styles/'
                 }]
             },
 			serverBootstrap: {
@@ -202,9 +203,9 @@ module.exports = function (grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: '<%= yeoman.app %>/styles/',
+					cwd: '<%= yeoman.tmp %>/styles/',
 					src: 'bootstrap.css',
-					dest: '<%= yeoman.app %>/styles/'
+					dest: '<%= yeoman.tmp %>/styles/'
 				}]
 			},
             dist: {
@@ -300,12 +301,12 @@ module.exports = function (grunt) {
 
 			serverBootstrap:{
 				files: {
-					'<%= yeoman.app %>/styles/bootstrap.css': '<%= yeoman.app %>/styles/bootstrap.scss'
+					'<%= yeoman.tmp %>/styles/bootstrap.css': '<%= yeoman.app %>/styles/bootstrap.scss'
 				}
 			},
 			serverMain:{
 				files: {
-					'<%= yeoman.app %>/styles/main.css': '<%= yeoman.app %>/styles/main.scss'
+					'<%= yeoman.tmp %>/styles/main.css': '<%= yeoman.app %>/styles/main.scss'
 				}
 			}
         },
@@ -474,7 +475,7 @@ module.exports = function (grunt) {
             styles: {
                 expand: true,
                 cwd: '<%= yeoman.app %>/styles',
-                dest: '.tmp/styles/',
+                dest: '<%= yeoman.tmp %>/styles/',
                 src: '{,*/}*.css'
             }
         },
