@@ -3,22 +3,36 @@
 
 	<div class="row verify-provider-container-top">
 		<div class="col-md-6">
-			<div class="provider-name">{{provider.title}}</div>
-
-			<p>Login to your operator to verify fully.</p>
-			<button class="btn-default btn">Login</button>
+			<div class="provider-name">
+				{{provider.title}}
+			</div>
+			<div class="info-text">
+				<span>
+					Login to your operator to verify fully.
+				</span>
+			</div>
+			<a class="btn-default btn" ui-sref="root.providers.provider.login({providerId: provider.title})">
+				Login
+			</a>
 		</div>
 		<div class="col-md-6">
-			<p>CON'T KNOW YOUR INFO?</p>
-
-			<p>Verify for 7 days by turning to <b>FOX</b> on your TV and click "Listen"</p>
-			<button class="btn-default btn">Listen</button>
+			<div class="verify-header">
+				CON'T KNOW YOUR INFO?
+			</div>
+			<div class="info-text">
+				<span>
+					Verify for 7 days by turning to <b>FOX</b> on your TV and click "Listen"
+				</span>
+			</div>
+			<button class="btn-default btn">
+				Listen
+			</button>
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row verify-provider-container-bottom">
 		<div class="col-md-12 text-center">
-			<button class="btn-info btn">Validate later</button>
+			<button class="btn-default btn">Validate later</button>
 		</div>
 	</div>
 
