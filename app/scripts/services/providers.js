@@ -16,7 +16,7 @@ angular.module('webPlayerApp').service('ProvidersService', function () {
 	function findProvider(name){
 		return _.find(self.providers, function(provider){
 			if(provider.title === name){
-				return true
+				return true;
 			}
 		});
 
@@ -24,5 +24,5 @@ angular.module('webPlayerApp').service('ProvidersService', function () {
 
 	self.providers = providers();
 	self.selectedProvider = null;
-	self.findProvider = findProvider
+	self.findProvider = findProvider;
 });

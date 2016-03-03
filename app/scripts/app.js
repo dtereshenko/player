@@ -19,7 +19,27 @@ angular
 		'ngTouch',
 		'underscore'
 	])
-	.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+	.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+
+		$httpProvider.defaults.useXDomain = true;
+		//$httpProvider.defaults.headers.common['Accept'] = 'application/json';
+		//$httpProvider.interceptors.push([
+		//	'$cookies', '$q', function($cookies, $q, User) {
+		//		return {
+		//			request: function(config) {
+		//				debugger;
+		//				return config;
+		//			},
+		//			response: function(response) {
+		//				debugger;
+		//				return response;
+		//			},
+		//			responseError: function(response) {
+		//				return $q.reject(response);
+		//			}
+		//		};
+		//	}
+		//]);
 
 		$urlRouterProvider.otherwise('/');
 		$locationProvider.html5Mode(true);
@@ -77,8 +97,17 @@ angular
 					controller: 'LoginCtrl'
 				}
 			}
+		})
+		.state({
+			name: 'root.movies',
+			url: 'movies',
+			views:{
+				'mainContent@root': {
+					templateUrl: 'views/movies.html',
+					controller: 'MoviesCtrl'
+				}
+			}
 		});
-
 	})
 	.run(function navigationHandler ($state, $rootScope, $location) {
 		var routes = [];

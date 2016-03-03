@@ -7,6 +7,10 @@
  * # HomeCtrl
  * Controller of the webPlayerApp
  */
-angular.module('webPlayerApp').controller('HomeCtrl', function ($scope) {
-	$scope.x =0;
+angular.module('webPlayerApp').controller('MoviesCtrl', function ($scope, QuickPlayRequestsService) {
+	QuickPlayRequestsService.getContainerDataById().then(function(data){
+		console.log(data);
+	}, function(error){
+		console.log(error)
+	});
 });
