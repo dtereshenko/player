@@ -19,6 +19,7 @@
 
 .fullscreen-loader-container{
 	@include vertical-centring-before();
+	z-index: 1000;
 
 	text-align: center;
 	position: fixed;
@@ -26,8 +27,7 @@
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background-color: white;
-
+	background-color: rgba(0,0,0,0.6);
 }
 
 
