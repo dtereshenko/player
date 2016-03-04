@@ -17,7 +17,8 @@ angular
 		'ui.router',
 		'ngSanitize',
 		'ngTouch',
-		'underscore'
+		'underscore',
+		'ng.deviceDetector'
 	])
 	.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
@@ -75,6 +76,16 @@ angular
 				'mainContent@root': {
 					templateUrl: 'views/auth/login.html',
 					controller: 'LoginCtrl'
+				}
+			}
+		})
+		.state({
+			name: 'root.player',
+			url: 'player',
+			views:{
+				'mainContent@root': {
+					templateUrl: 'views/player/index.html',
+					controller: 'PlayerCtrl'
 				}
 			}
 		});

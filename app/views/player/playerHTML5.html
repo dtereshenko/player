@@ -1,0 +1,295 @@
+<div>
+	html5 player
+</div>
+
+<div class="error-header u-full-width">
+	<p class="error-message"></p>
+
+	<div class="error-close-button">CLOSE</div>
+</div>
+
+<div class="server-selection-modal">
+	<div class="server-group"
+		 title="You must refresh the page if you wish to switch servers after making a selection.">
+		Select Server:
+		<select class="u-full-width"
+				id="servers"
+				onchange="app.selectServer(this)"></select>
+
+		Server URL:
+		<input oninput="app.populateServerUrl(this)"
+			   type="text"
+			   placeholder="Override Server URL"
+			   class="u-full-width"
+			   id="server-url"></input>
+
+		App ID:
+		<input oninput="app.populateAppId(this)"
+			   type="text"
+			   placeholder="Override App ID"
+			   class="u-full-width"
+			   id="app-id"></input>
+
+		Carrier ID:
+		<input oninput="app.populateCarrierId(this)"
+			   type="text"
+			   placeholder="Override Carrier ID"
+			   class="u-full-width"
+			   id="carrier-id"></input>
+
+		User Access Token:
+		<input oninput="app.populateUat(this)"
+			   type="text"
+			   placeholder="Override User Access Token"
+			   class="u-full-width"
+			   id="uat"></input>
+
+		<button id="select-server-btn">Select This Server</button>
+	</div>
+</div>
+<div class="container">
+	<div class="example-grid">
+		<div class="row">
+			<div class="four columns" id="server-info">
+				<p>
+					<a href="/sample_app/docs/index.html" target="_blank">
+						Go to API docs
+					</a>
+				</p>
+				<p>
+					<a href="https://quickplay.atlassian.net/wiki/pages/viewpage.action?pageId=6193201" target="_blank">
+						Go to the Developer Guide
+					</a>
+				</p>
+
+			</div>
+
+			<div class="eight columns">
+				<div class='cover'>
+					<div class="spinner">
+						<div class="dot1"></div>
+						<div class="dot2"></div>
+					</div>
+				</div>
+
+				<!-- Using default controls -->
+				<!-- Inlining background-color so it doesn't flash -->
+				<video
+						id="video"
+						height="480"
+						width="640"
+						crossorigin="anonymous"
+						controls
+						style="background-color: black;"
+						class="green"
+						onclick="app.togglePlay()">
+				</video>
+
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+				<button onclick="app.togglePlay()">Play/Pause</button>
+			</div>
+
+			<div class="four columns">
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+				<button id="load-content-url-btn">Load Content By URL</button>
+			</div>
+
+			<div class="four columns">
+				<select class="u-full-width" id="content-url"></select>
+				<input class="u-full-width"
+					   id="custom-content-url"
+					   type="text"
+					   placeholder="Custom URL (Overrides dropdown)"></input>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">&nbsp;
+			</div>
+
+			<div class="four columns">
+				</br>
+				<button id="load-content-id-btn">Load Content By ID</button>
+			</div>
+
+			<div class="four columns">
+				Content ID:
+				<input class="u-full-width"
+					   id="content-id"
+					   oninput="app.populateContentId(this)"
+					   type="text"></input>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+				<div class="four columns"></div>
+				<div class="two columns">
+					<label for="content-VOD">VOD</label>
+					<input autocomplete="off"
+						   type="radio"
+						   name="contentType"
+						   id="content-VOD"
+						   onclick="app.populateContentType(this)"
+						   value="3" />
+				</div>
+
+				<div class="two columns">
+					<label for="content-LIVE">LIVE</label>
+					<input autocomplete="off"
+						   type="radio"
+						   name="contentType"
+						   id="content-LIVE"
+						   onclick="app.populateContentType(this)"
+						   value="4" />
+				</div>
+				<div class="four columns"></div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+				</br>
+				<button onclick="app.toggleTextTracks()">Toggle Text Tracks (On/Off)</button>
+			</div>
+
+			<div class="four columns">
+				</br>
+				<select class="u-full-width" id="available-text-tracks" onchange="app.switchTextTrack(this)"></select>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+				Text Colour:
+				<select class="u-full-width" id="text-colors" onchange="app.switchTextTrackColor(this)">
+					<option value="white">White</option>
+					<option value="blue">Blue</option>
+					<option value="green">Green</option>
+					<option value="red">Red</option>
+					<option value="yellow">Yellow</option>
+					<option value="orange">Orange</option>
+					<option value="pink">Pink</option>
+				</select>
+			</div>
+
+			<div class="four columns">
+				Text Size:
+				<select class="u-full-width" id="text-size" onchange="app.switchTextTrackSize(this)">
+					<option value="14">Small</option>
+					<option value="22">Medium</option>
+					<option value="32">Large</option>
+				</select>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+				</br>
+				<button onclick="app.setMaxBandwidth()">Set Max Bandwidth</button>
+			</div>
+
+			<div class="four columns">
+				</br>
+				<input type="text" class="u-full-width" placeholder="Bandwidth" id="max-bandwidth"></input>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+				<button onclick="app.setMinBandwidth()">Set Min Bandwidth</button>
+			</div>
+
+			<div class="four columns">
+				<input type="text" class="u-full-width" placeholder="Bandwidth" id="min-bandwidth"></input>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+				Audio Tracks:
+				<select class="u-full-width" id="available-audio-tracks" onchange="app.switchAudioTrack(this)"></select>
+			</div>
+
+		</div>
+	</div>
+</div>
+<!--<script type="text/javascript" src="scripts/playerHTML5/ui.js"></script>-->
+
+<!-- Demo app -->
+<!--<script type="text/javascript"  src="scripts/playerHTML5/app.js"></script>-->
+<!--<script type="text/javascript"  src="scripts/playerHTML5/vstb-library.debug.js"></script>-->

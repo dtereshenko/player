@@ -1,0 +1,851 @@
+<div>
+	<p>You are using <b>{{device.browser}}</b> on <b>{{device.os}} ({{device.os_version}})</b>.</p>
+	<p>Your <b>{{device.browser}}</b> version is <b>{{device.browser_version}}</b></p>
+	<p>Device - <b></b>{{device.device}}</p>
+	<p>Complete deviceDetector data - <b></b><pre>{{device}}<pre></p>
+</div>
+
+<div class="error-header u-full-width">
+	<p class="error-message"></p>
+
+	<div class="error-close-button">CLOSE</div>
+</div>
+
+<div class="server-selection-modal">
+	<div class="server-group"
+		 title="You must refresh the page if you wish to switch servers after making a selection.">
+		Select Server:
+		<select class="u-full-width"
+				id="servers"
+				onchange="app.selectServer(this)"></select>
+
+		Server URL:
+		<input oninput="app.populateServerUrl(this)"
+			   type="text"
+			   placeholder="Override Server URL"
+			   class="u-full-width"
+			   id="server-url"></input>
+
+		App ID:
+		<input oninput="app.populateAppId(this)"
+			   type="text"
+			   placeholder="Override App ID"
+			   class="u-full-width"
+			   id="app-id"></input>
+
+		Carrier ID:
+		<input oninput="app.populateCarrierId(this)"
+			   type="text"
+			   placeholder="Override Carrier ID"
+			   class="u-full-width"
+			   id="carrier-id"></input>
+
+		User Access Token:
+		<input oninput="app.populateUat(this)"
+			   type="text"
+			   placeholder="Override User Access Token"
+			   class="u-full-width"
+			   id="uat"></input>
+
+		<button id="select-server-btn">Select This Server</button>
+	</div>
+</div>
+<div class="container">
+	<div class="example-grid">
+		<div class="row">
+			<div class="four columns" id="server-info">
+				<p>
+					<a href="/sample_app/docs/index.html" target="_blank">
+						Go to API docs
+					</a>
+				</p>
+				<p>
+					<a href="https://quickplay.atlassian.net/wiki/pages/viewpage.action?pageId=6193201" target="_blank">
+						Go to the Developer Guide
+					</a>
+				</p>
+
+			</div>
+
+			<div class="eight columns">
+				<div class='cover'>
+					<div class="spinner">
+						<div class="dot1"></div>
+						<div class="dot2"></div>
+					</div>
+				</div>
+
+				<!-- Using default controls -->
+				<!-- Inlining background-color so it doesn't flash -->
+				<video
+						id="video"
+						height="480"
+						width="640"
+						crossorigin="anonymous"
+						style="background-color: black;"
+						class="green"
+						onclick="app.togglePlay()">
+				</video>
+
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+				<button onclick="app.togglePlay()">Play/Pause</button>
+			</div>
+
+			<div class="four columns">
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+				<button id="load-content-url-btn">Load Content By URL</button>
+			</div>
+
+			<div class="four columns">
+				<select class="u-full-width" id="content-url"></select>
+				<input class="u-full-width"
+					   id="custom-content-url"
+					   type="text"
+					   placeholder="Custom URL (Overrides dropdown)"></input>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">&nbsp;
+			</div>
+
+			<div class="four columns">
+				</br>
+				<button id="load-content-id-btn">Load Content By ID</button>
+			</div>
+
+			<div class="four columns">
+				Content ID:
+				<input class="u-full-width"
+					   id="content-id"
+					   oninput="app.populateContentId(this)"
+					   type="text"></input>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+				<div class="four columns"></div>
+				<div class="two columns">
+					<label for="content-VOD">VOD</label>
+					<input autocomplete="off"
+						   type="radio"
+						   name="contentType"
+						   id="content-VOD"
+						   onclick="app.populateContentType(this)"
+						   value="3" />
+				</div>
+
+				<div class="two columns">
+					<label for="content-LIVE">LIVE</label>
+					<input autocomplete="off"
+						   type="radio"
+						   name="contentType"
+						   id="content-LIVE"
+						   onclick="app.populateContentType(this)"
+						   value="4" />
+				</div>
+				<div class="four columns"></div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+				</br>
+				<button onclick="app.toggleTextTracks()">Toggle Text Tracks (On/Off)</button>
+			</div>
+
+			<div class="four columns">
+				</br>
+				<select class="u-full-width" id="available-text-tracks" onchange="app.switchTextTrack(this)"></select>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+				Text Colour:
+				<select class="u-full-width" id="text-colors" onchange="app.switchTextTrackColor(this)">
+					<option value="white">White</option>
+					<option value="blue">Blue</option>
+					<option value="green">Green</option>
+					<option value="red">Red</option>
+					<option value="yellow">Yellow</option>
+					<option value="orange">Orange</option>
+					<option value="pink">Pink</option>
+				</select>
+			</div>
+
+			<div class="four columns">
+				Text Size:
+				<select class="u-full-width" id="text-size" onchange="app.switchTextTrackSize(this)">
+					<option value="14">Small</option>
+					<option value="22">Medium</option>
+					<option value="32">Large</option>
+				</select>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+				</br>
+				<button onclick="app.setMaxBandwidth()">Set Max Bandwidth</button>
+			</div>
+
+			<div class="four columns">
+				</br>
+				<input type="text" class="u-full-width" placeholder="Bandwidth" id="max-bandwidth"></input>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+				<button onclick="app.setMinBandwidth()">Set Min Bandwidth</button>
+			</div>
+
+			<div class="four columns">
+				<input type="text" class="u-full-width" placeholder="Bandwidth" id="min-bandwidth"></input>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="example-grid">
+		<div class="row btn-wrapper">
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+			</div>
+
+			<div class="four columns">
+				Audio Tracks:
+				<select class="u-full-width" id="available-audio-tracks" onchange="app.switchAudioTrack(this)"></select>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- UI components -->
+<!--<script src="/scripts/playerHTML5/ui.js"></script>-->
+
+<!--&lt;!&ndash; Demo app &ndash;&gt;-->
+<!--<script src="/scripts/playerHTML5/app.js"></script>-->
+<!--<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>-->
+<!--<script src="/scripts/playerHTML5/javascript.js"></script>-->
+
+<!-- Visiting the base sample app url without any params will use the unminified release version of the library.
+     Adding ?minified to the end of the url will load the sample app with the minified version of the library. -->
+<script>
+
+	$(document).ready(function() {
+		$('video').videoPlayer({
+			'playerWidth' : 0.95,
+			'videoClass' : 'video'
+		});
+	});
+</script>
+
+
+<style>
+
+	@media (min-width: 400px) {
+		.container {
+			width: 98%;
+			padding: 0;
+		}
+	}
+
+	@media (min-width: 550px) {
+		.container {
+			width: 94%;
+		}
+		.column,
+		.columns {
+			margin-left: 20px;
+		}
+	}
+
+	.container {
+		padding: 15px;
+		max-width: 1800px;
+	}
+
+	.example-grid .columns {
+		text-align: center;
+		font-size: 1rem;
+		text-transform: uppercase;
+		line-height: 30px;
+		margin-bottom: .75rem;
+		font-weight: 600;
+		letter-spacing: .1rem;
+	}
+
+	.cover {
+		background-color: black;
+		position: fixed;
+		text-align: center;
+	}
+
+	input:disabled,
+	select:disabled {
+		background-color: #EEEEEE;
+		color: gray;
+	}
+
+
+	/** SPINNER STYLES **/
+	.spinner {
+		margin: 200px auto;
+		width: 40px;
+		height: 40px;
+		text-align: center;
+		display: none;
+		z-index: 999999;
+
+		-webkit-animation: rotate 2.0s infinite linear;
+		animation: rotate 2.0s infinite linear;
+	}
+
+	.dot1, .dot2 {
+		width: 60%;
+		height: 60%;
+		display: inline-block;
+		position: absolute;
+		top: 0;
+		background-color: #B22927;
+		border-radius: 100%;
+
+		-webkit-animation: bounce 2.0s infinite ease-in-out;
+		animation: bounce 2.0s infinite ease-in-out;
+	}
+
+	.dot2 {
+		top: auto;
+		bottom: 0px;
+		-webkit-animation-delay: -1.0s;
+		animation-delay: -1.0s;
+	}
+
+	@-webkit-keyframes rotate { 100% { -webkit-transform: rotate(360deg) }}
+	@keyframes rotate { 100% { transform: rotate(360deg); -webkit-transform: rotate(360deg) }}
+
+	@-webkit-keyframes bounce {
+		0%, 100% { -webkit-transform: scale(0.0) }
+		50% { -webkit-transform: scale(1.0) }
+	}
+
+	@keyframes bounce {
+		0%, 100% {
+			transform: scale(0.0);
+			-webkit-transform: scale(0.0);
+		} 50% {
+			  transform: scale(1.0);
+			  -webkit-transform: scale(1.0);
+		  }
+	}
+
+	/** SPINNER STYLES END **/
+
+
+	/** GROUPING STYLES  **/
+
+	.server-selection-modal {
+		background-color: rgba(0,0,0,0.9);
+		width: 100%;
+		height: 100%;
+		position: fixed;
+		z-index: 100;
+	}
+
+	.server-selection-modal.closed {
+		display: none;
+	}
+
+	.server-group {
+		margin: 100px auto 0 auto;
+		width: 500px;
+		background-color: #EEEEEE;
+		padding: 5px;
+		margin-bottom: 0px !important;
+		padding: 25px;
+	}
+
+	#server-info {
+		word-wrap: break-word;
+		text-align: left;
+		text-transform: none;
+		font-size: 0.9em;
+	}
+
+	/** GROUPING STYLES  END **/
+
+
+	/** ERROR HEADER STYLES  **/
+
+	.error-header {
+		position: fixed;
+		z-index: 1;
+		top: -200px;
+		left: 0;
+		min-height: 75px;
+		padding: 15px;
+		background-color: #ECF0F1;
+		text-align: center;
+		transition: top 0.5s;
+	}
+
+	.error-header.show {
+		top: 0;
+	}
+
+	.error-message {
+		color: #CF000F;
+	}
+
+	.error-close-button {
+		cursor: pointer;
+	}
+
+
+	.player {
+		background: #000000;
+		box-sizing: border-box;
+		border-radius: 0px;
+		height: 40px;
+		-moz-box-sizing: border-box;
+		float: left;
+		font-family: Arial, sans-serif;
+		position: absolute;
+		padding: 0;
+		bottom: 12px;
+		z-index: 2;
+		opacity: 1;
+		box-shadow: 0 0 10px rgba(0,0,0,0.3);
+		-webkit-transition: opacity 0.3s ease-in;
+		transition: opacity 0.3s ease-in;
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		user-select: none;
+	}
+
+	.video {
+		position: relative;
+		margin: 0px auto;
+	}
+
+	.video:hover .player {
+		opacity: 1;
+	}
+
+	.player .progress {
+		width: 78%;
+		height: 8px;
+		border-radius: 5px;
+		background: #676767;
+		box-shadow: inset 0 -5px 10px rgba(0,0,0,0.1);
+		float: left;
+		cursor: pointer;
+		margin: 16px 0 0 0;
+		padding: 0;
+		position: relative;
+		font-variant: normal;
+	}
+
+	.player .progress-bar {
+		background: #33b5d5;
+		box-shadow: inset -30px 0px 69px -20px #00b4ff;
+		border-radius: 5px;
+		height: 100%;
+		position: relative;
+		z-index: 999;
+		width: 0;
+	}
+
+	.player .button-holder {
+		position: relative;
+		left: 10px;
+	}
+
+	.player .progress-button {
+		background: #fff;
+		box-shadow: 0 0 20px rgba(0,0,0,0.3);
+		border-radius: 30px;
+		width: 14px;
+		height: 14px;
+		position: absolute;
+		left: -20px;
+		text-decoration: overline;
+		top: -3px;
+	}
+
+
+	.player [class^="buffered"] {
+		background: rgba(255,255,255,0.1);
+		position: absolute;
+		top: 0;
+		left: 30px;
+		height: 100%;
+		border-radius: 5px;
+		z-index: 1;
+	}
+
+	.player .play-pause {
+		display: inline-block;
+		font-size: 2em;
+		float: left;
+		text-shadow: 0 0 0 #fff;
+		color: rgba(255,255,255,0.8);
+		width: 40px;
+		height: 40px;
+		line-height: 40px;
+		text-align: center;
+		margin-right: 15px;
+		/*padding: 17px 0 0 3%;*/
+		cursor: pointer;
+		font-variant: small-caps;
+		border-right: 2px solid #2e2e2e;
+	}
+	.player .play-pause:hover{
+		background: #1B1B1B;
+	}
+	.player .play, .player .pause-button {
+		-webkit-transition: all 0.2s ease-out;
+	}
+
+	.player .play .pause-button, .player .pause .play-button {
+		display: none;
+	}
+
+	.player .pause-button {
+		padding: 10px 0 0 14px;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		height: 34px;
+	}
+
+	.player .pause-button span {
+		background: #fff;
+		width: 5px;
+		height: 20px;
+		float: left;
+		display: block;
+	}
+
+	.player .pause-button span:first-of-type {
+		margin: 0 4px 0 0;
+	}
+
+	.player .time {
+		color: #fff;
+		font-weight: normal;
+		font-size: 1.2em;
+		position: absolute;
+		right: -100px;
+		top: -11px;
+	}
+
+	.player .play:hover {
+		/*text-shadow: 0 0 5px #fff;*/
+	}
+
+	.player .play:active, .pause-button:active span {
+		/*text-shadow: 0 0 7px #fff;*/
+	}
+
+
+	.player .pause-button:hover span {
+		/*box-shadow: 0 0 5px #fff;*/
+	} .player .pause-button:active span {
+		  /*box-shadow: 0 0 7px #fff;*/
+	  }
+
+
+	.player .volume {
+		position: relative;
+		float: right;
+		width: 40px;
+		/*margin: 0 0 0 4%;*/
+		height: 100%;
+		border-left: 1px solid #2e2e2e;
+	}
+
+	.player .volume-icon {
+		padding: 1.5%;
+		height: 100%;
+		line-height: 45px;
+		cursor: pointer;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-webkit-transition: all 0.15s linear;
+
+	}
+
+	.player .volume-icon-hover {
+		background-color: #1B1B1B;
+	}
+	.player .volume-icon .fa{
+		color: #FFF;
+		font-size: 18px;
+	}
+	.player .volume-icon .fa-volume-off{
+		display: none;
+	}
+	.player .v-change-1 .fa-volume-off, .player .v-change-0 .fa-volume-off{
+		display: inline-block;
+	}
+
+	.player .v-change-1 .fa-volume-up, .player .v-change-0 .fa-volume-up{
+		display: none;
+	}
+
+	.player .volume-holder {
+		height: 100px;
+		width: 100%;
+		background: rgba(0, 0, 0, 0.55);
+		position: absolute;
+		display: none;
+		/*background: #4f4f4f;*/
+		left: 0;
+		border-radius: 0px 0px 0 0;
+		top: -100px;
+	}
+
+	.player .volume-bar-holder {
+		background: #333;
+		width: 8px;
+		box-shadow: inset 0px 0px 5px rgba(0,0,0,0.3);
+		margin: 15px auto;
+		height: 80px;
+		border-radius: 0px;
+		position: relative;
+		cursor: pointer;
+	}
+
+	.player .volume-button {
+		background: #fff;
+		box-shadow: 0 0 20px rgba(0,0,0,0.3);
+		border-radius: 30px;
+		width: 14px;
+		height: 14px;
+		margin-left: -3px;
+	}
+
+	.player .volume-button-holder {
+		position: relative;
+		top: -10px;
+	}
+
+	.player .volume-bar {
+		background: #25B4E0;
+		box-shadow: inset -30px 0px 69px -20px #25B4E0;
+		border-radius: 0px;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		bottom: 0;
+	}
+
+	.player .fullscreen {
+		width: 40px;
+		height: 40px;
+		line-height: 45px;
+		cursor: pointer;
+		float: right;
+		border-left: 1px solid #2e2e2e
+	}
+	.player .fullscreen .fa{
+		color: #FFF;
+		font-size: 18px;
+	}
+	.player .fullscreen:hover{
+		background: #1B1B1B;
+	}
+
+	.player .fullscreen a {
+		width: 25px;
+		height: 20px;
+		border-radius: 3px;
+		background: #fff;
+		display: block;
+		/*position: relative;*/
+		/*top: 23px;*/
+		margin: 0px auto;
+	}
+
+	.player .volume-icon span {
+		width: 20%;
+		height: 13%;
+		background-color: #fff;
+		display: block;
+		position: relative;
+		z-index: 1;
+		font-weight: bold;
+		top: 40%;
+		color: #fff;
+		left: 22%;
+	}
+
+	.player .volume-icon span:before,
+	.player .volume-icon span:after {
+		content: '';
+		position: absolute;
+	}
+	.player .volume-icon span:before {
+		width: 0;
+		height: 0;
+		border: 1em solid transparent;
+		border-left: none;
+		border-right-color: #fff;
+		z-index: 2;
+		top: -2px;
+		left: 10%;
+		margin-top: -40%;
+	}
+	.player .volume-icon span:after {
+		width: 2%;
+		height: 2%;
+		border: 1px solid #fff;
+		left: 190%;
+		border-width: 0px 0px 0 0;
+		top: 5px;
+		border-radius: 0 50px 0 0;
+		-webkit-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		-ms-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		transform: rotate(45deg);
+		font-variant: small-caps;
+	}
+
+	.player .v-change-11 span:after { border-width: 10px 10px 0 0; top: 0; }
+	.player .v-change-10 span:after { border-width: 9px 9px 0 0; top: 1px; }
+	.player .v-change-9 span:after { border-width: 8px 8px 0 0; top: 1px; }
+	.player .v-change-8 span:after { border-width: 7px 7px 0 0; top: 2px; }
+	.player .v-change-7 span:after { border-width: 6px 6px 0 0; top: 2px; }
+	.player .v-change-6 span:after { border-width: 5px 5px 0 0; top: 3px; }
+	.player .v-change-5 span:after { border-width: 4px 4px 0 0; top: 3px; }
+	.player .v-change-4 span:after { border-width: 3px 3px 0 0; top: 4px; }
+	.player .v-change-3 span:after { border-width: 2px 2px 0 0; top: 4px; }
+	.player .v-change-2 span:after { border-width: 1px 1px 0 0; top: 5px; }
+	.player .v-change-1 span:after { border-width: 0px 0px 0 0; top: 5px; }
+
+	.player .v-change-1 span:after {
+		content: '+';
+		-webkit-transform: rotate(45deg);
+		font-size: 20px;
+		top: -6px;
+		left: 25px;
+	}
+
+	/* ------- IGNORE */
+
+	#header {
+		width: 100%;
+		margin: 0px auto;
+	}
+
+	#header #center {
+		text-align: center;
+	}
+
+	#header h1 span {
+		color: #000;
+		display: block;
+		font-size: 50px;
+	}
+
+	#header p {
+		font-family: 'Georgia', serif;
+	}
+	#header h1 {
+		color: #892dbf;
+		font: bold 40px 'Bree Serif', serif;
+	}
+
+	#travel {
+		padding: 10px;
+		background: rgba(0,0,0,0.6);
+		border-bottom: 2px solid rgba(0,0,0,0.2);
+		font-variant: normal;
+		text-decoration: none;
+	}
+
+	#travel a {
+		font-family: 'Georgia', serif;
+		text-decoration: none;
+		border-bottom: 1px solid #f9f9f9;
+		font-size: 20px;
+		color: #f9f9f9;
+	}
+
+	.container {
+		padding: 40px 0 0 0;
+	}
+
+</style>
