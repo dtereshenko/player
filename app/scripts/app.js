@@ -99,6 +99,16 @@ angular
 			}
 		})
 		.state({
+			name: 'root.schedules',
+			url: 'schedules',
+			views:{
+				'mainContent@root': {
+					templateUrl: 'views/schedules.html',
+					controller: 'SchedulesCtrl'
+				}
+			}
+		})
+		.state({
 			name: 'root.movies',
 			url: 'movies',
 			views:{

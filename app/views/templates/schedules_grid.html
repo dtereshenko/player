@@ -1,0 +1,42 @@
+<div class="schedules-grid" >
+
+	<div class="schedules-lists-container schedules-channels-container" >
+		<div class = "schedule-container"
+			 ng-repeat="channel in channels">
+			<div class = "schedule-item">
+				{{::channel.name}}
+			</div>
+		</div>
+	</div>
+	<div class="schedules-lists-container">
+		<div class="schedules-timeline"
+			 ng-style="{'width': horizontalWidth}">
+
+			<div class="schedules-timeline-item"
+				 ng-repeat = "item in timelineItems"
+				 ng-style="{'width': timelineItemWidth}">
+				<div>
+					{{::item.time | date : 'HH:mm'}}
+				</div>
+			</div>
+		</div>
+		<div class="schedule-container"
+			 ng-repeat="channel in channels"
+			 ng-style="{'width': horizontalWidth}">
+
+			<div class = "schedule-item"
+				 ng-repeat="item in channel.schedule"
+				 ng-style="{'width': item.width}">
+				<div class = "schedule-item-short-description">
+					{{::item.shortDescription}}
+				</div>
+				<div class = "schedule-item-title">
+					{{::item.title}}
+				</div>
+				<div>
+					{{::item.startDate}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
