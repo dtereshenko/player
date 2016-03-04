@@ -11,7 +11,6 @@ angular.module('webPlayerApp').directive('playerSilverlight', function () {
 		templateUrl: 'views/player/playerSilverlight.html',
 		restrict: 'A',
 		link: function(scope, element, attrs) {
-
 		}
 	};
 })

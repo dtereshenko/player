@@ -10,7 +10,6 @@ angular.module('webPlayerApp').directive('playerHtml', function () {
 	return {
 		templateUrl: 'views/player/playerHTML5.html',
 		restrict: 'A',
-		//replace: true,
 		link: function postLink(scope, element, attrs) {
 		}
 	};

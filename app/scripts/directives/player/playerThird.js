@@ -10,7 +10,6 @@ angular.module('webPlayerApp').directive('playerThird', function () {
 	return {
 		templateUrl: 'views/player/playerThird.html',
 		restrict: 'A',
-		//replace: true,
 		link: function postLink(scope, element, attrs) {
 
 		}
