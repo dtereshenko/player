@@ -46,7 +46,12 @@ angular.module('webPlayerApp').factory('QuickPlayAPIService', function ($resourc
 
 	self.tvEpisodesResourse = $resource(QuickPlayConfigService.host + '/tvepisodes/:id', {id: '@id'});
 
-	self.moviesResourse = $resource(QuickPlayConfigService.host + '/movies/:id', {id: '@id'});
+	//self.moviesResourse = $resource(QuickPlayConfigService.host + '/movies/:id', {id: '@id'});
+	self.moviesResourse = $resource(QuickPlayConfigService.host + '/movie/:id', {id: '@id'}, {
+		get: {
+			cache: cache
+		}
+	});
 
 	return self;
 
