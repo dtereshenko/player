@@ -52,6 +52,7 @@
   },
   "scripts": {
     "test": "karma start test\\karma.conf.js",
+
     "start": "npm install -g grunt-cli bower && npm install && bower install"
   }
 }
