@@ -24,6 +24,7 @@ angular.module('webPlayerApp').controller('SchedulesCtrl', function ($scope, Qui
 			$scope.intervalSizeSeconds = 1800;
 			$scope.timelineStartTime = new Date(totalStartTime);
 			$scope.timelineEndTime = new Date(totalEndTime);
+
 		}, function(error){
 			console.log("error", error)
 		});

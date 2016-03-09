@@ -1,7 +1,9 @@
 'use strict';
 
-angular.module('webPlayerApp').service('QuickPlayAPIService', function ($resource, QuickPlayConfigService) {
-	var self = this;
+angular.module('webPlayerApp').factory('QuickPlayAPIService', function ($resource, QuickPlayConfigService, $cacheFactory) {
+	var self = {};
+	var cache = $cacheFactory("QPAPICache");
+
 
 	/*Common resources*/
 	self.searchResourse = $resource(QuickPlayConfigService.host + '/search');
@@ -11,14 +13,26 @@ angular.module('webPlayerApp').service('QuickPlayAPIService', function ($resourc
 
 	/*Live-related resources*/
 	//self.channelsResourse = $resource(QuickPlayConfigService.host + '/channels/:id', {id: '@id'});
-	self.channelsResourse = $resource(QuickPlayConfigService.host + '/epgChannel/:id', {id: '@id'});
+	self.channelsResourse = $resource(QuickPlayConfigService.host + '/epgChannel/:id', {id: '@id'}, {
+		get: {
+			cache: cache
+		}
+	});
 
 	self.programsResourse = $resource(QuickPlayConfigService.host + '/programs/:id', {id: '@id'});
 
 	//self.shedulesResourse = $resource(QuickPlayConfigService.host + '/schedules/:id', {id: '@id'});
-	self.shedulesResourse = $resource(QuickPlayConfigService.host + '/epgSchedule/:id', {id: '@id'});
+	self.shedulesResourse = $resource(QuickPlayConfigService.host + '/epgSchedule/:id', {id: '@id'}, {
+		get: {
+			cache: cache
+		}
+	});
 
-	self.shedulesGridResourse = $resource(QuickPlayConfigService.host + '/epgGrid');
+	self.shedulesGridResourse = $resource(QuickPlayConfigService.host + '/epgGrid', {}, {
+		get: {
+			cache: cache
+		}
+	});
 
 	self.specialLiveEventsResourse = $resource(QuickPlayConfigService.host + '/specialliveevents/:id', {id: '@id'});
 
@@ -33,5 +47,7 @@ angular.module('webPlayerApp').service('QuickPlayAPIService', function ($resourc
 	self.tvEpisodesResourse = $resource(QuickPlayConfigService.host + '/tvepisodes/:id', {id: '@id'});
 
 	self.moviesResourse = $resource(QuickPlayConfigService.host + '/movies/:id', {id: '@id'});
+
+	return self;
 
 });

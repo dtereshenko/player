@@ -14,9 +14,9 @@
 
 			<div class="schedules-timeline-item"
 				 ng-repeat = "item in timelineItems"
-				 ng-style="{'width': timelineItemWidth}">
+				 ng-style="::{'width': timelineItemWidth}">
 				<div>
-					{{::item.time | date : 'HH:mm'}}
+					{{::item.time | date : 'dd:MM:HH:mm'}}
 				</div>
 			</div>
 		</div>
@@ -26,8 +26,8 @@
 
 			<div class = "schedule-item"
 				 ng-repeat="item in channel.items"
-				 ng-class="{'empty': item.isEmpty}"
-				 ng-style="{'width': item.width}">
+				 ng-class="::{'empty': item.isEmpty}"
+				 ng-style="::{'width': item.width}">
 				<!--<div class = "schedule-item-short-description">-->
 					<!--{{::item.duration}}-->
 				<!--</div>-->
