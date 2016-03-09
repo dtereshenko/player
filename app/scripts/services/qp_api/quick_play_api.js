@@ -10,11 +10,15 @@ angular.module('webPlayerApp').service('QuickPlayAPIService', function ($resourc
 
 
 	/*Live-related resources*/
-	self.channelsResourse = $resource(QuickPlayConfigService.host + '/channels/:id', {id: '@id'});
+	//self.channelsResourse = $resource(QuickPlayConfigService.host + '/channels/:id', {id: '@id'});
+	self.channelsResourse = $resource(QuickPlayConfigService.host + '/epgChannel/:id', {id: '@id'});
 
 	self.programsResourse = $resource(QuickPlayConfigService.host + '/programs/:id', {id: '@id'});
 
-	self.shedulesResourse = $resource(QuickPlayConfigService.host + '/schedules/:id', {id: '@id'});
+	//self.shedulesResourse = $resource(QuickPlayConfigService.host + '/schedules/:id', {id: '@id'});
+	self.shedulesResourse = $resource(QuickPlayConfigService.host + '/epgSchedule/:id', {id: '@id'});
+
+	self.shedulesGridResourse = $resource(QuickPlayConfigService.host + '/epgGrid');
 
 	self.specialLiveEventsResourse = $resource(QuickPlayConfigService.host + '/specialliveevents/:id', {id: '@id'});
 

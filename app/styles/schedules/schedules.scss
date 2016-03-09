@@ -69,10 +69,16 @@
 				margin: 0 0px;
 				display: inline-flex;
 				justify-content: center;
-				border-left: none;
+				border-right: none;
+				vertical-align: top;
 
-				&:first-child{
-					border-left: 1px solid #c8c8c8;
+				&.empty{
+					border: none;
+					opacity: 0;
+				}
+
+				&:last-child{
+					border-right: 1px solid #c8c8c8;
 				}
 
 				> div {

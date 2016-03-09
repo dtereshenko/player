@@ -4,7 +4,7 @@
 		<div class = "schedule-container"
 			 ng-repeat="channel in channels">
 			<div class = "schedule-item">
-				{{::channel.name}}
+				{{::channel.title}}
 			</div>
 		</div>
 	</div>
@@ -25,11 +25,12 @@
 			 ng-style="{'width': horizontalWidth}">
 
 			<div class = "schedule-item"
-				 ng-repeat="item in channel.schedule"
+				 ng-repeat="item in channel.items"
+				 ng-class="{'empty': item.isEmpty}"
 				 ng-style="{'width': item.width}">
-				<div class = "schedule-item-short-description">
-					{{::item.shortDescription}}
-				</div>
+				<!--<div class = "schedule-item-short-description">-->
+					<!--{{::item.duration}}-->
+				<!--</div>-->
 				<div class = "schedule-item-title">
 					{{::item.title}}
 				</div>
