@@ -53,7 +53,7 @@
   //We need to match deviceID to one inside UAT ...
   var deviceIdFromUat = 'cefaf3c5-dab7-46ab-bc9c-27e614291d41';
 
-  
+
   var bandWidthRestrictions = {
     min: null,
     max: null
@@ -63,9 +63,9 @@
   /**
    * 3 = VOD
    * 4 = LIVE
-   * 
+   *
    * No other content types are currently specified.
-   */ 
+   */
   var contentType = null;
 
 
@@ -123,15 +123,15 @@
 
   // List of mpds we can play
   var content = [{
-      description: 'MP4 DASH', 
+      description: 'MP4 DASH',
       url: 'http://shaka-player-demo.appspot.com/assets/car-20120827-manifest.mpd'
     }, {
-      description: 'MULTILINGUAL SUBTITLES', 
+      description: 'MULTILINGUAL SUBTITLES',
       url: 'http://shaka-player-demo.appspot.com/assets/angel_one.mpd'
     }, {
-      description: 'LIVE STREAM', 
+      description: 'LIVE STREAM',
       url: 'http://vm2.dashif.org/livesim/testpic_2s/Manifest.mpd'
-    }, 
+    },
   ]
 
 
@@ -140,7 +140,7 @@
 
   app.loadContentUrl = function () {
     if (!player.getUserAccessToken()) {
-      setupPlayer(); 
+      setupPlayer();
     }
 
     /**
@@ -168,7 +168,7 @@
      * the url selected from the dropdown.
      */
     try {
-      player.prepare(contentRequest, userInfo);  
+      player.prepare(contentRequest, userInfo);
     } catch (e) {
       onPlayerError(e);
     }
@@ -177,7 +177,7 @@
 
   app.loadContentId = function () {
     if (!player.getUserAccessToken()) {
-      setupPlayer(); 
+      setupPlayer();
     }
 
     /**
@@ -197,10 +197,10 @@
 
     /**
      * Same as above but the id must be a number or we will try
-     * to use the id as a url and you'll get errors. 
+     * to use the id as a url and you'll get errors.
      */
     try {
-      player.prepare(contentRequest, userInfo);  
+      player.prepare(contentRequest, userInfo);
     } catch (e) {
       onPlayerError(e);
     }
@@ -224,7 +224,7 @@
 
 
   /**
-   * Styling text tracks is done through the ::cue 
+   * Styling text tracks is done through the ::cue
    * pseudo-selector so we can't directly set them through
    * a DOM element. Instead we have to modify stylesheets.
    * NOTE: This seems to cause a slight pause in playback so
@@ -253,7 +253,7 @@
         return;
       };
     }
-    
+
     captionsStylesSheet.addRule('::cue', 'font-size: ' + size + 'px');
   };
 
@@ -266,7 +266,7 @@
 
   /**
    * Toggle the display of captions/subtitles by passing true or false.
-   */ 
+   */
   app.toggleTextTracks = function () {
     player.enableTextTrack(!textEnabled);
   };
@@ -296,8 +296,8 @@
   };
 
 
-  app.populateCarrierId = function (element) {  
-    selectedServerValues.carrierId = element.value;  
+  app.populateCarrierId = function (element) {
+    selectedServerValues.carrierId = element.value;
   };
 
 
@@ -322,7 +322,7 @@
 
   app.selectServer = function (element) {
     var server = servers[element.value];
-    
+
     ui.inputs.contentId.element.value = server.contentId;
     ui.inputs.serverUrl.element.value = server.serverUrl;
     ui.inputs.carrierId.element.value = server.carrierId;
@@ -330,7 +330,7 @@
     ui.inputs.uat.element.value = server.uat;
 
     for (var input in ui.inputs) {
-      ui.inputs[input].element.oninput && 
+      ui.inputs[input].element.oninput &&
         ui.inputs[input].element.oninput();
     }
   };
@@ -346,16 +346,16 @@
 
   function createPlayerObject() {
     try {
-      player = root.vstb.createPlayer(root.app.video, 
-                                      selectedServerValues.serverUrl, 
-                                      selectedServerValues.carrierId, 
-                                      selectedServerValues.appId, 
-                                      null);  
+      player = root.vstb.createPlayer(root.app.video,
+                                      selectedServerValues.serverUrl,
+                                      selectedServerValues.carrierId,
+                                      selectedServerValues.appId,
+                                      null);
     } catch (e) {
       onPlayerError(e);
       return
     }
-     
+
     // Make accessible from outside for easier debugging
     app.player = player;
   }
@@ -366,16 +366,16 @@
 
     loadPlayer();
 
-    // Get a copy of the parsed manifest.     
+    // Get a copy of the parsed manifest.
     manifest = player.getManifest();
-    
+
     // Get object containing all available modules
     vstbModules = player.getModules();
 
     checkForAndSetBandwidthRestrictions();
 
     attachVideoListeners();
-  }  
+  }
 
   function init() {
     initUI();
@@ -417,7 +417,7 @@
 
   function checkForAndSetBandwidthRestrictions() {
     if (bandWidthRestrictions.min) {
-      manifest.setMinBandwidth(bandWidthRestrictions.min);  
+      manifest.setMinBandwidth(bandWidthRestrictions.min);
     }
     if (bandWidthRestrictions.max) {
       manifest.setMaxBandwidth(bandWidthRestrictions.max);
@@ -426,7 +426,7 @@
 
   function buildTrackLists() {
     root.ui.dropDowns.audio.buildDropdown(manifest);
-    root.ui.dropDowns.text.buildDropdown(manifest);    
+    root.ui.dropDowns.text.buildDropdown(manifest);
   }
 
   function initialDropdownSync() {
@@ -448,7 +448,7 @@
       var elem = document.createElement('p');
       elem.innerHTML = key + ': ' + selectedServerValues[key];
       serverInfoDisplay.appendChild(elem);
-    } 
+    }
   }
 
   function selectServer() {
@@ -459,8 +459,8 @@
 
   function attachVideoListeners() {
     /**
-     * Add a callback when the adaptation set changes    
-     * Capture removeListener function in case we want to 
+     * Add a callback when the adaptation set changes
+     * Capture removeListener function in case we want to
      * unhook this listener later
      */
     remove.adaptationListener = manifest.subscribe('adaptation', buildTrackLists);
@@ -484,7 +484,7 @@
   }
 
   /**
-   * Styling text tracks is done through the ::cue 
+   * Styling text tracks is done through the ::cue
    * pseudo-selector so we can't directly set them through
    * a DOM element. Instead we have to modify stylesheets.
    * Here we are just creating a stylesheet to hold the cue color.
@@ -505,7 +505,8 @@
   }
   root.onresize = root.ui.videoCover.resize.bind(root.ui.videoCover);
   root.onscroll = root.ui.videoCover.resize.bind(root.ui.videoCover);
-  root.app.video.onresize = root.ui.videoCover.resize.bind(root.ui.videoCover); 
+  root.app.video.onresize = root.ui.videoCover.resize.bind(root.ui.videoCover);
 
   window.addEventListener('load', init);
+	init();
 }(this))

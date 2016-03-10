@@ -107,4 +107,22 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 		filteredData.loaded = true;
 		return filteredData;
 	};
+
+	self.parseSearchList = function(list){
+		var filteredData = {items: []};
+		_.each(list.paginatedResources, function(item){
+			filteredData.items.push({
+				//genres: item.genres,
+				image: item.images.length > 0 ? item.images[0].url : "",
+				//recoKeyVod: item.recoKeyVod,
+				title: item.name,
+				id: item.id
+
+			});
+		});
+		filteredData.pageNumber = Number(list.header.pageNumber) - 1;
+		filteredData.totalItems = Number(list.header.totalElements);
+		filteredData.loaded = true;
+		return filteredData;
+	};
 });

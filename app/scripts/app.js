@@ -138,6 +138,16 @@ angular
 					controller: 'PlayerViewCtrl'
 				}
 			}
+		})
+		.state({
+			name: 'root.search',
+			url: 'search',
+			views: {
+				'mainContent@root': {
+					templateUrl: 'views/search.html',
+					controller: 'SearchCtrl'
+				}
+			}
 		});
 
 	})
