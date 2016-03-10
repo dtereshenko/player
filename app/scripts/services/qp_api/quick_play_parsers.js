@@ -107,4 +107,8 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 		filteredData.loaded = true;
 		return filteredData;
 	};
+
+	self.parseSingleMovie = function(data){
+		return data.mainResource;
+	}
 });

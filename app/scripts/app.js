@@ -117,6 +117,16 @@ angular
 					controller: 'MoviesCtrl'
 				}
 			}
+		})
+		.state({
+			name: 'root.movie',
+			url: 'movies/:movieId',
+			views:{
+				'mainContent@root': {
+					templateUrl: 'views/movie.html',
+					controller: 'MovieCtrl'
+				}
+			}
 		});
 	})
 	.run(function navigationHandler ($state, $rootScope, $location) {
