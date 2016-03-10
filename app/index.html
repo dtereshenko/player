@@ -15,6 +15,11 @@
 	<link rel="stylesheet" href="styles/bootstrap.css">
 	<link rel="stylesheet" href="styles/main.css">
 	<!-- endbuild -->
+	<script src="QP/Silverlight.js"></script>
+	<script src="QP/customListeners.js"></script>
+	<!--<script src="HTML5/app.js"></script>-->
+	<!--<script src="HTML5/ui.js"></script>-->
+	<!--<script src="HTML5/vstb-library.debug.js"></script>-->
 </head>
 <body ng-app="webPlayerApp">
 	<script>
@@ -40,7 +45,7 @@
 
 	<!-- Add your site or application content here -->
 
-	<div ui-view>
+	<div class="container" ui-view>
 	</div>
 
 	<!-- build:js(.) scripts/vendor.js -->
@@ -56,6 +61,8 @@
 	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 	<script src="bower_components/underscore/underscore.js"></script>
 	<script src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
+	<script src="bower_components/re-tree/re-tree.js"></script>
+	<script src="bower_components/ng-device-detector/ng-device-detector.js"></script>
 	<!-- endbower -->
 	<!-- endbuild -->
 
@@ -71,6 +78,7 @@
 	<script src="scripts/controllers/auth/providers.js"></script>
 	<script src="scripts/controllers/auth/verify.js"></script>
 	<script src="scripts/controllers/auth/login.js"></script>
+	<script src="scripts/controllers/player/player.js"></script>
 
 
 	<script src="scripts/services/providers.js"></script>
@@ -83,6 +91,10 @@
 	<script src="scripts/directives/loader.js"></script>
 	<script src="scripts/directives/modal.js"></script>
 	<script src="scripts/directives/controllers/modal.js"></script>
+	<script src="scripts/directives/player/playerHTML5.js"></script>
+	<script src="scripts/directives/player/playerSilverlight.js"></script>
+	<script src="scripts/directives/player/playerThird.js"></script>
+	<script src="scripts/directives/player/player.js"></script>
 	<script src="scripts/directives/controllers/schedules_grid.js"></script>
 	<script src="scripts/directives/schedule_grid.js"></script>
 

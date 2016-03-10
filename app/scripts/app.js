@@ -17,7 +17,8 @@ angular
 		'ui.router',
 		'ngSanitize',
 		'ngTouch',
-		'underscore'
+		'underscore',
+		'ng.deviceDetector'
 	])
 	.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
@@ -117,7 +118,28 @@ angular
 					controller: 'MoviesCtrl'
 				}
 			}
+		})
+		.state({
+			name: 'root.player',
+			url: 'player',
+			views:{
+				'mainContent@root': {
+					templateUrl: 'views/player/index.html',
+					controller: 'PlayerCtrl'
+				}
+			}
+		})
+		.state({
+			name: 'root.player.view',
+			url: '/view',
+			views:{
+				'mainContent@root': {
+					templateUrl: 'views/player/view.html',
+					controller: 'PlayerViewCtrl'
+				}
+			}
 		});
+
 	})
 	.run(function navigationHandler ($state, $rootScope, $location) {
 		var routes = [];
