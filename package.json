@@ -2,7 +2,7 @@
   "name": "webplayer",
   "private": true,
   "devDependencies": {
-    "autoprefixer-core": "^5.2.1",
+    "autoprefixer-core": "5.2.1",
     "bower": "^1.7.7",
     "connect-modrewrite": "^0.8.5",
     "grunt": "^0.4.5",
