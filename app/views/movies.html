@@ -1,13 +1,27 @@
 <div class="movies-container container">
 	<div class = "row">
-		<div class = "col-lg-3 movie-item" ng-repeat="movie in movies">
+		<div class = "col-md-3 col-sm-6 movie-item"
+			 ng-repeat="movie in moviesPortion">
 			<div>
-				{{::movie.title}}
+				<div class = "title">
+					{{::movie.title}}
+				</div>
+
+				<div class="poster"
+					 image-load-height-resize="{{movie.image}}">
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class = "paginatedPages">
-
+	<div paginator = "{{paginationConfig.name}}"
+		 show-more-button = "paginationConfig.showMoreButton"
+		 page-counter = "paginationConfig.currentPage"
+		 max-value = "paginationConfig.maxValue"
+		 mode = "paginationConfig.mode"
+		 update-request = "paginationConfig.needMoreData"
+		 per-pages-array = "paginationConfig.perPagesArray"
+		 paginate-me = "movies"
+		 result = "moviesPortion">
 	</div>
 </div>
