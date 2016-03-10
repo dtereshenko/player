@@ -49,7 +49,7 @@ module.exports = function (grunt) {
             },
             sassMain: {
 				files: ['<%= yeoman.app %>/styles/{,*/|,**/}*.scss'],
-				tasks: ['sass:serverMain', 'postcss:serverMain']
+				tasks: ['sass:serverMain']
 			},
 			sassBootstrap: {
 				files: ['<%= yeoman.app %>/styles/bootstrap/{,*/|,**/}*.scss', '<%= yeoman.app %>/styles/bootstrap.scss'],
@@ -72,8 +72,7 @@ module.exports = function (grunt) {
                 },
                 files: [
                     '<%= yeoman.app %>/{,*/|,**/}*.html',
-                    '<%= yeoman.tmp %>/styles/{,*/|,**/}*.css',
-                    '<%= yeoman.app %>/styles/{,*/|,**/}*.css',
+                    '<%= yeoman.tmp %>/styles/{,*/}*.css',
                     '<%= yeoman.app %>/assets/images/{,*/|,**/}*.{png,jpg,jpeg,gif,webp,svg}'
                 ]
             }
@@ -86,6 +85,11 @@ module.exports = function (grunt) {
                 // Change this to '0.0.0.0' to access the server from outside.
                 hostname: 'localhost',
                 livereload: 35729
+				//middleware: function (connect) {
+				//	return [
+				//		modRewrite(['^[^\\.]*$ /index.html [L]'])
+				//	];
+				//}
             },
             livereload: {
                 options: {
@@ -93,14 +97,14 @@ module.exports = function (grunt) {
                     middleware: function (connect) {
                         return [
 							modRewrite(['^[^\\.]*$ /index.html [L]']),
-                            connect.static('.tmp'),
+                            connect.static(appConfig.tmp),
                             connect().use(
                                 '/bower_components',
                                 connect.static('./bower_components')
                             ),
                             connect().use(
-                                '/app/styles',
-                                connect.static('./.tmp/styles')
+                                'app/styles',
+                                connect.static('./' + appConfig.tmp + '/styles')
                             ),
                             connect.static(appConfig.app)
                         ];
@@ -112,7 +116,7 @@ module.exports = function (grunt) {
                     port: 9001,
                     middleware: function (connect) {
                         return [
-                            connect.static('.tmp'),
+                            connect.static(appConfig.tmp),
                             connect.static('test'),
                             connect().use(
                                 '/bower_components',
@@ -170,13 +174,13 @@ module.exports = function (grunt) {
                 files: [{
                     dot: true,
                     src: [
-                        '.tmp',
+                        '<%= yeoman.tmp %>',
                         '<%= yeoman.dist %>/{,*/|,**/}*',
                         '!<%= yeoman.dist %>/.git{,*/|,**/}*'
                     ]
                 }]
             },
-            server: '.tmp'
+            server: '<%= yeoman.tmp %>'
         },
 
         // Add vendor prefixed styles
@@ -434,7 +438,7 @@ module.exports = function (grunt) {
                 },
                 cwd: '<%= yeoman.app %>',
                 src: 'views/{,*/|,**/}*.html',
-                dest: '.tmp/templateCache.js'
+                dest: '<%= yeoman.tmp %>/templateCache.js'
             }
         },
 
@@ -444,9 +448,9 @@ module.exports = function (grunt) {
             dist: {
                 files: [{
                     expand: true,
-                    cwd: '.tmp/concat/scripts',
+                    cwd: '<%= yeoman.tmp %>/concat/scripts',
                     src: '*.js',
-                    dest: '.tmp/concat/scripts'
+                    dest: '<%= yeoman.tmp %>/concat/scripts'
                 }]
             }
         },
@@ -467,7 +471,7 @@ module.exports = function (grunt) {
                     ]
                 }, {
                     expand: true,
-                    cwd: '.tmp/assets/images',
+                    cwd: '<%= yeoman.tmp %>/assets/images',
                     dest: '<%= yeoman.dist %>/assets/images',
                     src: ['generated/*']
                 }]
