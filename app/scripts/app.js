@@ -113,7 +113,7 @@ angular
 			url: 'movies',
 			views:{
 				'mainContent@root': {
-					templateUrl: 'views/movies.html',
+					templateUrl: 'views/movies/movies.html',
 					controller: 'MoviesCtrl'
 				}
 			}
@@ -123,7 +123,7 @@ angular
 			url: 'movies/:movieId',
 			views:{
 				'mainContent@root': {
-					templateUrl: 'views/movie.html',
+					templateUrl: 'views/movies/movie.html',
 					controller: 'MovieCtrl'
 				}
 			}
