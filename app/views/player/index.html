@@ -1,10 +1,13 @@
-<div>
-	<p>You are using <b>{{device.browser}}</b> on <b>{{device.os}} ({{device.os_version}})</b>.</p>
-	<p>Your <b>{{device.browser}}</b> version is <b>{{device.browser_version}}</b></p>
-	<p>Device - <b></b>{{device.device}}</p>
-</div>
+<div class="container">
 
-<!--<div ng-if="device.browser == 'chrome' && device.device == 'unknown'" player-html></div>-->
-<!--<div ng-if="device.browser != 'chrome' && device.device == 'unknown'" player-silverlight></div>-->
-<!--<div ng-if="device.os == 'ios' || device.os == 'android'" player-third></div>-->
-<player></player>
+	<div>
+		<p>You are using <b>{{device.browser}}</b> on <b>{{device.os}} ({{device.os_version}})</b>.</p>
+		<p>Your <b>{{device.browser}}</b> version is <b>{{device.browser_version}}</b></p>
+		<p>Device - <b></b>{{device.device}}</p>
+	</div>
+
+	<!--<div ng-if="device.browser == 'chrome' && device.device == 'unknown'" player-html></div>-->
+	<!--<div ng-if="device.browser != 'chrome' && device.device == 'unknown'" player-silverlight></div>-->
+	<!--<div ng-if="device.os == 'ios' || device.os == 'android'" player-third></div>-->
+	<player></player>
+</div>
