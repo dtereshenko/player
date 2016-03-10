@@ -1,0 +1,98 @@
+.schedules{
+	width: 100%;
+	overflow: hidden;
+}
+
+.schedules-grid{
+	position: relative;
+	height: 800px;
+	overflow-x: hidden;
+
+	.schedules-lists-container {
+		overflow: auto;
+		width: calc(100% - 250px);
+		float: left;
+		overflow-y: hidden;
+		padding-left: 20px;
+		box-sizing: border-box;
+
+		&.schedules-channels-container{
+			width: 250px;
+			padding-top: 40px;
+			overflow: hidden;
+
+			.schedule-container {
+				padding: 2px;
+
+				.schedule-item {
+					margin: 0;
+					width: 100%;
+					background-color: #F7F2F2;
+					font-size: 2rem;
+					align-items: center;
+				}
+			}
+		}
+
+		.schedules-timeline{
+			.schedules-timeline-item{
+				display: flex;
+				float: left;
+				height: 40px;
+				border-left: 1px solid #c8c8c8;
+				align-items: flex-start;
+
+				> div{
+					margin-left: -19px;
+					background-color: white;
+				}
+			}
+		}
+
+		.schedule-container {
+			width: 100%;
+			height: 100px;
+			overflow: hidden;
+			padding: 2px 0px;
+			box-sizing: border-box;
+			white-space: nowrap;
+
+			.schedule-item {
+				background-color: #FDFDFD;
+				flex-direction: column;
+				padding: 10px;
+				height: 100%;
+				white-space: nowrap;
+				text-overflow: ellipsis;
+				border-radius: 5px;
+				border: 1px solid #c8c8c8;
+				margin: 0 0px;
+				display: inline-flex;
+				justify-content: center;
+				border-right: none;
+				vertical-align: top;
+
+				&.empty{
+					border: none;
+					opacity: 0;
+				}
+
+				&:last-child{
+					border-right: 1px solid #c8c8c8;
+				}
+
+				> div {
+					padding-bottom: 5px;
+					text-transform: uppercase;
+				}
+
+				.schedule-item-title {
+					font-size: 1.125rem;
+					width: 100%;
+					text-overflow: ellipsis;
+					overflow: hidden;
+				}
+			}
+		}
+	}
+}

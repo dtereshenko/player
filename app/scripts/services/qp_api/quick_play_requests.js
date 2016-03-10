@@ -48,13 +48,18 @@ angular.module('webPlayerApp').service('QuickPlayRequestsService', function (Qui
 		return (_.isUndefined(params) || _.isUndefined(params.id)) ? createRejectingPromise() : self.getProgramsData(params);
 	};
 
-	self.getShedulesData = function(params){
+	self.getSchedulesData = function(params){
 		var requestParams = angular.merge({}, QuickPlayConfigService.staticParams, params);
 		return QuickPlayAPIService.shedulesResourse.get(requestParams).$promise;
 	};
 
-	self.getShedulesDataById = function(params){
+	self.getSchedulesDataById = function(params){
 		return (_.isUndefined(params) || _.isUndefined(params.id)) ? createRejectingPromise() : self.getShedulesData(params);
+	};
+
+	self.getSchedulesGridData = function(params){
+		var requestParams = angular.merge({}, QuickPlayConfigService.staticParams, params);
+		return QuickPlayAPIService.shedulesGridResourse.get(requestParams).$promise;
 	};
 
 	self.getSpecialLiveEventsData = function(params){

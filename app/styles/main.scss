@@ -44,8 +44,12 @@ body, html {
 @import "common/mixins";
 @import "common/loader";
 @import "common/modal";
+@import "common/paginator";
 @import "auth/auth";
 @import "auth/verify";
 @import "auth/providers";
 @import "auth/login";
+@import "schedules/schedules";
+@import "movies";
+
 
