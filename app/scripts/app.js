@@ -88,6 +88,16 @@ angular
 					controller: 'PlayerCtrl'
 				}
 			}
+		})
+		.state({
+			name: 'root.player.view',
+			url: '/view',
+			views:{
+				'mainContent@root': {
+					templateUrl: 'views/player/view.html',
+					controller: 'PlayerViewCtrl'
+				}
+			}
 		});
 
 	})

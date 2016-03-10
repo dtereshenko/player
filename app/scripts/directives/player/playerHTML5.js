@@ -11,6 +11,13 @@ angular.module('webPlayerApp').directive('playerHtml', function () {
 		templateUrl: 'views/player/playerHTML5.html',
 		restrict: 'A',
 		link: function postLink(scope, element, attrs) {
+		},
+		compile: function(element){
+			var ui = angular.element('<script>').attr('src', 'HTML5/ui.js');
+			var app = angular.element('<script>').attr('src', 'HTML5/app.js');
+			var vstb = angular.element('<script>').attr('src', 'HTML5/vstb-library.debug.js');
+
+			element.append(ui).append(app).append(vstb);
 		}
 	};
 });

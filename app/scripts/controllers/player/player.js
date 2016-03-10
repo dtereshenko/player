@@ -9,4 +9,7 @@
  */
 angular.module('webPlayerApp').controller('PlayerCtrl', function ($scope, deviceDetector) {
 	$scope.device = deviceDetector;
+})
+.controller('PlayerViewCtrl', function ($scope) {
+	$scope.title = 'Video play example';
 });
