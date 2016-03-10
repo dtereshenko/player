@@ -1,0 +1,44 @@
+<div class = "paginator-container">
+	<div ng-hide="((currentPage != 0) && !showMoreButton) || (!showMoreButton && (mode == 0)) || (currentPage >= maxPage) || (maxPage <= 0)"
+		class="items">
+		<div ng-click=" changePage(1)"
+			 class="show-more scheme-background">
+			show more
+		</div>
+	</div>
+	<div ng-hide="((currentPage == 0) && showMoreButton) || maxPage <= 0 || mode == 1"
+		 class="buttons flex-container">
+		<div class="items">
+			<div ng-click="changePage(0)"
+				 ng-show="currentPage > 2"
+				 class="item scheme-background">
+					first
+			</div>
+			<div ng-click="changePage(currentPage - 1)"
+				 ng-show="currentPage > 0"
+				 class="item scheme-background">
+					previous
+			</div>
+		</div>
+		<div class="items numbered-items">
+			<div ng-repeat="page in pages"
+				 ng-click="changePage(page)"
+				 ng-class="{'active': page == currentPage}"
+				 class="item scheme-background">
+					{{page + 1}}
+			</div>
+		</div>
+		<div class="items flex-container">
+			<div ng-click="changePage(currentPage + 1)"
+				 ng-show="currentPage != maxPage"
+				 class="item scheme-background">
+					next
+			</div>
+			<div ng-click="changePage(maxPage)"
+				 ng-show="currentPage < maxPage - 2"
+				 class="item scheme-background">
+					last
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,29 @@
+.movies-container{
+	position: relative;
+
+	.movie-item{
+		height: 410px;
+		padding: 10px;
+		position: relative;
+		overflow-y: hidden;
+		box-sizing: border-box;
+
+		> div {
+			background-color: #e3e3e3;
+			position: relative;
+			height: 100%;
+
+			.title {
+				width: 100%;
+				font-size: 1.125rem;
+			}
+
+			.poster {
+				width: 100%;
+				background-size: auto 100%;
+				background-position: center;
+				transition: opacity 0.4s;
+			}
+		}
+	}
+}

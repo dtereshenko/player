@@ -12,6 +12,7 @@ angular.module('webPlayerApp').controller('SchedulesCtrl', function ($scope, Qui
 	this.checkScheduleBoundaries = function(){
 		QuickPlayRequestsService.getSchedulesData({pageNumber: "1", pageSize: "1000"}).then(function(data){
 			console.log(data);
+
 			totalStartTime = _.min(data.paginatedResources, function(item){
 				return item.epgScheduleStartTimeMsUtc;
 			}).epgScheduleStartTimeMsUtc;

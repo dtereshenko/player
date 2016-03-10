@@ -8,13 +8,13 @@
  * Controller of the webPlayerApp
  */
 angular.module('webPlayerApp').controller('RootCtrl', function ($scope, $timeout) {
-	$scope.showFullScreenLoader = true;
+	$scope.showFullScreenLoader = false;
 
-	$scope.toggleLoader = function(){
-		$scope.showFullScreenLoader = !$scope.showFullScreenLoader;
+	$scope.toggleLoader = function(bool){
+		$scope.showFullScreenLoader = _.isUndefined(bool)? !$scope.showFullScreenLoader : bool;
 	};
 
-	$timeout(function(){
-		$scope.toggleLoader()
-	}, 10);
+	//$timeout(function(){
+	//	$scope.toggleLoader();
+	//}, 1000);
 });
