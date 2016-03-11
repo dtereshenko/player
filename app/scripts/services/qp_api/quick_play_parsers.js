@@ -32,6 +32,20 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 		return {items: arr, pageNumber: pageNumber, loaded: false}
 	};
 
+	self.createFakeSearchListData = function(pageSize, pageNumber){
+			var arr = [], i;
+			for(i = 0 ; i < pageSize; i++){
+				arr.push({
+					//genres: "",
+					image: "",
+					//recoKeyVod: "",
+					title: "Error",
+					movieId: ""
+				});
+			}
+			return {items: arr, pageNumber: pageNumber, loaded: false}
+		};
+
 	self.parseSchedulesList = function(list, timelineStartTime){
 		var parsedObject = {}, filteredData = {}, startTime;
 		parsedObject = _.groupBy(list.paginatedResources, function(item){return item.epgChannelId});

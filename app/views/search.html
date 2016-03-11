@@ -14,7 +14,7 @@
 	<div ng-if="search.value.length > 2 && result.length">
 		<div class = "row">
 			<div class = "col-md-3 col-sm-6 movie-item"
-				 ng-repeat="movie in result">
+				 ng-repeat="movie in moviesPortion">
 				<div>
 					<div class = "title">
 						{{::movie.title}}
@@ -34,7 +34,7 @@
 			 mode = "paginationConfig.mode"
 			 update-request = "paginationConfig.needMoreData"
 			 per-pages-array = "paginationConfig.perPagesArray"
-			 paginate-me = "movies"
+			 paginate-me = "result"
 			 result = "moviesPortion">
 		</div>
 	</div>

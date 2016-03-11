@@ -14,14 +14,30 @@ angular.module('webPlayerApp').controller('SearchCtrl', function ($scope, QuickP
 
 	$scope.$watch('search.value', function (newValue, oldValue) {
 		if (newValue.length > 2){
-			$scope.getSearch($scope.search.value);
+			$scope.moviesPortion = [];
+			$scope.paginationConfig.currentPage = 0;
+			$scope.getSearch($scope.search.value, 0);
 		}
 	});
 	$scope.toggleLoader(false);
-	$scope.getSearch = function(searchStr){
+
+	$scope.result = [];
+	$scope.moviesPortion = [];
+	//
+	$scope.paginationConfig = {
+		mode: 0,
+		name: "searchPag",
+		showMoreButton: false,
+		currentPage: undefined,
+		maxValue: $scope.result.length,
+		perPagesArray: [16],
+		needMoreData: false
+	};
+
+	$scope.getSearch = function(searchStr, pageNumber){
 		var params = {
-			pageNumber: 0,
-			pageSize: 3,
+			pageNumber: pageNumber + 1,
+			pageSize: pageSize,
 			for: searchStr
 		};
 		QuickPlayRequestsService.getSearchData(params).then(function(data){
@@ -39,29 +55,14 @@ angular.module('webPlayerApp').controller('SearchCtrl', function ($scope, QuickP
 			$scope.result = result;
 
 		}, function(error){
-			//$scope.toggleLoader(false);
-			//var obj = QuickPlayParsersService.createFakeMovieListData(params.pageSize, params.pageNumber);
-			//loadedRequests[obj.pageNumber] = obj;
-			//console.log("error", error);
+			$scope.toggleLoader(false);
+			var obj = QuickPlayParsersService.createFakeSearchListData(params.pageSize, params.pageNumber);
+			loadedRequests[obj.pageNumber] = obj;
+			console.log("error", error);
 		});
 
 	}
-    //
-	$scope.result = [];
-	$scope.moviesPortion = [];
-    //
-	$scope.paginationConfig = {
-		mode: 0,
-		name: "moviesPag",
-		showMoreButton: false,
-		currentPage: undefined,
-		maxValue: $scope.result.length,
-		perPagesArray: [16],
-		needMoreData: false
-	};
-    //
-    //
-    //
+
 	//$scope.getMovies = function(pageNumber){
 	//	var params = {
 	//		pageNumber: pageNumber + 1,
@@ -92,16 +93,16 @@ angular.module('webPlayerApp').controller('SearchCtrl', function ($scope, QuickP
     //
 	//$scope.getMovies(0);
     //
-	//$scope.$watch(function(){
-	//		return $scope.paginationConfig.needMoreData;
-	//	},
-	//	function(newVal){
-	//		console.log($scope.paginationConfig.currentPage);
-	//		if(newVal){
-	//			if(loadedRequests.length*pageSize < $scope.paginationConfig.maxValue) {
-	//				$scope.getMovies(loadedRequests.length)
-	//			}
-	//		}
-	//	}
-	//);
+	$scope.$watch(function(){
+			return $scope.paginationConfig.needMoreData;
+		},
+		function(newVal){
+			console.log($scope.paginationConfig.currentPage);
+			if(newVal){
+				if(loadedRequests.length*pageSize < $scope.paginationConfig.maxValue) {
+					$scope.getSearch($scope.search.value, loadedRequests.length)
+				}
+			}
+		}
+	);
 });
