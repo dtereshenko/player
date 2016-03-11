@@ -42,7 +42,7 @@ angular.module('webPlayerApp').controller('MoviesCtrl', function ($scope, QuickP
 			_.each(loadedRequests, function(page){
 				movies = movies.concat(page.items);
 			});
-			console.log(obj, movies.length);
+
 			$scope.movies = movies;
 
 		}, function(error){
@@ -53,18 +53,18 @@ angular.module('webPlayerApp').controller('MoviesCtrl', function ($scope, QuickP
 		});
 	};
 
-	$scope.getMovies(0);
-
 	$scope.$watch(function(){
 			return $scope.paginationConfig.needMoreData;
 		},
 		function(newVal){
-			console.log($scope.paginationConfig.currentPage);
 			if(newVal){
 				if(loadedRequests.length*pageSize < $scope.paginationConfig.maxValue) {
-					$scope.getMovies(loadedRequests.length)
+
+					$scope.getMovies(loadedRequests.length);
 				}
 			}
 		}
 	);
+
+	$scope.getMovies(0);
 });

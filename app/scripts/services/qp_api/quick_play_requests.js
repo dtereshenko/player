@@ -116,4 +116,9 @@ angular.module('webPlayerApp').service('QuickPlayRequestsService', function (Qui
 	self.getMoviesDataById = function(params){
 		return (_.isUndefined(params) || _.isUndefined(params.id)) ? createRejectingPromise() : self.getMoviesData(params);
 	};
+
+	self.getMoreLikeThis = function(params){
+		var requestParams = angular.merge({}, QuickPlayConfigService.staticParams, params);
+		return QuickPlayAPIService.moreLikeThisResourse.get(requestParams).$promise;
+	};
 });

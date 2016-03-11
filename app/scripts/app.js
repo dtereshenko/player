@@ -113,21 +113,31 @@ angular
 			url: 'movies',
 			views:{
 				'mainContent@root': {
-					templateUrl: 'views/movies.html',
+					templateUrl: 'views/movies/movies.html',
 					controller: 'MoviesCtrl'
 				}
 			}
 		})
 		.state({
-			name: 'root.discovery',
-			url: 'discovery',
-			views: {
+			name: 'root.movie',
+			url: 'movies/:movieId',
+			views:{
 				'mainContent@root': {
-					templateUrl: 'views/discovery.html',
-					controller: 'DiscoveryCtrl'
+					templateUrl: 'views/movies/movie.html',
+					controller: 'MovieCtrl'
 				}
 			}
 		})
+			.state({
+				name: 'root.discovery',
+				url: 'discovery',
+				views: {
+					'mainContent@root': {
+						templateUrl: 'views/discovery.html',
+						controller: 'DiscoveryCtrl'
+					}
+				}
+			});
 	})
 	.run(function navigationHandler ($state, $rootScope, $location) {
 		var routes = [];

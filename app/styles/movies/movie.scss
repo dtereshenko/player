@@ -1,0 +1,48 @@
+.movie-container{
+	position: relative;
+
+	.player-section{
+		width: 100%;
+		height: 400px;
+		background-color: #e3e3e3;
+		position: relative;
+
+		&:after{
+			content: 'Here must be a player';
+			position: absolute;
+			top: 50%;
+			width:100%;
+			font-size: 2rem;
+			text-align: center;
+		}
+	}
+
+	.tabs-section{
+
+		.tabs-list{
+			width: 100%;
+			height: 80px;
+			display: flex;
+			align-items: center;
+			justify-content: space-around;
+			margin-top: 30px;
+
+
+			.tabs-list-item{
+				font-size: 1.25rem;
+				padding: 20px;
+				cursor: pointer;
+				border-bottom: 3px solid rgba(0,0,0,0);
+
+				&.active{
+					border-bottom: 3px solid #444444;
+				}
+			}
+		}
+		.tab-content{
+			font-size: 1.125rem;
+			padding: 20px;
+		}
+
+	}
+}
