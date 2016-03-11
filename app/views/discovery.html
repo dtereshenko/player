@@ -1,0 +1,24 @@
+<div>
+
+	<style>
+		.discovery-item {
+			padding: 4rem;
+			text-align: center;
+			font-size: 2rem;
+			transition: background-color 200ms linear;
+		}
+
+		.discovery-item:hover {
+			background-color: #2b2b2b;
+			color: #9d9d9d;
+		}
+	</style>
+	<div class="col-md-3 discovery-item" ng-repeat="pillar in pillars" ui-sref="root.movies">
+		<h3>{{::pillar.description}}</h3>
+	</div>
+
+	<div class="col-md-3 discovery-item" ng-repeat="channel in channels">
+		<h2>{{::channel.name}}</h2>
+		<h3>{{::channel.description}}</h3>
+	</div>
+</div>

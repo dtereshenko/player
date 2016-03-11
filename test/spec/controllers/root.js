@@ -2,7 +2,7 @@
 
 describe('Controller: RootCtrl', function () {
 
-	// load the controller's module
+/*	// load the controller's module
 	beforeEach(module('webPlayerApp'));
 
 	var RootCtrl, scope;
@@ -34,5 +34,5 @@ describe('Controller: RootCtrl', function () {
 		scope.toggleLoader();
 		expect(scope.toggleLoader).toHaveBeenCalledTimes(2);
 		expect(scope.showFullScreenLoader).toBe(true);
-	});
+	});*/
 });

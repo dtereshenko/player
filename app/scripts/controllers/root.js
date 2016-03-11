@@ -7,14 +7,10 @@
  * # HomeCtrl
  * Controller of the webPlayerApp
  */
-angular.module('webPlayerApp').controller('RootCtrl', function ($scope, $timeout) {
+angular.module('webPlayerApp').controller('RootCtrl', function ($scope) {
 	$scope.showFullScreenLoader = false;
 
-	$scope.toggleLoader = function(bool){
-		$scope.showFullScreenLoader = _.isUndefined(bool)? !$scope.showFullScreenLoader : bool;
+	$scope.toggleLoader = function (bool) {
+		$scope.showFullScreenLoader = _.isUndefined(bool) ? !$scope.showFullScreenLoader : bool;
 	};
-
-	//$timeout(function(){
-	//	$scope.toggleLoader();
-	//}, 1000);
 });

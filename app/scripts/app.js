@@ -117,7 +117,17 @@ angular
 					controller: 'MoviesCtrl'
 				}
 			}
-		});
+		})
+		.state({
+			name: 'root.discovery',
+			url: 'discovery',
+			views: {
+				'mainContent@root': {
+					templateUrl: 'views/discovery.html',
+					controller: 'DiscoveryCtrl'
+				}
+			}
+		})
 	})
 	.run(function navigationHandler ($state, $rootScope, $location) {
 		var routes = [];
