@@ -1,5 +1,117 @@
-<div class="container">
+<div class="movie-container container">
 	<h2>
 		Here will be movie details page
 	</h2>
+	<div class = "player-section">
+
+	</div>
+
+	<div class="tabs-section">
+		<div class="tabs-list">
+			<div class="tabs-list-item"
+				 ng-click = "toggleTab(tab)"
+				 ng-class = "{'active': tab.active}"
+				 ng-repeat = "tab in tabsObject">
+				{{::tab.title}}
+			</div>
+		</div>
+		<div class="tab-content row"
+			 ng-show="tabsObject.about.active">
+			<h3 class = "col-xs-12">
+				{{::movie.dataForView.title}}
+			</h3>
+			<div class = "col-xs-4">
+				<div class="poster"
+					 image-load-height-resize="{{movie.dataForView.image}}">
+				</div>
+			</div>
+			<div class = "col-xs-8">
+				<div class="row">
+					<div class = "col-xs-4">
+						Expires:
+					</div>
+					<div class = "col-xs-8">
+						{{::movie.dataForView.expiryTsMs | date : 'yyyy.MM.dd - HH:mm:ss'}}
+					</div>
+				</div>
+				<div class="row">
+					<div class = "col-xs-4">
+						Rating:
+					</div>
+					<div class = "col-xs-8">
+						{{::movie.dataForView.ageRating}}
+					</div>
+				</div>
+				<div class="row">
+					<div class = "col-xs-4">
+						Provider:
+					</div>
+					<div class = "col-xs-8">
+						{{::movie.dataForView.providerId}}
+					</div>
+				</div>
+				<div class="row">
+					<div class = "col-xs-4">
+						Genres:
+					</div>
+					<div class = "col-xs-8">
+						<a ng-repeat = "genre in movie.dataForView.genres" href = "#">
+							{{::genre.name}}
+						</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class = "col-xs-4">
+						Duration:
+					</div>
+					<div class = "col-xs-8">
+						{{::movie.dataForView.duration}}
+					</div>
+				</div>
+				<div class="row">
+					<div class = "col-xs-4">
+						Release year :
+					</div>
+					<div class = "col-xs-8">
+						{{::movie.dataForView.releaseYear }}
+					</div>
+				</div>
+				<div class="row">
+					<div class = "col-xs-4">
+						Description:
+					</div>
+					<div class = "col-xs-8">
+						{{::movie.dataForView.description}}
+					</div>
+				</div>
+				<div class="row">
+					<div class = "col-xs-4">
+						Actors:
+					</div>
+					<div class = "col-xs-8">
+						<a ng-repeat = "actor in movie.dataForView.actors" href = "#">
+							{{::actor.name}}
+						</a>
+					</div>
+				</div>
+				<div class="row">
+					<div class = "col-xs-4">
+						Directors:
+					</div>
+					<div class = "col-xs-8">
+						<a ng-repeat = "director in movie.dataForView.directors" href = "#">
+							{{::director.name}}
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="tab-content"
+			 ng-show="tabsObject.more.active">
+			<div ui-sref = "moreLikeThis">
+
+			</div>
+		</div>
+	</div>
 </div>

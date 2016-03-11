@@ -6,6 +6,32 @@
 angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 	var self = this;
 
+	function convertMsToTime(ms){
+		var x = ms / 1000, seconds = x % 60, minutes, hours;
+		x = (x - seconds)/60;
+		minutes = x%60;
+		x = (x - minutes)/60;
+		hours = x%24;
+		seconds =  seconds < 10 ? "0" + seconds : seconds.toString();
+		minutes =  minutes < 10 ? "0" + minutes : minutes.toString();
+		hours =  hours < 10 ? "0" + hours : hours.toString();
+		return [hours, minutes, seconds]
+	}
+
+	function parseQueryString(uri){
+		var queryString = {}, result = {};
+		uri.replace(
+			new RegExp("([^?=&]+)(=([^&]*))?", "g"),
+			function($0, $1, $2, $3) { queryString[$1] = $3; }
+		);
+		_.each(queryString, function(item, key){
+			if(!_.isUndefined(item)){
+				result[key] = item;
+			}
+		});
+		return result;
+	}
+
 	function createEmptyScheduleItem(startTime, endTime){
 		console.log(new Date(startTime), new Date(endTime));
 		return {
@@ -99,7 +125,6 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 				recoKeyVod: item.recoKeyVod,
 				title: item.name,
 				movieId: item.id
-
 			});
 		});
 		filteredData.pageNumber = Number(list.header.pageNumber) - 1;
@@ -109,6 +134,56 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 	};
 
 	self.parseSingleMovie = function(data){
-		return data.mainResource;
+		var resource = data.mainResource.resource;
+
+		return {
+			id: resource.id,
+			recoKeyVod: resource.recoKeyVod,
+			advisory: resource.advisory,
+			freeTrial: resource.freeTrial,
+			rental: resource.rental,
+			rentalDurationMs: resource.rentalDurationMs,
+			currency: resource.currency,
+			kidsFeaturedFlag: resource.kidsFeaturedFlag,
+			kidsFeaturedOrder: resource.kidsFeaturedOrder,
+			featuredFlag: resource.featuredFlag,
+			featuredOrder: resource.featuredOrder,
+			mostWatchedFlag: resource.mostWatchedFlag,
+			mostWatchedOrder: resource.mostWatchedOrder,
+			mostWatched: resource.mostWatched,
+			defaultOrder: resource.defaultOrder,
+			runningTimeMs: resource.runningTimeMs,
+			links: parseQueryString(resource.links.moreLikeThis),
+
+			dataForView:{
+				genres: resource.genres,
+				image: resource.images.length > 0 ? resource.images[0].url : "",
+				actors: _.filter(resource.people, function(item){return item.role.toLowerCase() === "cast"}),
+				directors: _.filter(resource.people, function(item){return item.role.toLowerCase() === "director"}),
+				providerId: resource.providerId,
+				releaseYear: resource.releaseYear,
+				title: resource.name,
+				expiryTsMs: new Date(resource.expiryTsMs),
+				description: resource.description,
+				ageRating: resource.ageRating,
+				keywords: resource.keywords,
+				duration: convertMsToTime(resource.runningTimeMs).join(":")
+			}
+		};
+	};
+
+	self.parseMoreLikeThisList = function(list){
+		var filteredData = {items: []};
+		_.each(list.paginatedResources, function(item){
+			filteredData.items.push({
+				image: item.images.length > 0 ? item.images[0].url : "",
+				title: item.name,
+				movieId: item.id
+			});
+		});
+		filteredData.pageNumber = Number(list.header.pageNumber) - 1;
+		filteredData.totalItems = Number(list.header.totalElements);
+		filteredData.loaded = true;
+		return filteredData;
 	}
 });
