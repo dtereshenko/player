@@ -1,0 +1,28 @@
+<div class = "images-list">
+	<div class = "row">
+		<div class = "col-md-3 col-sm-6 movie-item"
+			 ng-click = "navigateToItem(item)"
+			 ng-repeat="item in dataPortion">
+			<div>
+				<div class = "title">
+					{{::item.title}}
+				</div>
+
+				<div class="poster"
+					 image-load-height-resize="{{item.image}}">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div paginator = "{{paginationConfig.name}}"
+		 show-more-button = "paginationConfig.showMoreButton"
+		 page-counter = "paginationConfig.currentPage"
+		 max-value = "paginationConfig.maxValue"
+		 mode = "paginationConfig.mode"
+		 update-request = "paginationConfig.needMoreData"
+		 per-pages-array = "paginationConfig.perPagesArray"
+		 paginate-me = "allData"
+		 result = "dataPortion">
+	</div>
+</div>

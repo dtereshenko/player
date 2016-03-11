@@ -109,7 +109,10 @@
 
 		<div class="tab-content"
 			 ng-show="tabsObject.more.active">
-			<div ui-sref = "moreLikeThis">
+			<div class="movies-container container"
+				 images-grid
+				 additional-data = "movie.links"
+				 controller-name="GetMoreLikeThisCtrl" >
 
 			</div>
 		</div>

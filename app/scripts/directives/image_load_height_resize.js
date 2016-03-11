@@ -24,8 +24,8 @@ angular.module('webPlayerApp').directive('imageLoadHeightResize', function() {
 						height: h + 'px',
 						width: 100 + '%'
 					});
-					return scope.$applyAsync(function() {
-						return scope[attr.loaded] = true;
+					scope.$applyAsync(function() {
+						scope[attr.loaded] = true;
 					});
 				};
 				return img.src = attr.imageLoadHeightResize;

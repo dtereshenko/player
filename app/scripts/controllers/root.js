@@ -14,6 +14,10 @@ angular.module('webPlayerApp').controller('RootCtrl', function ($scope, $timeout
 		$scope.showFullScreenLoader = _.isUndefined(bool)? !$scope.showFullScreenLoader : bool;
 	};
 
+	$scope.$on("toogleLoader", function(event, data){
+		$scope.toggleLoader(data);
+	});
+
 	//$timeout(function(){
 	//	$scope.toggleLoader();
 	//}, 1000);
