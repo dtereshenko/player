@@ -7,10 +7,11 @@
  * # HomeCtrl
  * Controller of the webPlayerApp
  */
-angular.module('webPlayerApp').controller('SearchCtrl', function ($scope, QuickPlayRequestsService, QuickPlayParsersService) {
+angular.module('webPlayerApp').controller('SearchCtrl', function ($scope, $stateParams, QuickPlayRequestsService, QuickPlayParsersService) {
 	var loadedRequests = [], pageSize = 50;
 	$scope.search = {};
 	$scope.search.value = '';
+	console.log($stateParams);
 
 	$scope.$watch('search.value', function (newValue, oldValue) {
 		if (newValue.length > 2){
@@ -41,8 +42,6 @@ angular.module('webPlayerApp').controller('SearchCtrl', function ($scope, QuickP
 			for: searchStr
 		};
 		QuickPlayRequestsService.getSearchData(params).then(function(data){
-			//console.log('run');
-			//console.log(data);
 			var obj = QuickPlayParsersService.parseSearchList(data), result = [];
 			loadedRequests[obj.pageNumber] = obj;
 			$scope.toggleLoader(false);

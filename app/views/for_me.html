@@ -1,0 +1,68 @@
+<div class="container">
+	<h1 class="text-center menu-home">
+		<a ui-sref="root.forme" class="active">For me</a>
+		<a ui-sref="root.discovery">Discovery</a>
+	</h1>
+	<p class="bg-danger text-center feature">FEATURE</p>
+
+	<h2 class="home-title text-center">NEW</h2>
+	<div class="movies-container">
+		<div class = "row">
+			<div class = "col-md-3 col-sm-6 movie-item"
+				 ng-repeat="movie in movies">
+				<div>
+					<div class = "title">
+						{{::movie.title}}
+					</div>
+
+					<div class="poster"
+						 image-load-height-resize="{{movie.image}}">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="text-center">
+			<br/>
+			<a ui-sref="root.movies" class="btn btn-default">View more</a>
+		</div>
+
+
+	</div>
+	<h2 class="home-title text-center">RECOMMENDED</h2>
+	<div class="movies-container">
+		<div class = "row">
+			<div class = "col-md-3 col-sm-6 movie-item"
+				 ng-repeat="movie in recomended">
+				<div>
+					<div class = "title">
+						{{::movie.title}}
+					</div>
+
+					<div class="poster"
+						 image-load-height-resize="{{movie.image}}">
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+</div>
+
+<style>
+	.feature{
+		line-height: 300px;
+	}
+	.home-title{
+		font-size: 20px;
+		color: #000;
+		font-weight: bold;
+	}
+	.menu-home a{
+		color: #000;
+	}
+	.menu-home a.active{
+		text-decoration: underline;
+	}
+</style>

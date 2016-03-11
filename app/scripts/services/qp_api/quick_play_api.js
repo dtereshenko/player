@@ -8,7 +8,7 @@ angular.module('webPlayerApp').factory('QuickPlayAPIService', function ($resourc
 	/*Common resources*/
 	self.searchResourse = $resource(QuickPlayConfigService.host + '/search');
 
-	self.containerResourse = $resource(QuickPlayConfigService.host + '/container/:id', {id: '@id'});
+	self.containerResourse = $resource(QuickPlayConfigService.host_our + '/container/:id', {id: '@id'});
 
 
 	/*Live-related resources*/

@@ -60,6 +60,26 @@ angular
 			}
 		})
 		.state({
+			name: 'root.home',
+			url: 'home',
+			views:{
+				'mainContent@root': {
+					templateUrl: 'views/home.html',
+					controller: 'HomeCtrl'
+				}
+			}
+		})
+		.state({
+			name: 'root.forme',
+			url: 'for-me',
+			views:{
+				'mainContent@root': {
+					templateUrl: 'views/for_me.html',
+					controller: 'ForMeCtrl'
+				}
+			}
+		})
+		.state({
 			name: 'root.unbundled',
 			url: 'unbundled',
 			views:{
@@ -140,8 +160,18 @@ angular
 			}
 		})
 		.state({
-			name: 'root.search',
+			name: 'root.searchsimple',
 			url: 'search',
+			views: {
+				'mainContent@root': {
+					templateUrl: 'views/search.html',
+					controller: 'SearchCtrl'
+				}
+			}
+		})
+		.state({
+			name: 'root.search',
+			url: 'search/:q',
 			views: {
 				'mainContent@root': {
 					templateUrl: 'views/search.html',

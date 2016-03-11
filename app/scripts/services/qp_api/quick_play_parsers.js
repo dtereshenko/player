@@ -139,4 +139,22 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 		filteredData.loaded = true;
 		return filteredData;
 	};
+
+	self.parseResourceList = function(list){
+		var filteredData = {items: []};
+		_.each(list.paginatedResources, function(item){
+			filteredData.items.push({
+				//genres: item.genres,
+				image: item.imageUrl,
+				//recoKeyVod: item.recoKeyVod,
+				title: item.name,
+				id: item.id
+
+			});
+		});
+		filteredData.pageNumber = Number(list.header.pageNumber) - 1;
+		filteredData.totalItems = Number(list.header.totalElements);
+		filteredData.loaded = true;
+		return filteredData;
+	};
 });
