@@ -32,6 +32,20 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 		return {items: arr, pageNumber: pageNumber, loaded: false}
 	};
 
+	self.createFakeSearchListData = function(pageSize, pageNumber){
+			var arr = [], i;
+			for(i = 0 ; i < pageSize; i++){
+				arr.push({
+					//genres: "",
+					image: "",
+					//recoKeyVod: "",
+					title: "Error",
+					movieId: ""
+				});
+			}
+			return {items: arr, pageNumber: pageNumber, loaded: false}
+		};
+
 	self.parseSchedulesList = function(list, timelineStartTime){
 		var parsedObject = {}, filteredData = {}, startTime;
 		parsedObject = _.groupBy(list.paginatedResources, function(item){return item.epgChannelId});
@@ -99,6 +113,42 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 				recoKeyVod: item.recoKeyVod,
 				title: item.name,
 				movieId: item.id
+
+			});
+		});
+		filteredData.pageNumber = Number(list.header.pageNumber) - 1;
+		filteredData.totalItems = Number(list.header.totalElements);
+		filteredData.loaded = true;
+		return filteredData;
+	};
+
+	self.parseSearchList = function(list){
+		var filteredData = {items: []};
+		_.each(list.paginatedResources, function(item){
+			filteredData.items.push({
+				//genres: item.genres,
+				image: item.images.length > 0 ? item.images[0].url : "",
+				//recoKeyVod: item.recoKeyVod,
+				title: item.name,
+				id: item.id
+
+			});
+		});
+		filteredData.pageNumber = Number(list.header.pageNumber) - 1;
+		filteredData.totalItems = Number(list.header.totalElements);
+		filteredData.loaded = true;
+		return filteredData;
+	};
+
+	self.parseResourceList = function(list){
+		var filteredData = {items: []};
+		_.each(list.paginatedResources, function(item){
+			filteredData.items.push({
+				//genres: item.genres,
+				image: item.imageUrl,
+				//recoKeyVod: item.recoKeyVod,
+				title: item.name,
+				id: item.id
 
 			});
 		});

@@ -1,0 +1,123 @@
+<div>
+	<h1>silverlight player</h1>
+
+
+	<div id="form1" runat="server" style="height: 100%">
+
+
+		<div style="height: 10px">
+		</div>
+		<div id="header">
+
+			<div>Silverlight Reference Application</div>
+			<div style="text-align: right">
+
+				<table style="text-align: left">
+					<tr>
+						<td>Device ID: <span id="spnDeviceId"></span>
+						</td>
+					</tr>
+					<tr>
+						<td>Language:
+							<input type="radio" name="g2" checked="checked" onclick="changeLang('en-US');"/>
+							En
+							<input type="radio" name="g2" onclick="changeLang('fr');"/>
+							Fr
+						</td>
+					</tr>
+
+				</table>
+
+			</div>
+
+		</div>
+
+		<div style="height: 10px">
+		</div>
+
+		<table>
+			<tr>
+				<td>
+					<input type="radio" name="g1" checked="checked" onclick="showPlainUrlTable();"/>
+					Plain URL
+				</td>
+				<td>
+					<input type="radio" name="g1" onclick="showContentTable();"/>
+					Content ID
+				</td>
+				<td>
+
+					<input type="radio" name="g1" onclick="showEnvTable();"/>
+					Environment
+				</td>
+
+			</tr>
+
+		</table>
+
+		<table>
+
+			<tr>
+				<td>
+					<table id="tblUrl">
+						<tr>
+							<td>Content URL</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>
+								<input type="text" value="http://playready.directtaps.net/smoothstreaming/SSWSS720H264/SuperSpeedway_720.ism/Manifest" style="width: 300px" id="txtPlainUrl"/></td>
+							<td>
+								<input type="button" value="Play" id="btnPlayUrl"
+									   onclick="playUrl(document.getElementById('txtPlainUrl').value);"/>
+							</td>
+						</tr>
+					</table>
+
+					<table id="tblContent" class="hidden">
+						<tr>
+							<td>UAT:</td>
+							<td>Content ID:</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>
+								<input type="text" style="width: 300px" id="txtUat"/></td>
+							<td>
+								<input type="text" id="txtContentId"/></td>
+							<td>
+								<input type="button" value="Play" onclick="playContentId();"/></td>
+						</tr>
+
+					</table>
+
+					<table id="tblEnv" class="hidden">
+						<tr>
+							<td>VSTB Url:</td>
+							<td>Carrier ID</td>
+							<td>Aplication ID</td>
+							<td></td>
+						</tr>
+
+						<tr>
+							<td>
+								<input type="text" id="txtVstbUrl"/>
+							</td>
+							<td>
+								<input type="text" id="txtCarrierId"/>
+
+							</td>
+							<td>
+								<input type="text" id="txtAppId"/></td>
+							<td>
+								<input type="button" value="Setup" onclick="setupEnvironment();"/>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<div silverlight-object></div>
+
+	</div>
+</div>

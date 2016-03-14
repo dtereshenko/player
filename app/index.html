@@ -15,6 +15,8 @@
 	<link rel="stylesheet" href="styles/bootstrap.css">
 	<link rel="stylesheet" href="styles/main.css">
 	<!-- endbuild -->
+	<script src="QP/Silverlight.js"></script>
+	<script src="QP/customListeners.js"></script>
 </head>
 <body ng-app="webPlayerApp">
 	<script>
@@ -30,7 +32,7 @@
 			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-TWB2RP');</script>
+	})(window,document,'script','dataLayer','GTM-MBK2K7');</script>
 	<!-- End Google Tag Manager -->
 
 	<!--[if lte IE 8]>
@@ -56,6 +58,8 @@
 	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 	<script src="bower_components/underscore/underscore.js"></script>
 	<script src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
+	<script src="bower_components/re-tree/re-tree.js"></script>
+	<script src="bower_components/ng-device-detector/ng-device-detector.js"></script>
 	<!-- endbower -->
 	<!-- endbuild -->
 
@@ -71,6 +75,9 @@
 	<script src="scripts/controllers/auth/providers.js"></script>
 	<script src="scripts/controllers/auth/verify.js"></script>
 	<script src="scripts/controllers/auth/login.js"></script>
+	<script src="scripts/controllers/player/player.js"></script>
+	<script src="scripts/controllers/search.js"></script>
+	<script src="scripts/controllers/for_me.js"></script>
 
 
 	<script src="scripts/services/providers.js"></script>
@@ -86,6 +93,10 @@
 	<script src="scripts/directives/paginator.js"></script>
 	<script src="scripts/directives/image_load_height_resize.js"></script>
 	<script src="scripts/directives/controllers/modal.js"></script>
+	<script src="scripts/directives/player/playerHTML5.js"></script>
+	<script src="scripts/directives/player/playerSilverlight.js"></script>
+	<script src="scripts/directives/player/playerThird.js"></script>
+	<script src="scripts/directives/player/player.js"></script>
 	<script src="scripts/directives/controllers/schedules_grid.js"></script>
 	<script src="scripts/directives/controllers/paginator.js"></script>
 

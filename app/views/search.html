@@ -1,0 +1,46 @@
+<div class="movies-container container">
+	<div class="row">
+		<div class="col-md-12">
+			<form class="navbar-form navbar-left" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" autofocus placeholder="SEARCH FOR A MOVIE, SHOW OR EVENT" ng-model="search.value">
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+	</div>
+
+
+	<div ng-if="search.value.length > 2 && result.length">
+		<div class = "row">
+			<div class = "col-md-3 col-sm-6 movie-item"
+				 ng-repeat="movie in moviesPortion">
+				<div>
+					<div class = "title">
+						{{::movie.title}}
+					</div>
+
+					<div class="poster"
+						 image-load-height-resize="{{movie.image}}">
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div paginator = "{{paginationConfig.name}}"
+			 show-more-button = "paginationConfig.showMoreButton"
+			 page-counter = "paginationConfig.currentPage"
+			 max-value = "paginationConfig.maxValue"
+			 mode = "paginationConfig.mode"
+			 update-request = "paginationConfig.needMoreData"
+			 per-pages-array = "paginationConfig.perPagesArray"
+			 paginate-me = "result"
+			 result = "moviesPortion">
+		</div>
+	</div>
+
+	<div ng-if="search.value.length > 2 && !result.length">
+		<h3 class="text-center">Nothing found for: {{search.value}}</h3>
+	</div>
+
+</div>
