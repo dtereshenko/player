@@ -48,11 +48,21 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 		var arr = [], i;
 		for(i = 0 ; i < pageSize; i++){
 			arr.push({
-				genres: "",
 				image: "",
-				recoKeyVod: "",
 				title: "Error",
-				movieId: ""
+				id: ""
+			});
+		}
+		return {items: arr, pageNumber: pageNumber, loaded: false}
+	};
+
+	self.createFakeMoreLikeThisListData = function(pageSize, pageNumber){
+		var arr = [], i;
+		for(i = 0 ; i < pageSize; i++){
+			arr.push({
+				image: "",
+				title: "Error",
+				id: ""
 			});
 		}
 		return {items: arr, pageNumber: pageNumber, loaded: false}
@@ -124,7 +134,7 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 				image: item.images.length > 0 ? item.images[0].url : "",
 				recoKeyVod: item.recoKeyVod,
 				title: item.name,
-				movieId: item.id
+				id: item.id
 			});
 		});
 		filteredData.pageNumber = Number(list.header.pageNumber) - 1;
@@ -176,9 +186,9 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 		var filteredData = {items: []};
 		_.each(list.paginatedResources, function(item){
 			filteredData.items.push({
-				image: item.images.length > 0 ? item.images[0].url : "",
+				image: (_.isObject(item.images) && item.images.length > 0) ? item.images[0].url : "",
 				title: item.name,
-				movieId: item.id
+				id: item.id
 			});
 		});
 		filteredData.pageNumber = Number(list.header.pageNumber) - 1;
