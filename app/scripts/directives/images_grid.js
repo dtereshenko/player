@@ -6,7 +6,7 @@ angular.module('webPlayerApp').directive('imagesGrid', function() {
 	return {
 		restrict: 'EA',
 		replace: true,
-		templateUrl: 'views/templates/images_list.html',
+		templateUrl: 'views/templates/images_grid.html',
 		controller: '@',
 		name:"controllerName",
 		scope: {

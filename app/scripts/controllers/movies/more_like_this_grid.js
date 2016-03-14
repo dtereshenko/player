@@ -7,12 +7,12 @@
  * # HomeCtrl
  * Controller of the webPlayerApp
  */
-angular.module('webPlayerApp').controller('GetMoreLikeThisCtrl', function ($scope, $state, QuickPlayRequestsService, QuickPlayParsersService) {
+angular.module('webPlayerApp').controller('GetMoreLikeThisCtrl', function ($scope, $state, $element, QuickPlayRequestsService, QuickPlayParsersService) {
 	var loadedRequests = [], pageSize = 50;
 
 	$scope.allData = [];
 	$scope.dataPortion = [];
-
+	$scope.resizeMode = "height";
 	$scope.paginationConfig = {
 		mode: 0,
 		name: "moreLikeThisPag",
@@ -70,4 +70,22 @@ angular.module('webPlayerApp').controller('GetMoreLikeThisCtrl', function ($scop
 			$scope.getDataPortion(0);
 		}
 	});
+
+	$scope.$watch("additionalData", function(newVal){
+		if(!_.isUndefined(newVal)){
+			$scope.$broadcast("resetSizes", true)
+		}
+	});
+
+
+	$scope.$watch(function(){
+			return $element[0].offsetHeight
+		}, function(newVal){
+			if(newVal){
+				$scope.$broadcast("resetSizes", true)
+		}
+	});
+
+
+
 });

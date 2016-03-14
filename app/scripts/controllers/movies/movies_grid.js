@@ -12,6 +12,7 @@ angular.module('webPlayerApp').controller('MoviesGridCtrl', function ($scope, $s
 
 	$scope.allData = [];
 	$scope.dataPortion = [];
+	$scope.resizeMode = "height";
 
 	$scope.paginationConfig = {
 		mode: 0,
