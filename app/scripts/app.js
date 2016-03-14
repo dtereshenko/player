@@ -80,6 +80,16 @@ angular
 			}
 		})
 		.state({
+			name: 'root.discovery',
+			url: 'discovery',
+			views: {
+				'mainContent@root': {
+					templateUrl: 'views/discovery.html',
+					controller: 'DiscoveryCtrl'
+				}
+			}
+		})
+		.state({
 			name: 'root.unbundled',
 			url: 'unbundled',
 			views:{

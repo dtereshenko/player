@@ -54,7 +54,7 @@ angular.module('webPlayerApp').controller('MoviesGridCtrl', function ($scope, $s
 
 	$scope.navigateToItem = function(item){
 
-		$state.go("root.movie", {movieId: item.id})
+		$state.go("root.movie", {movieId: item.id});
 	};
 
 	$scope.$watch(function(){
