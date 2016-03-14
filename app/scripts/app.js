@@ -139,7 +139,7 @@ angular
 				}
 			});
 	})
-	.run(function navigationHandler ($state, $rootScope, $location) {
+	.run(function navigationHandler($state, $rootScope, $location) {
 		var routes = [];
 		var isFromBackButton = false;
 
