@@ -13,9 +13,10 @@ angular.module('webPlayerApp').directive('imageLoadHeightResize', function() {
 				});
 				img = new Image();
 				scope.$applyAsync(function() {
-					return scope[attr.loaded] = false;
+					scope[attr.loaded] = false;
 				});
-				img.onload = function() {
+
+				function setElementCSS(){
 					var h;
 					h = el[0].parentElement.offsetWidth / img.width * img.height;
 					el.css({
@@ -24,11 +25,15 @@ angular.module('webPlayerApp').directive('imageLoadHeightResize', function() {
 						height: h + 'px',
 						width: 100 + '%'
 					});
+				}
+
+				img.onload = function() {
+					setElementCSS();
 					scope.$applyAsync(function() {
 						scope[attr.loaded] = true;
 					});
 				};
-				return img.src = attr.imageLoadHeightResize;
+				img.src = attr.imageLoadHeightResize;
 			});
 		}
 	};
