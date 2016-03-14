@@ -16,23 +16,17 @@ describe('Controller: RootCtrl', function () {
 	}));
 
 	it('loader should be visible', function () {
-		expect(scope.showFullScreenLoader).toBe(true);
+		expect(scope.showFullScreenLoader).toBe(false);
 	});
 
-	it('loader should be invisible after 1 second', inject(function($timeout) {
-		expect(scope.showFullScreenLoader).toBe(true);
-		$timeout.flush(1000);
-		expect(scope.toggleLoader).toHaveBeenCalledTimes(1);
-		expect(scope.showFullScreenLoader).toBe(false);
-	}));
 
 	it('toogleLoader should be change loader state', function() {
-		expect(scope.showFullScreenLoader).toBe(true);
-		scope.toggleLoader();
-		expect(scope.toggleLoader).toHaveBeenCalledTimes(1);
 		expect(scope.showFullScreenLoader).toBe(false);
 		scope.toggleLoader();
-		expect(scope.toggleLoader).toHaveBeenCalledTimes(2);
+		expect(scope.toggleLoader).toHaveBeenCalledTimes(1);
 		expect(scope.showFullScreenLoader).toBe(true);
+		scope.toggleLoader();
+		expect(scope.toggleLoader).toHaveBeenCalledTimes(2);
+		expect(scope.showFullScreenLoader).toBe(false);
 	});
 });
