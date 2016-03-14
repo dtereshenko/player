@@ -1,13 +1,7 @@
-'use strict';
-
 /**
- * @ngdoc function
- * @name webPlayerApp.controller:HomeCtrl
- * @description
- * # HomeCtrl
- * Controller of the webPlayerApp
+ * Created by Anton_Ovcharuk on 3/14/2016.
  */
-angular.module('webPlayerApp').controller('GetMoreLikeThisCtrl', function ($scope, $state, $element, QuickPlayRequestsService, QuickPlayParsersService) {
+angular.module('webPlayerApp').controller('SearchGridCtrl', function ($scope, $state, $element, QuickPlayRequestsService, QuickPlayParsersService) {
 	var loadedRequests = [], pageSize = 50;
 
 	$scope.allData = [];
@@ -26,25 +20,30 @@ angular.module('webPlayerApp').controller('GetMoreLikeThisCtrl', function ($scop
 	$scope.getDataPortion = function(pageNumber){
 		var params = {
 			pageNumber: pageNumber + 1,
-			pageSize: pageSize
+			pageSize: pageSize,
+			for: $scope.additionalData.searchStr
 		};
 		angular.merge(params, $scope.additionalData);
-		QuickPlayRequestsService.getMoreLikeThis(params).then(function(data){
-			var obj = QuickPlayParsersService.parseMoreLikeThisList(data), allData = [];
+		$scope.$emit("toogleLoader", true);
+		QuickPlayRequestsService.getSearchData(params).then(function(data){
+			var obj = QuickPlayParsersService.parseSearchList(data), allData = [];
 			loadedRequests[obj.pageNumber] = obj;
+			$scope.$emit("toogleLoader", false);
 			$scope.paginationConfig.maxValue = obj.totalItems;
 
 			_.each(loadedRequests, function(page){
 				allData = allData.concat(page.items);
 			});
-
+			console.log(obj, allData.length);
 			$scope.allData = allData;
-
+			$scope.additionalData.result = allData;
 		}, function(error){
-			var obj = QuickPlayParsersService.createFakeMoreLikeThisListData(params.pageSize, params.pageNumber);
+			$scope.$emit("toogleLoader", false);
+			var obj = QuickPlayParsersService.createFakeSearchListData(params.pageSize, params.pageNumber);
 			loadedRequests[obj.pageNumber] = obj;
 			console.log("error", error);
 		});
+
 	};
 
 	$scope.navigateToItem = function(item){
@@ -58,24 +57,24 @@ angular.module('webPlayerApp').controller('GetMoreLikeThisCtrl', function ($scop
 		function(newVal){
 			if(newVal){
 				if(loadedRequests.length*pageSize < $scope.paginationConfig.maxValue) {
-
 					$scope.getDataPortion(loadedRequests.length);
 				}
 			}
 		}
 	);
 
-	$scope.$watch("additionalData", function(newVal){
-		if(!_.isUndefined(newVal)){
+	$scope.$watch("additionalData.searchStr", function(newVal){
+		if(!_.isUndefined(newVal) && newVal.length > 2){
 			$scope.getDataPortion(0);
 		}
 	});
 
+
 	$scope.$watch(function(){
-			return $element[0].offsetHeight
-		}, function(newVal){
-			if(newVal){
-				$scope.$broadcast("resetSizes", true)
+		return $element[0].offsetHeight
+	}, function(newVal){
+		if(newVal){
+			$scope.$broadcast("resetSizes", true)
 		}
 	});
 
