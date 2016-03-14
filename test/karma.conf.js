@@ -36,9 +36,19 @@ module.exports = function (config) {
 			'bower_components/angular-mocks/angular-mocks.js',
 			// endbower
 			'app/scripts/**/*.js',
+			'app/views/**/*.html',
 			'test/mock/**/*.js',
 			'test/spec/**/*.js'
 		],
+
+		preprocessors: {
+			'**/*.html': ['ng-html2js']
+		},
+
+		ngHtml2JsPreprocessor: {
+			moduleName: 'templates',
+			stripPrefix: 'app/'
+		},
 
 		// list of files / patterns to exclude
 		exclude: [],
@@ -60,6 +70,8 @@ module.exports = function (config) {
 
 		// Which plugins to enable
 		plugins: [
+			'karma-ng-html2js-preprocessor',
+			'ng-html2js',
 			"karma-spec-reporter",
 			//"karma-verbose-reporter",
 			'karma-phantomjs-launcher',
