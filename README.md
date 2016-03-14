@@ -9,7 +9,7 @@ Run `npm start` to install all necessary npm and bower dependencies.
 
 ## Build & development
 
-Run `grunt` for building and `grunt serve` for preview.
+Run `grunt` for building and `grunt serve` for dev preview. Run `grunt serve:dist` for preview production version.
 
 ## Testing
 

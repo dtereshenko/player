@@ -1,0 +1,8 @@
+.menu-home{
+  a{
+	color: #000;
+	&.active{
+	  text-decoration: underline;
+	}
+  }
+}
