@@ -53,6 +53,12 @@ angular.module('webPlayerApp').factory('QuickPlayAPIService', function ($resourc
 		}
 	});
 
+	self.moreLikeThisResourse = $resource(QuickPlayConfigService.host + '/moreLikeThis', {}, {
+		get: {
+			cache: cache
+		}
+	});
+
 	return self;
 
 });

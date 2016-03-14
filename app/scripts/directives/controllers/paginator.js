@@ -78,11 +78,16 @@ angular.module('webPlayerApp').controller('PaginatorCtrl', function($scope, $win
 	paginateLogic = function(limits) {
 		var arr;
 		arr = [];
+		$scope.notEnough = false;
 		if (limits.start > $scope.inCome.length) {
-			$scope.notEnough = true;
+			$scope.$applyAsync(function(){
+				$scope.notEnough = true;
+			});
 		} else {
 			if (limits.end > $scope.inCome.length) {
-				$scope.notEnough = true;
+				$scope.$applyAsync(function(){
+					$scope.notEnough = true;
+				});
 				switch ($scope.mode) {
 					case 0:
 						arr = $scope.inCome.slice(limits.start);
@@ -185,11 +190,7 @@ angular.module('webPlayerApp').controller('PaginatorCtrl', function($scope, $win
 			$scope.$watchCollection(function() {
 				return $stateParams;
 			}, function(newVal) {
-				if ($stateParams[$scope.pagName]) {
-					$scope.currentPage = +$stateParams[$scope.pagName] || 0;
-				} else {
-					$scope.currentPage = 0;
-				}
+				$scope.currentPage = +($location.search())[$scope.pagName] || 0
 			});
 		}
 	};

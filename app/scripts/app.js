@@ -17,8 +17,7 @@ angular
 		'ui.router',
 		'ngSanitize',
 		'ngTouch',
-		'underscore',
-		'ng.deviceDetector'
+		'underscore'
 	])
 	.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
@@ -56,26 +55,6 @@ angular
 				'mainContent@root': {
 					templateUrl: '../views/auth/welcome.html',
 					controller: 'WelcomeCtrl'
-				}
-			}
-		})
-		.state({
-			name: 'root.home',
-			url: 'home',
-			views:{
-				'mainContent@root': {
-					templateUrl: 'views/home.html',
-					controller: 'HomeCtrl'
-				}
-			}
-		})
-		.state({
-			name: 'root.forme',
-			url: 'for-me',
-			views:{
-				'mainContent@root': {
-					templateUrl: 'views/for_me.html',
-					controller: 'ForMeCtrl'
 				}
 			}
 		})
@@ -134,52 +113,21 @@ angular
 			url: 'movies',
 			views:{
 				'mainContent@root': {
-					templateUrl: 'views/movies.html',
+					templateUrl: 'views/movies/movies.html',
 					controller: 'MoviesCtrl'
 				}
 			}
 		})
 		.state({
-			name: 'root.player',
-			url: 'player',
+			name: 'root.movie',
+			url: 'movies/:movieId',
 			views:{
 				'mainContent@root': {
-					templateUrl: 'views/player/index.html',
-					controller: 'PlayerCtrl'
-				}
-			}
-		})
-		.state({
-			name: 'root.player.view',
-			url: '/view',
-			views:{
-				'mainContent@root': {
-					templateUrl: 'views/player/view.html',
-					controller: 'PlayerViewCtrl'
-				}
-			}
-		})
-		.state({
-			name: 'root.searchsimple',
-			url: 'search',
-			views: {
-				'mainContent@root': {
-					templateUrl: 'views/search.html',
-					controller: 'SearchCtrl'
-				}
-			}
-		})
-		.state({
-			name: 'root.search',
-			url: 'search/:q',
-			views: {
-				'mainContent@root': {
-					templateUrl: 'views/search.html',
-					controller: 'SearchCtrl'
+					templateUrl: 'views/movies/movie.html',
+					controller: 'MovieCtrl'
 				}
 			}
 		});
-
 	})
 	.run(function navigationHandler ($state, $rootScope, $location) {
 		var routes = [];

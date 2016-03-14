@@ -45,11 +45,13 @@ body, html {
 @import "common/loader";
 @import "common/modal";
 @import "common/paginator";
+@import "common/utils";
 @import "auth/auth";
 @import "auth/verify";
 @import "auth/providers";
 @import "auth/login";
 @import "schedules/schedules";
-@import "movies";
+@import "movies/movies";
+@import "movies/movie";
 
 
