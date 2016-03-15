@@ -1,0 +1,33 @@
+<div class="discovery">
+
+	<style>
+		.discovery-item {
+			padding: 4rem;
+			text-align: center;
+			font-size: 2rem;
+			transition: background-color 200ms linear;
+			cursor: pointer;
+		}
+
+		.discovery-item:hover {
+			background-color: #2b2b2b;
+			color: #9d9d9d;
+		}
+
+		.discovery .sections {
+			margin-bottom: 8em;
+		}
+
+
+	</style>
+	<div class="row sections">
+		<discovery-section location="root.movies" title="TV SHOWS"></discovery-section>
+		<discovery-section location="root.movies" title="MOVIES"></discovery-section>
+		<discovery-section location="root.movies" title="SPORTS"></discovery-section>
+		<discovery-section location="root.movies" title="COLLECTIONS"></discovery-section>
+	</div>
+
+	<div class="row sections">
+		<channel-pillar name="{{::channel.name}}" description="{{::channel.description}}" ng-repeat="channel in channels track by $index"></channel-pillar>
+	</div>
+</div>
