@@ -80,6 +80,16 @@ angular
 			}
 		})
 		.state({
+			name: 'root.discovery',
+			url: 'discovery',
+			views: {
+				'mainContent@root': {
+					templateUrl: 'views/discovery.html',
+					controller: 'DiscoveryCtrl'
+				}
+			}
+		})
+		.state({
 			name: 'root.unbundled',
 			url: 'unbundled',
 			views:{
@@ -134,8 +144,18 @@ angular
 			url: 'movies',
 			views:{
 				'mainContent@root': {
-					templateUrl: 'views/movies.html',
+					templateUrl: 'views/movies/movies.html',
 					controller: 'MoviesCtrl'
+				}
+			}
+		})
+		.state({
+			name: 'root.movie',
+			url: 'movies/:movieId',
+			views:{
+				'mainContent@root': {
+					templateUrl: 'views/movies/movie.html',
+					controller: 'MovieCtrl'
 				}
 			}
 		})

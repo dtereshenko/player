@@ -1,14 +1,16 @@
-<div class="movies-container container">
+<div class = "images-list">
 	<div class = "row">
 		<div class = "col-md-3 col-sm-6 movie-item"
-			 ng-repeat="movie in moviesPortion">
+			 ng-click = "navigateToItem(item)"
+			 ng-repeat="item in dataPortion">
 			<div>
 				<div class = "title">
-					{{::movie.title}}
+					{{::item.title}}
 				</div>
 
 				<div class="poster"
-					 image-load-height-resize="{{movie.image}}">
+					 resize-mode = "{{resizeMode}}"
+					 image-load-height-resize="{{item.image}}">
 				</div>
 			</div>
 		</div>
@@ -21,7 +23,7 @@
 		 mode = "paginationConfig.mode"
 		 update-request = "paginationConfig.needMoreData"
 		 per-pages-array = "paginationConfig.perPagesArray"
-		 paginate-me = "movies"
-		 result = "moviesPortion">
+		 paginate-me = "allData"
+		 result = "dataPortion">
 	</div>
 </div>

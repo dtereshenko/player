@@ -7,64 +7,67 @@
  * # HomeCtrl
  * Controller of the webPlayerApp
  */
-angular.module('webPlayerApp').controller('MoviesCtrl', function ($scope, QuickPlayRequestsService, QuickPlayParsersService) {
+angular.module('webPlayerApp').controller('MoviesGridCtrl', function ($scope, $state, QuickPlayRequestsService, QuickPlayParsersService) {
 	var loadedRequests = [], pageSize = 50;
 
-	$scope.movies = [];
-	$scope.moviesPortion = [];
+	$scope.allData = [];
+	$scope.dataPortion = [];
+	$scope.resizeMode = "height";
 
 	$scope.paginationConfig = {
 		mode: 0,
 		name: "moviesPag",
 		showMoreButton: false,
 		currentPage: undefined,
-		maxValue: $scope.movies.length,
+		maxValue: $scope.allData.length,
 		perPagesArray: [16],
 		needMoreData: false
 	};
 
-
-
-	$scope.getMovies = function(pageNumber){
+	$scope.getDataPortion = function(pageNumber){
 		var params = {
 			pageNumber: pageNumber + 1,
 			pageSize: pageSize
 		};
 
-		$scope.toggleLoader(true);
+		$scope.$emit("toogleLoader", true);
 
 		QuickPlayRequestsService.getMoviesData(params).then(function(data){
-			var obj = QuickPlayParsersService.parseMoviesList(data), movies = [];
+			var obj = QuickPlayParsersService.parseMoviesList(data), allData = [];
 			loadedRequests[obj.pageNumber] = obj;
-			$scope.toggleLoader(false);
+			$scope.$emit("toogleLoader", false);
 			$scope.paginationConfig.maxValue = obj.totalItems;
 
 			_.each(loadedRequests, function(page){
-				movies = movies.concat(page.items);
+				allData = allData.concat(page.items);
 			});
-			console.log(obj, movies.length);
-			$scope.movies = movies;
+
+			$scope.allData = allData;
 
 		}, function(error){
-			$scope.toggleLoader(false);
+			$scope.$emit("toogleLoader", false);
 			var obj = QuickPlayParsersService.createFakeMovieListData(params.pageSize, params.pageNumber);
 			loadedRequests[obj.pageNumber] = obj;
 			console.log("error", error);
 		});
 	};
 
-	$scope.getMovies(0);
+	$scope.navigateToItem = function(item){
+
+		$state.go("root.movie", {movieId: item.id});
+	};
 
 	$scope.$watch(function(){
 			return $scope.paginationConfig.needMoreData;
 		},
 		function(newVal){
-			console.log($scope.paginationConfig.currentPage);
 			if(newVal){
 				if(loadedRequests.length*pageSize < $scope.paginationConfig.maxValue) {
-					$scope.getMovies(loadedRequests.length)
+					$scope.getDataPortion(loadedRequests.length);
 				}
 			}
 		}
 	);
+
+	$scope.getDataPortion(0);
 });
