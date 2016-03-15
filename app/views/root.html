@@ -1,23 +1,29 @@
-<div class = "fullscreen-loader-container" loader ng-show="showFullScreenLoader"></div>
+<div class="fullscreen-loader-container" loader ng-show="showFullScreenLoader"></div>
 
 <div class="header">
 	<div class="navbar" role="navigation">
 		<div class="container">
-			<div>
-				<nav>
-					<ul class="nav navbar-nav">
-						<li><a role="button" ng-show="isBackAvailable()" ng-click="back()">Back</a></li>
-						<li><a role="button" ui-sref="root.schedules">Schedule POC</a></li>
-						<li><a role="button" ui-sref="root.tvShows">TV Shows POC</a></li>
-						<li><a role="button" ui-sref="root">Main</a></li>
-						<li><a role="button" ui-sref="root.home">Home</a></li>
-						<li><a role="button" ui-sref="root.search">Search</a></li>
-					</ul>
-				</nav>
+			<div class="row">
+				<div class="col-8">
+					<nav>
+						<ul class="nav navbar-nav">
+							<li><a role="button" ng-show="isBackAvailable()" ng-click="back()">Back</a></li>
+							<li class="hidden"><a role="button" ui-sref="root.schedules">Schedule POC</a></li>
+							<li><a role="button" ui-sref="root">Main</a></li>
+							<li><a role="button" ui-sref="root.home">Home</a></li>
+							<li><a role="button" ui-sref="root.search">Search</a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="col-4">
+					<a href="#">
+						<span class="glyphicon glyphicon-search"></span>
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
 
-<div ui-view='mainContent'></div>
+<div ui-view='mainContent' class="container-fluid"></div>
 
