@@ -218,6 +218,26 @@ angular
 					controller: 'SearchCtrl'
 				}
 			}
+		})
+		.state({
+			name: 'root.profile',
+			url: 'profile',
+			views: {
+				'mainContent@root': {
+					templateUrl: 'views/profile.html',
+					controller: 'ProfileCtrl'
+				}
+			}
+		})
+		.state({
+			name: 'root.settings',
+			url: 'settings',
+			views: {
+				'mainContent@root': {
+					templateUrl: 'views/settings.html',
+					controller: 'SettingsCtrl'
+				}
+			}
 		});
 
 	})

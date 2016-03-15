@@ -1,0 +1,70 @@
+<div class="container">
+	<div class="container">
+		<div class="col-md-12 text-center">
+			<h3>SETTINGS</h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="profile text-center">
+				<div class="img-wrap">
+
+				</div>
+				<h1>Jacky Ortiz</h1>
+				<p>jacky.ortiz@fox.com</p>
+				<p>prensafox</p>
+				<p>ID 2257589</p>
+			</div>
+
+			<div class="row">
+				<div ng-repeat="link in links | limitTo:2" class="col-md-12">
+					<a ui-sref="{{link.link}}">
+						{{link.title}}
+						<span class="float-right">  <b> > </b> </span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div ng-repeat="link in links | limitTo:4:2" class="col-md-12">
+				<a ui-sref="{{link.link}}" class="clearfix">
+					{{link.title}}
+					<span class="float-right"> <b> > </b> </span>
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-6 text-center">
+			<a ui-sref="root" class="btn btn-default logout">LOGOUT</a>
+		</div>
+	</div>
+</div>
+
+
+<style>
+	.img-wrap{
+		width: 120px;
+		height: 120px;
+		border: 1px solid #000000;
+		-webkit-border-radius:50%;
+		-moz-border-radius:50%;
+		border-radius:50%;
+		display: inline-block;
+	}
+	.float-right{
+		float: right;
+		color: #000000;
+	}
+	.col-md-12>a{
+		color: #000;
+		text-transform: uppercase;
+		padding: 10px;
+		display: block;
+	}
+	.logout{
+		margin-top: 100px;
+	}
+</style>

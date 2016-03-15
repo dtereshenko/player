@@ -1,0 +1,87 @@
+<div class="container">
+	<div class="row settings">
+		<div class="col-md-12 text-right">
+			<a ui-sref="root.settings">
+				<img src="http://megaicons.net/static/img/icons_sizes/8/178/512/very-basic-settings-icon.png" alt="settings" style="width: 30px;"/>
+			</a>
+		</div>
+	</div>
+
+	<div ng-if="next">
+		<div ng-if="!validation" class="row login text-center">
+			<p>VALIDATE your TV provider to<br/>
+				access full episodes, and live events.</p>
+			<button ng-click="validate()" class="btn btn-defauls">VALIDATE</button>
+		</div>
+
+		<div ng-if="validation" class="text-center free-user login">
+			<p>Activate your account at</p>
+			<h2 ng-click="next()">WWW.FOXPLAY.COM</h2>
+			<h1>3938459</h1>
+			<p>Log in with TV provider to access full episodes,<br>
+			movies, and live events. Complete your profile to keep<br/>
+			watching from where you left off, and save shows and <br/>
+			movies to your favourite.</p>
+		</div>
+	</div>
+
+
+	<div ng-if="!next" class="my-list">
+		<h2 class="text-center">CONTINUE WATCHING</h2>
+		<div class="row">
+			<div class="col-md-4"><p>&nbsp;</p></div>
+			<div class="col-md-4"><p>&nbsp;</p></div>
+			<div class="col-md-4"><p>&nbsp;</p></div>
+		</div>
+		<h2 class="text-center">MY LIST</h2>
+		<div class="row">
+			<div class="col-md-4"><p>&nbsp;</p></div>
+			<div class="col-md-4"><p>&nbsp;</p></div>
+			<div class="col-md-4"><p>&nbsp;</p></div>
+		</div>
+
+		<div class="shadow text-center" ng-if="!shadow">
+			<p>Contact <b>PRENSAFOX</b> to upgrade your FOX Premium and access all Movies and Sport</b></p>
+			<hr/>
+			<p>Create a profile at</p>
+			<h2 ng-click="shadow_change()">WWW.FOXPLAY.COM/PROFILE</h2>
+			<p>to use keep watching from where you left off any save movie<br/>
+			and shows to your favourites.</p>
+		</div>
+	</div>
+</div>
+
+
+<style>
+	.settings a{
+		display: inline-block;
+		border: 1px solid black;
+		border-radius: 50%;
+		width: 50px;
+		height: 50px;
+		text-align: center;
+		line-height: 48px;
+	}
+	.login{
+		margin-top:200px;
+	}
+	.login button{
+		margin-top: 50px;
+	}
+	.my-list{
+		position: relative;
+	}
+	.my-list .shadow{
+		position: absolute;
+
+		background: rgba(255, 255, 255, .9);
+		top: 0px;
+		width: 100%;
+		left: 0px;
+		height: 100%;
+	}
+	.my-list .col-md-4 p{
+		border: 1px solid black;
+		min-height: 100px;
+	}
+</style>
