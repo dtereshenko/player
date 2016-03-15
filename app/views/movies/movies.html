@@ -1,28 +1,5 @@
-<div class="movies-container container">
-	<div class = "row">
-		<div class = "col-md-3 col-sm-6 movie-item"
-			 ui-sref="root.movie({movieId: movie.movieId})"
-			 ng-repeat="movie in moviesPortion">
-			<div>
-				<div class = "title">
-					{{::movie.title}}
-				</div>
+<div class="movies-container container"
+	 images-grid
+	 controller-name="MoviesGridCtrl">
 
-				<div class="poster"
-					 image-load-height-resize="{{movie.image}}">
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div paginator = "{{paginationConfig.name}}"
-		 show-more-button = "paginationConfig.showMoreButton"
-		 page-counter = "paginationConfig.currentPage"
-		 max-value = "paginationConfig.maxValue"
-		 mode = "paginationConfig.mode"
-		 update-request = "paginationConfig.needMoreData"
-		 per-pages-array = "paginationConfig.perPagesArray"
-		 paginate-me = "movies"
-		 result = "moviesPortion">
-	</div>
 </div>
