@@ -140,6 +140,26 @@ angular
 			}
 		})
 		.state({
+			name: 'root.tvShows',
+			url: 'tvshows',
+			views:{
+				'mainContent@root': {
+					templateUrl: 'views/shows.html',
+					controller: 'ShowsCtrl'
+				}
+			}
+		})
+		.state({
+			name: 'root.tvShow',
+			url: 'tvshows/:showId',
+			views:{
+				'mainContent@root': {
+					templateUrl: 'views/tvShow.html',
+					controller: 'ShowCtrl'
+				}
+			}
+		})
+		.state({
 			name: 'root.movies',
 			url: 'movies',
 			views:{

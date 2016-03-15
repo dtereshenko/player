@@ -40,11 +40,23 @@ angular.module('webPlayerApp').factory('QuickPlayAPIService', function ($resourc
 
 
 	/*VOD-related resources*/
-	self.tvSeriesResourse = $resource(QuickPlayConfigService.host + '/tvseries/:id', {id: '@id'});
+	self.tvSeriesResourse = $resource(QuickPlayConfigService.host_our + '/tvseries/:id', {id: '@id'}, {
+		get: {
+			cache: cache
+		}
+	});
 
-	self.tvSeriesSeasonResourse = $resource(QuickPlayConfigService.host + '/tvseriesseason/:id', {id: '@id'});
+	self.tvSeriesSeasonResourse = $resource(QuickPlayConfigService.host_our + '/tvseriesseason/:id', {id: '@id'}, {
+		get: {
+			cache: cache
+		}
+	});
 
-	self.tvEpisodesResourse = $resource(QuickPlayConfigService.host + '/tvepisodes/:id', {id: '@id'});
+	self.tvEpisodesResourse = $resource(QuickPlayConfigService.host_our + '/tvepisodes/:id', {id: '@id'}, {
+		get: {
+			cache: cache
+		}
+	});
 
 	//self.moviesResourse = $resource(QuickPlayConfigService.host + '/movies/:id', {id: '@id'});
 	self.moviesResourse = $resource(QuickPlayConfigService.host + '/movie/:id', {id: '@id'}, {

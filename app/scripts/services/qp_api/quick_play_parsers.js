@@ -76,11 +76,26 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 				image: "",
 				//recoKeyVod: "",
 				title: "Error",
-				movieId: ""
+				id: ""
 			});
 		}
 		return {items: arr, pageNumber: pageNumber, loaded: false}
 	};
+
+	self.createFakeTVSeriesListData = function(pageSize, pageNumber){
+		var arr = [], i;
+		for(i = 0 ; i < pageSize; i++){
+			arr.push({
+				genres: [],
+				image: "",
+				title: "Error",
+				id: "",
+				type: ""
+			});
+		}
+		return {items: arr, pageNumber: pageNumber, loaded: false}
+	};
+
 	self.parseSchedulesList = function(list, timelineStartTime){
 		var parsedObject = {}, filteredData = {}, startTime;
 		parsedObject = _.groupBy(list.paginatedResources, function(item){return item.epgChannelId});
@@ -108,15 +123,6 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 			});
 		});
 
-		//_.each(parsedObject, function(list, key){
-		//	console.log(key);
-		//	_.each(list, function(item){
-		//		console.log((new Date(item.epgScheduleStartTimeMsUtc)).toLocaleString(), "-", (new Date(item.epgScheduleEndTimeMsUtc)).toLocaleString());
-		//	});
-		//	console.log("=========")
-		//});
-
-		//console.log(parsedObject);
 		return filteredData;
 	};
 
@@ -131,12 +137,6 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 			filteredData.channelsIds.push(item.epgChannelId)
 		});
 		return filteredData;
-	};
-
-	self.parseSchedulesGridList = function(list){
-		var parsedObject = _.groupBy(list.paginatedResources, function(item){return item.epgChannelId});
-		console.log(list);
-		//return filteredData;
 	};
 
 	self.parseMoviesList = function(list){
@@ -166,6 +166,56 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 				//recoKeyVod: item.recoKeyVod,
 				title: item.name,
 				id: item.id
+
+			});
+		});
+		filteredData.pageNumber = Number(list.header.pageNumber) - 1;
+		filteredData.totalItems = Number(list.header.totalElements);
+		filteredData.loaded = true;
+		return filteredData;
+	};
+
+	self.parseMoreLikeThisList = function(list){
+		var filteredData = {items: []};
+		_.each(list.paginatedResources, function(item){
+			filteredData.items.push({
+				image: (_.isObject(item.images) && item.images.length > 0) ? item.images[0].url : "",
+				title: item.name,
+				id: item.id
+
+			});
+		});
+		filteredData.pageNumber = Number(list.header.pageNumber) - 1;
+		filteredData.totalItems = Number(list.header.totalElements);
+		filteredData.loaded = true;
+		return filteredData;
+	};
+
+	self.parseResourceList = function(list){
+		var filteredData = {items: []};
+		_.each(list.paginatedResources, function(item){
+			filteredData.items.push({
+				image: item.imageUrl,
+				title: item.name,
+				id: item.id
+
+			});
+		});
+		filteredData.pageNumber = Number(list.header.pageNumber) - 1;
+		filteredData.totalItems = Number(list.header.totalElements);
+		filteredData.loaded = true;
+		return filteredData;
+	};
+
+	self.parseTVSeriesList = function(list){
+		var filteredData = {items: []};
+		_.each(list.paginatedResources, function(item){
+			filteredData.items.push({
+				genres: item.contentGenre,
+				image: "",
+				title: item.name,
+				id: item.id,
+				type: item.resourceType
 
 			});
 		});
@@ -214,37 +264,4 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 		};
 	};
 
-	self.parseMoreLikeThisList = function(list){
-		var filteredData = {items: []};
-		_.each(list.paginatedResources, function(item){
-			filteredData.items.push({
-				image: (_.isObject(item.images) && item.images.length > 0) ? item.images[0].url : "",
-				title: item.name,
-				id: item.id
-
-			});
-		});
-		filteredData.pageNumber = Number(list.header.pageNumber) - 1;
-		filteredData.totalItems = Number(list.header.totalElements);
-		filteredData.loaded = true;
-		return filteredData;
-	};
-
-	self.parseResourceList = function(list){
-		var filteredData = {items: []};
-		_.each(list.paginatedResources, function(item){
-			filteredData.items.push({
-				//genres: item.genres,
-				image: item.imageUrl,
-				//recoKeyVod: item.recoKeyVod,
-				title: item.name,
-				id: item.id
-
-			});
-		});
-		filteredData.pageNumber = Number(list.header.pageNumber) - 1;
-		filteredData.totalItems = Number(list.header.totalElements);
-		filteredData.loaded = true;
-		return filteredData;
-	};
 });
