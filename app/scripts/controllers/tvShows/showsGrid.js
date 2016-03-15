@@ -7,25 +7,27 @@
  * # HomeCtrl
  * Controller of the webPlayerApp
  */
-angular.module('webPlayerApp').controller('MoviesGridCtrl', function ($scope, $controller, QuickPlayRequestsService, QuickPlayParsersService) {
+angular.module('webPlayerApp').controller('ShowsGridCtrl', function ($scope, $controller, QuickPlayRequestsService, QuickPlayParsersService) {
 	var self = this;
 	angular.extend(this, $controller('GridCtrl', {$scope: $scope}));
 
 	angular.merge($scope.paginationConfig, {
-		name: "moviesPag",
+		name: "showsPag",
 		perPagesArray: [16]
 	});
 
 	$scope.getDataPortion = function(pageNumber){
 		var params = {
 			pageNumber: pageNumber + 1,
+			language: "Eng",
+			country: "Ca",
 			pageSize: self.pageSize
 		};
 
 		$scope.$emit("toogleLoader", true);
 
-		QuickPlayRequestsService.getMoviesData(params).then(function(data){
-			var obj = QuickPlayParsersService.parseMoviesList(data), allData = [];
+		QuickPlayRequestsService.getTVSeriesData(params).then(function(data){
+			var obj = QuickPlayParsersService.parseTVSeriesList(data), allData = [];
 			self.loadedRequests[obj.pageNumber] = obj;
 			$scope.$emit("toogleLoader", false);
 			$scope.paginationConfig.maxValue = obj.totalItems;
@@ -38,7 +40,7 @@ angular.module('webPlayerApp').controller('MoviesGridCtrl', function ($scope, $c
 
 		}, function(error){
 			$scope.$emit("toogleLoader", false);
-			var obj = QuickPlayParsersService.createFakeMovieListData(params.pageSize, params.pageNumber);
+			var obj = QuickPlayParsersService.createFakeTVSeriesListData(params.pageSize, params.pageNumber);
 			self.loadedRequests[obj.pageNumber] = obj;
 			console.log("error", error);
 		});

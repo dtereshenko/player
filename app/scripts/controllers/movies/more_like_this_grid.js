@@ -7,34 +7,26 @@
  * # HomeCtrl
  * Controller of the webPlayerApp
  */
-angular.module('webPlayerApp').controller('GetMoreLikeThisCtrl', function ($scope, $state, $element, QuickPlayRequestsService, QuickPlayParsersService) {
-	var loadedRequests = [], pageSize = 50;
+angular.module('webPlayerApp').controller('GetMoreLikeThisCtrl', function ($scope, $controller, $element, QuickPlayRequestsService, QuickPlayParsersService) {
+	var self = this;
+	angular.extend(this, $controller('GridCtrl', {$scope: $scope}));
 
-	$scope.allData = [];
-	$scope.dataPortion = [];
-	$scope.resizeMode = "height";
-	$scope.paginationConfig = {
-		mode: 0,
-		name: "moreLikeThisPag",
-		showMoreButton: false,
-		currentPage: undefined,
-		maxValue: $scope.allData.length,
-		perPagesArray: [8],
-		needMoreData: false
-	};
+	angular.merge($scope.paginationConfig, {
+		name: "moreLikeThisPag"
+	});
 
 	$scope.getDataPortion = function(pageNumber){
 		var params = {
 			pageNumber: pageNumber + 1,
-			pageSize: pageSize
+			pageSize: self.pageSize
 		};
 		angular.merge(params, $scope.additionalData);
 		QuickPlayRequestsService.getMoreLikeThis(params).then(function(data){
 			var obj = QuickPlayParsersService.parseMoreLikeThisList(data), allData = [];
-			loadedRequests[obj.pageNumber] = obj;
+			self.loadedRequests[obj.pageNumber] = obj;
 			$scope.paginationConfig.maxValue = obj.totalItems;
 
-			_.each(loadedRequests, function(page){
+			_.each(self.loadedRequests, function(page){
 				allData = allData.concat(page.items);
 			});
 
@@ -42,28 +34,10 @@ angular.module('webPlayerApp').controller('GetMoreLikeThisCtrl', function ($scop
 
 		}, function(error){
 			var obj = QuickPlayParsersService.createFakeMoreLikeThisListData(params.pageSize, params.pageNumber);
-			loadedRequests[obj.pageNumber] = obj;
+			self.loadedRequests[obj.pageNumber] = obj;
 			console.log("error", error);
 		});
 	};
-
-	$scope.navigateToItem = function(item){
-		$state.go("root.movie", {movieId: item.id})
-	};
-
-
-	$scope.$watch(function(){
-			return $scope.paginationConfig.needMoreData;
-		},
-		function(newVal){
-			if(newVal){
-				if(loadedRequests.length*pageSize < $scope.paginationConfig.maxValue) {
-
-					$scope.getDataPortion(loadedRequests.length);
-				}
-			}
-		}
-	);
 
 	$scope.$watch("additionalData", function(newVal){
 		if(!_.isUndefined(newVal)){
