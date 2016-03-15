@@ -50,7 +50,8 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 			arr.push({
 				image: "",
 				title: "Error",
-				id: ""
+				id: "",
+				type: ""
 			});
 		}
 		return {items: arr, pageNumber: pageNumber, loaded: false}
@@ -62,7 +63,8 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 			arr.push({
 				image: "",
 				title: "Error",
-				id: ""
+				id: "",
+				type: ""
 			});
 		}
 		return {items: arr, pageNumber: pageNumber, loaded: false}
@@ -76,7 +78,8 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 				image: "",
 				//recoKeyVod: "",
 				title: "Error",
-				id: ""
+				id: "",
+				type: ""
 			});
 		}
 		return {items: arr, pageNumber: pageNumber, loaded: false}
@@ -117,7 +120,8 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 					startTime: item.epgScheduleStartTimeMsUtc,
 					endTime: item.epgScheduleEndTimeMsUtc,
 					duration: item.epgScheduleDurationSec,
-					startDate: startDate
+					startDate: startDate,
+					type: item.resourceType
 				});
 				startTime = item.epgScheduleEndTimeMsUtc;
 			});
@@ -132,7 +136,8 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 			filteredData.channels[item.epgChannelId] = {
 				description: item.epgChannelDescription,
 				channelId: item.epgChannelId,
-				title: item.epgChannelTitle
+				title: item.epgChannelTitle,
+				type: item.resourceType
 			};
 			filteredData.channelsIds.push(item.epgChannelId)
 		});
@@ -147,7 +152,8 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 				image: item.images.length > 0 ? item.images[0].url : "",
 				recoKeyVod: item.recoKeyVod,
 				title: item.name,
-				id: item.id
+				id: item.id,
+				type: item.resourceType
 
 			});
 		});
@@ -165,7 +171,8 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 				image: item.images.length > 0 ? item.images[0].url : "",
 				//recoKeyVod: item.recoKeyVod,
 				title: item.name,
-				id: item.id
+				id: item.id,
+				type: item.resourceType
 
 			});
 		});
@@ -181,7 +188,8 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 			filteredData.items.push({
 				image: (_.isObject(item.images) && item.images.length > 0) ? item.images[0].url : "",
 				title: item.name,
-				id: item.id
+				id: item.id,
+				type: item.resourceType
 
 			});
 		});
@@ -197,8 +205,8 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 			filteredData.items.push({
 				image: item.imageUrl,
 				title: item.name,
-				id: item.id
-
+				id: item.id,
+				type: item.resourceType
 			});
 		});
 		filteredData.pageNumber = Number(list.header.pageNumber) - 1;
