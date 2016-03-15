@@ -15,20 +15,20 @@ angular.module('webPlayerApp')
 		function getDiscoverySections () {
 			QuickPlayRequestsService.getContainerData().then(function processDiscovery (data) {
 				var paginatedData = data.paginatedResources;
-				var pillarsIds = _.findWhere(paginatedData, {id: 'Pillars'}).children;
 				var channelsIds = _.findWhere(paginatedData, {id: 'Channels'}).children;
 
 				_.each(paginatedData, function (container) {
-					if (_.indexOf(pillarsIds, container.id) !== -1) {
-						$scope.pillars.push(container);
-						return;
-					}
-
 					if (_.indexOf(channelsIds, container.id) !== -1) {
 						$scope.channels.push(container);
 					}
+				});
 
-				})
+				//TODO remove this code. It's only for POC purposes
+				var channel = $scope.channels[0];
+				while ($scope.channels.length < 10) {
+					$scope.channels.push(channel)
+				}
+
 			})
 		}
 

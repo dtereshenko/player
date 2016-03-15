@@ -1,4 +1,4 @@
-<div>
+<div class="discovery">
 
 	<style>
 		.discovery-item {
@@ -6,19 +6,28 @@
 			text-align: center;
 			font-size: 2rem;
 			transition: background-color 200ms linear;
+			cursor: pointer;
 		}
 
 		.discovery-item:hover {
 			background-color: #2b2b2b;
 			color: #9d9d9d;
 		}
+
+		.discovery .sections {
+			margin-bottom: 8em;
+		}
+
+
 	</style>
-	<div class="col-md-3 discovery-item" ng-repeat="pillar in pillars" ui-sref="root.movies">
-		<h3>{{::pillar.description}}</h3>
+	<div class="row sections">
+		<discovery-section location="root.movies" title="TV SHOWS"></discovery-section>
+		<discovery-section location="root.movies" title="MOVIES"></discovery-section>
+		<discovery-section location="root.movies" title="SPORTS"></discovery-section>
+		<discovery-section location="root.movies" title="COLLECTIONS"></discovery-section>
 	</div>
 
-	<div class="col-md-3 discovery-item" ng-repeat="channel in channels">
-		<h2>{{::channel.name}}</h2>
-		<h3>{{::channel.description}}</h3>
+	<div class="row sections">
+		<channel-pillar name="{{::channel.name}}" description="{{::channel.description}}" ng-repeat="channel in channels track by $index"></channel-pillar>
 	</div>
 </div>
