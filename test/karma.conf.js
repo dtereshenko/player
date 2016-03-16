@@ -38,8 +38,7 @@ module.exports = function (config) {
 			'app/scripts/**/*.js',
 			'app/views/**/*.html',
 			'test/mock/**/*.js',
-			'test/spec/**/channel*.js',
-			'test/spec/**/disc*.js'
+			'test/spec/**/*.js'
 		],
 
 		preprocessors: {
