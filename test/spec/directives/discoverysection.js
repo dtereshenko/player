@@ -18,6 +18,15 @@ describe('Directive: discoverySection', function () {
 	it('should render itself', inject(function ($compile) {
 		element = $compile('<div discovery-section title="{{title}}" location="{{location}}"></div>')($scope);
 		$scope.$digest();
-		expect(element.html()).toMatch(/FOX/);
+
+		expect(element).toBeDefined();
+
+		var titleEl = element.find('h3');
+
+		expect(titleEl.text()).toBe($scope.title)
+
+		var uiSrefAttr = element.attr('ui-sref');
+
+		expect(uiSrefAttr).toBe($scope.location);
 	}));
 });
