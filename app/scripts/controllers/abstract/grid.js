@@ -31,12 +31,17 @@ angular.module('webPlayerApp').controller('GridCtrl', function ($scope, $state, 
 
 	$scope.navigateToItem = function(item){
 		switch(item.type.toLowerCase()){
-			case "tvseries": $state.go("root.tvShow", {showId: item.id}); break;
+			case "tvseries": $state.go("root.show", {showId: item.id}); break;
 			case "movie": $state.go("root.movie", {movieId: item.id}); break;
-			default: console.log("unexpected item type"); break;
+			case "tvepisodes": $state.go("root.show.episode", {episodeId: item.id, showId: item.showId}); break;
+			case "tvseriesseason": $state.go("root.show.season", {seasonId: item.id, showId: item.showId}); break;
+			default: console.log("unexpected item type", item.type.toLowerCase()); break;
 		}
 	};
 
+	$scope.getDataPortion = function(pageNumber) {
+
+	};
 
 	$scope.$watch(function(){
 			return $scope.paginationConfig.needMoreData;

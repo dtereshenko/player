@@ -233,11 +233,57 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 		return filteredData;
 	};
 
+	self.parseTVEpisodesList = function(list){
+		var filteredData = {items: []};
+		_.each(list.paginatedResources, function(item){
+			filteredData.items.push({
+				genres: item.contentGenre,
+				image: item.imageUrl,
+				title: item.name,
+				id: item.id,
+				type: item.resourceType,
+				isEpisode: item.resourceType.toLowerCase() === "tvepisodes",
+				episodeId: item.episodeId,
+				showId: item.series
+
+			});
+		});
+		filteredData.pageNumber = Number(list.header.pageNumber) - 1;
+		filteredData.totalItems = Number(list.header.totalElements);
+		filteredData.loaded = true;
+		return filteredData;
+	};
+
+	self.parseSingleEpisode = function(data){
+		var resource = data.mainResource.resource;
+
+		return {
+			id: resource.id,
+			type: resource.resourceType,
+			runningTimeMs: resource.runningTime*1000,
+			episodeNumber: resource.episodeNumber,
+
+			dataForView:{
+				genres: resource.contentGenre,
+				image: resource.imageUrl,
+				actors: _.filter(resource.cast, function(item){return item.CastRole.toLowerCase() === "actor"}),
+				directors: _.filter(resource.cast, function(item){return item.CastRole.toLowerCase() === "director"}),
+				releaseYear: resource.releaseYear,
+				title: resource.name,
+				episodeId: resource.episodeId,
+
+				ageRating: resource.contentRating,
+				duration: convertMsToTime(resource.runningTimeMs).join(":")
+			}
+		};
+	};
+
 	self.parseSingleMovie = function(data){
 		var resource = data.mainResource.resource;
 
 		return {
 			id: resource.id,
+			type: resource.resourceType,
 			recoKeyVod: resource.recoKeyVod,
 			advisory: resource.advisory,
 			freeTrial: resource.freeTrial,
@@ -270,6 +316,59 @@ angular.module('webPlayerApp').service('QuickPlayParsersService', function () {
 				duration: convertMsToTime(resource.runningTimeMs).join(":")
 			}
 		};
+	};
+
+	self.parseSingleTVSeries = function(data){
+		var resource = data.mainResource.resource;
+
+		var filteredData =  {
+			id: resource.id,
+			type: resource.resourceType,
+			freeTrial: resource.freeTrial,
+			seasons: [],
+
+			dataForView:{
+				genres: resource.contentGenre,
+				image: "",
+				title: resource.name
+			}
+		};
+
+		if(_.isObject(data.paginatedResources)){
+			_.each(data.paginatedResources, function(item){
+				filteredData.seasons.push({
+					id: item.id,
+					type: item.resourceType,
+
+					title: item.name,
+					image: "",
+					seasonNumber: item.seasonNumber,
+					seriesId: item.seriesId,
+					showId: resource.id
+				})
+			});
+		}
+
+		return filteredData;
+	};
+
+	self.parseSingleTVSeriesSeason = function(data){
+		var resource = data.mainResource.resource;
+
+		var filteredData =  {
+			id: resource.id,
+			type: resource.resourceType,
+			seasons: [],
+
+			dataForView:{
+				genres: resource.contentGenre,
+				image: "",
+				title: resource.name,
+				seasonNumber: resource.seasonNumber
+			}
+		};
+
+		return filteredData;
 	};
 
 });

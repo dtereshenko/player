@@ -1,10 +1,10 @@
-<div class = "images-list">
+<div class = "images-grid-container">
 	<div class = "row">
 		<div class = "col-md-3 col-sm-6 movie-item"
 			 ng-click = "navigateToItem(item)"
 			 ng-repeat="item in dataPortion">
-			<div>
-				<div class = "title">
+			<div class="poster-container">
+				<div class = "title" ng-show = "!item.image">
 					{{::item.title}}
 				</div>
 
@@ -12,6 +12,9 @@
 					 resize-mode = "{{resizeMode}}"
 					 image-load-height-resize="{{item.image}}">
 				</div>
+			</div>
+			<div ng-show = "item.isEpisode">
+				{{::item.episodeId}}
 			</div>
 		</div>
 	</div>
