@@ -6,7 +6,7 @@
  * @description
  * # channelPillar
  */
-angular.module('webPlayerAppDirectives', [])
+angular.module('webPlayerAppDirectives')
 	.directive('channelPillar', function () {
 		return {
 			templateUrl: 'views/templates/channel_pillar.html',
