@@ -16,13 +16,13 @@ describe('Directive: imageLoadHeightResize', function () {
 		$rootScope = _$rootScope_;
 		$scope = $rootScope.$new();
 		$scope.resizeMode = "height";
-		$scope.item = {image: "http://height.jpg"};
+		$scope.item = {image: "http://test_image.jpg"};
 		$compile = _$compile_;
 	}));
 
 	function compileDirective(tpl) {
 		element = $compile(
-			'<div resize-mode = "{{resizeMode}}" image-load-height-resize="{{item.image}}" class="poster" style = "width: 100%"></div>'
+			'<div resize-mode = "{{resizeMode}}" image-load-height-resize="{{item.image}}" class="poster"></div>'
 		)($scope);
 		parentElement = $compile(
 			'<div></div>'
@@ -50,8 +50,6 @@ describe('Directive: imageLoadHeightResize', function () {
 		$scope.$broadcast("resetSizes", {force: true});
 		$scope.$digest();
 
-		expect(element.css("background-image")).toBe("url(" + $scope.item.image + ")")
-		console.log(element.css("background-image"));
-
+		expect(element.css("background-image")).toContain($scope.item.image);
 	}));
 });

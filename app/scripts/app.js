@@ -152,7 +152,7 @@ angular
 		})
 		.state({
 			name: 'root.show.season',
-			url: 'shows/:showId/seasons/:seasonId',
+			url: '/seasons/:seasonId',
 			views:{
 				'mainContent@root': {
 					templateUrl: 'views/season/season.html',
@@ -162,7 +162,7 @@ angular
 		})
 		.state({
 			name: 'root.show.episode',
-			url: 'movies/:showId/episodes/:episodeId',
+			url: '/episodes/:episodeId',
 			views:{
 				'mainContent@root': {
 					templateUrl: 'views/episode/episode.html',
