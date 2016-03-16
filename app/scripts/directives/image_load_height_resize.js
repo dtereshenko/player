@@ -10,7 +10,7 @@ angular.module('webPlayerApp').directive('imageLoadHeightResize', function() {
 			var img, loaded = false;
 
 			scope.$on("resetSizes", function(event, data){
-				if(data && loaded){
+				if((data.reset && loaded) || (data.force)){
 					setElementCSS();
 				}
 			});
@@ -43,19 +43,12 @@ angular.module('webPlayerApp').directive('imageLoadHeightResize', function() {
 					opacity: 0
 				});
 				img = new Image();
-				scope.$applyAsync(function() {
-					scope[attr.loaded] = false;
-				});
-
-
 
 				img.onload = function() {
 					setElementCSS();
 					loaded = true;
-					scope.$applyAsync(function() {
-						scope[attr.loaded] = true;
-					});
 				};
+
 				img.src = attr.imageLoadHeightResize;
 			});
 		}

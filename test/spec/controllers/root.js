@@ -20,13 +20,13 @@ describe('Controller: RootCtrl', function () {
 	});
 
 
-	it('toogleLoader should be change loader state', function() {
+	it('toogleLoader should change loader state', function() {
 		expect(scope.showFullScreenLoader).toBe(false);
 		scope.toggleLoader();
-		expect(scope.toggleLoader).toHaveBeenCalledTimes(1);
+		expect(scope.toggleLoader).toHaveBeenCalled();
 		expect(scope.showFullScreenLoader).toBe(true);
 		scope.toggleLoader();
-		expect(scope.toggleLoader).toHaveBeenCalledTimes(2);
+		expect(scope.toggleLoader).toHaveBeenCalled();
 		expect(scope.showFullScreenLoader).toBe(false);
 	});
 });

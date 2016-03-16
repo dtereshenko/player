@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('webPlayerApp').controller('MovieCtrl', function ($scope, $stateParams, QuickPlayRequestsService, QuickPlayParsersService) {
+angular.module('webPlayerApp').controller('MovieCtrl', function ($scope, $stateParams, $timeout, QuickPlayRequestsService, QuickPlayParsersService) {
 	$scope.movie = {};
 	$scope.tabsObject = {
 		about: {title: "About", id: "about", active: true},
@@ -12,6 +12,9 @@ angular.module('webPlayerApp').controller('MovieCtrl', function ($scope, $stateP
 			item.active = false;
 		});
 		tab.active = true;
+		if(tab === $scope.tabsObject.more){
+			$timeout(function(){});
+		}
 	};
 
 	$scope.getMovie = function(){
