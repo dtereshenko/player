@@ -46,6 +46,7 @@ describe('Directive: imageLoadHeightResize', function () {
 		compileDirective();
 		var imageUrl = element.attr('image-load-height-resize');
 		expect(imageUrl).toBe($scope.item.image);
+		expect(element.css("background-image")).toEqual('');
 
 		$scope.$broadcast("resetSizes", {force: true});
 		$scope.$digest();
