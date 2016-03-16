@@ -1,4 +1,4 @@
-
+'use strict';
 angular.module('webPlayerApp').controller('PaginatorCtrl', function($scope, $window, $location, $stateParams) {
 	var calculateMaxPage, getLimits, paginateLogic, paginatePages, startPagination;
 
@@ -190,7 +190,7 @@ angular.module('webPlayerApp').controller('PaginatorCtrl', function($scope, $win
 			$scope.$watchCollection(function() {
 				return $stateParams;
 			}, function(newVal) {
-				$scope.currentPage = +($location.search())[$scope.pagName] || 0
+				$scope.currentPage = +($location.search())[$scope.pagName] || 0;
 			});
 		}
 	};

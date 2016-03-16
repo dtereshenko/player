@@ -5,7 +5,7 @@
 
 angular.module('webPlayerApp').service('QuickPlayConfigService', function () {
 	var self = this;
-	self.host_our = "http://40.117.144.176:9411/fox/restapi/";
+	self.hostOur = "http://40.117.144.176:9411/fox/restapi/";
 	self.host = "http://52.28.79.214:8800/solr/RestApiSingTel/restapi";
 	self.staticParams = {
 		apiKey: "qwerty",

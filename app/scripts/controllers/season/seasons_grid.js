@@ -1,9 +1,5 @@
-/**
- * Created by Anton_Ovcharuk on 3/15/2016.
- */
-/**
- * Created by Anton_Ovcharuk on 3/14/2016.
- */
+'use strict';
+
 angular.module('webPlayerApp').controller('SeasonsGridCtrl', function ($scope, $controller, $element, QuickPlayRequestsService, QuickPlayParsersService) {
 	var self = this;
 	angular.extend(this, $controller('GridCtrl', {$scope: $scope}));

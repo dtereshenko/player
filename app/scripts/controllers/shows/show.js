@@ -21,7 +21,7 @@ angular.module('webPlayerApp').controller('ShowCtrl', function ($scope, $statePa
 				$scope.show.episodes = {
 					parentType: $scope.show.type,
 					parentId: $scope.show.id
-				}
+				};
 			}
 
 			$scope.toggleLoader(false);

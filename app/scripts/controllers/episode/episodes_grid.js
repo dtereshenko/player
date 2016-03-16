@@ -43,7 +43,7 @@ angular.module('webPlayerApp').controller('EpisodesGridCtrl', function ($scope, 
 	};
 
 	$scope.$watch(function() {
-			return $scope.additionalData.parentId
+			return $scope.additionalData.parentId;
 		}, function(newVal) {
 			if (!_.isUndefined(newVal)) {
 				$scope.getDataPortion(0);
