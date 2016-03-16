@@ -15,16 +15,5 @@ describe('Unit testing great quotes', function() {
 		expect(element.html()).toMatch(/Third player/);
 	}));
 
-
-	//it('should have span element', function () {
-	//	//var element = angular.element('<div player-third></div>');
-	//	var compiledElement = $compile('<div player-third></div>')($rootScope);
-	//	$rootScope.$digest();
-    //
-    //
-	//	//var spanElement = compiledElement.find('div');
-	//	//expect(spanElement).toBeDefined();
-	//	//expect(spanElement.text()).toEqual('html5 player');
-	//});
 });
 
