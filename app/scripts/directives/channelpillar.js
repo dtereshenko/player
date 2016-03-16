@@ -16,6 +16,7 @@ angular.module('webPlayerAppDirectives')
 				description: '@',
 				location: '@'
 			},
+			replace: true,
 			link: function postLink(scope, element, attrs) {
 				//element.text('this is the channelPillar directive');
 			}
