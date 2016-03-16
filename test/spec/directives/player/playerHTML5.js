@@ -9,7 +9,7 @@ describe('Unit testing great quotes', function() {
 		$scope = $rootScope.$new();
 	}));
 
-	it('exposes the controller to the template', inject(function ($compile) {
+	it('third player', inject(function ($compile) {
 		element = $compile('<div player-third></div>')($scope);
 		$scope.$digest();
 		expect(element.html()).toMatch(/Third player/);
