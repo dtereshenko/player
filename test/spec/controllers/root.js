@@ -23,10 +23,24 @@ describe('Controller: RootCtrl', function () {
 	it('toogleLoader should change loader state', function() {
 		expect(scope.showFullScreenLoader).toBe(false);
 		scope.toggleLoader();
-		expect(scope.toggleLoader).toHaveBeenCalled();
+		expect(scope.toggleLoader.calls.count()).toEqual(1);
 		expect(scope.showFullScreenLoader).toBe(true);
 		scope.toggleLoader();
-		expect(scope.toggleLoader).toHaveBeenCalled();
+		expect(scope.toggleLoader.calls.count()).toEqual(2);
 		expect(scope.showFullScreenLoader).toBe(false);
+	});
+
+	it('toogleLoader should hide loader', function() {
+		expect(scope.showFullScreenLoader).toBe(false);
+		scope.toggleLoader(false);
+		expect(scope.toggleLoader.calls.count()).toEqual(1);
+		expect(scope.showFullScreenLoader).toBe(false);
+	});
+
+	it('toogleLoader should show loader', function() {
+		expect(scope.showFullScreenLoader).toBe(false);
+		scope.toggleLoader(true);
+		expect(scope.toggleLoader.calls.count()).toEqual(1);
+		expect(scope.showFullScreenLoader).toBe(true);
 	});
 });
