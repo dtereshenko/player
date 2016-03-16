@@ -15,6 +15,7 @@ angular.module('webPlayerAppDirectives')
 				title: '@',
 				location: '@'
 			},
+			replace: true,
 			link: function postLink(scope, element, attrs) {
 				//element.text('this is the descoverySection directive');
 			}

@@ -25,14 +25,14 @@ angular.module('webPlayerApp').controller('SchedulesGridCtrl', function ($scope,
 			var grid = QuickPlayParsersService.parseSchedulesList(data, params.startTimeMsUtc);
 			self.finishDataModel(channelsData, grid);
 		}, function(error){
-			console.log("error", error)
+			console.log("error", error);
 		});
 	};
 
 	this.finishDataModel = function(channelsData, grid){
 		_.each(grid, function(list){
 			_.each(list.items, function(item){
-				item.width = (item.duration/$scope.intervalSizeSeconds * (1/$scope.intervalsNumber * 100)) + "%"
+				item.width = (item.duration/$scope.intervalSizeSeconds * (1/$scope.intervalsNumber * 100)) + "%";
 
 			});
 		});
@@ -97,10 +97,10 @@ angular.module('webPlayerApp').controller('SchedulesGridCtrl', function ($scope,
 	this.getChannels = function(){
 		QuickPlayRequestsService.getChannelsData().then(function(data){
 			var channelsData = QuickPlayParsersService.parseChannelsList(data);
-			self.getSchedulesGrid(channelsData)
+			self.getSchedulesGrid(channelsData);
 
 		}, function(error){
-			console.log("error", error)
+			console.log("error", error);
 		});
 
 

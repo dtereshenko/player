@@ -16,9 +16,9 @@ angular.module('webPlayerApp')
 	  $scope.next = false;
 	  $scope.next = function(){
 		  $scope.next = !$scope.next;
-	  }
+	  };
 	  $scope.shadow = false;
-	  $scope.shadow_change = function(){
+	  $scope.shadowChange = function(){
 		  $scope.shadow = !$scope.shadow;
-	  }
+	  };
   });

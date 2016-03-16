@@ -1,6 +1,4 @@
-/**
- * Created by Anton_Ovcharuk on 3/14/2016.
- */
+'use strict';
 angular.module('webPlayerApp').controller('SearchGridCtrl', function ($scope, $controller, $element, QuickPlayRequestsService, QuickPlayParsersService) {
 	var self = this;
 	angular.extend(this, $controller('GridCtrl', {$scope: $scope}));
@@ -47,10 +45,10 @@ angular.module('webPlayerApp').controller('SearchGridCtrl', function ($scope, $c
 
 
 	$scope.$watch(function(){
-		return $element[0].offsetHeight
+		return $element[0].offsetHeight;
 	}, function(newVal){
 		if(newVal){
-			$scope.$broadcast("resetSizes", true)
+			$scope.$broadcast("resetSizes", true);
 		}
 	});
 });
