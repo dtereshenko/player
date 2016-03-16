@@ -1,30 +1,27 @@
 describe('Unit testing great quotes', function() {
-	var $compile, $rootScope, directiveElem, $templateCache, $document, body;
+	var $compile, $rootScope, $scope, directiveElem, $templateCache, $document, body;
 
 
 	beforeEach(module('webPlayerApp'));
 	beforeEach(module('views/player/playerThird.html'));
 
-	beforeEach(inject(function(_$compile_, _$rootScope_, _$templateCache_, _$document_){
-			//template = $templateCache.get('views/player/playerThird.html');
-			//$templateCache.put('views/player/playerThird.html',template);
-		$document = _$document_;
+	beforeEach(inject(function(_$compile_, _$rootScope_){
+
 		$compile = _$compile_;
 		$rootScope = _$rootScope_;
-		$templateCache = _$templateCache_;
-		body = $document.find('body');
+		$scope = $rootScope.$new();
 
-		directiveElem = $compile('<div player-third></div>')($rootScope);
-		$rootScope.$digest();
+		//directiveElem = $compile('<div player-third></div>')($rootScope);
+		//$rootScope.$digest();
 	}));
 
 	it('exposes the controller to the template', function() {
-		//$templateCache.get('views/player/playerThird.html', '<div></div>');
-		var scope = $rootScope.$new();
-
-		element = $compile('<div player-third></div>')(scope);
-		$rootScope.$digest();
-
+		inject(function($templateCache){
+			var e = $compile('<div player-third></div>')($scope);
+			$scope.$digest();
+			console.log(e);
+			//expect(e.html().indexOf('class') > 0);
+		})
 	});
 
 

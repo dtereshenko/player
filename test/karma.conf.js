@@ -41,11 +41,13 @@ module.exports = function (config) {
 			'test/spec/**/*.js'
 		],
 
-		//preprocessors: {
-		//	'**/*.html': ['ng-html2js']
-		//},
+		preprocessors: {
+			'app/**/*.html': ['ng-html2js']
+		},
         //
-		//ngHtml2JsPreprocessor: {
+		ngHtml2JsPreprocessor: {
+			stripPrefix: 'app',
+		},
 		//	// strip this from the file path
 		//	stripPrefix: 'app/',
 		//	stripSuffix: '.html',
