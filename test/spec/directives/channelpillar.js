@@ -16,7 +16,6 @@ describe('Directive: channelPillar', function () {
 		$scope.name = 'TV Shows';
 		$scope.description = 'Description';
 		$scope.location = 'location';
-
 		$compile = _$compile_;
 	}));
 

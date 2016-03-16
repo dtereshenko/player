@@ -23,7 +23,7 @@ describe('Directive: discoverySection', function () {
 
 		var titleEl = element.find('h3');
 
-		expect(titleEl.text()).toBe($scope.title)
+		expect(titleEl.text()).toBe($scope.title);
 
 		var uiSrefAttr = element.attr('ui-sref');
 

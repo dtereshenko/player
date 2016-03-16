@@ -1,6 +1,5 @@
-/**
- * Created by Anton_Ovcharuk on 3/16/2016.
- */
+'use strict';
+
 describe('Directive: imageLoadHeightResize', function () {
 
 	// load the directive's module
@@ -15,14 +14,14 @@ describe('Directive: imageLoadHeightResize', function () {
 	beforeEach(inject(function (_$rootScope_, _$compile_, $httpBackend) {
 		$rootScope = _$rootScope_;
 		$scope = $rootScope.$new();
-		$scope.resizeMode = "height";
-		$scope.item = {image: "http://test_image.jpg"};
+		$scope.resizeMode = 'height';
+		$scope.item = {image: 'http://test_image.jpg'};
 		$compile = _$compile_;
 	}));
 
 	function compileDirective(tpl) {
 		element = $compile(
-			'<div resize-mode = "{{resizeMode}}" image-load-height-resize="{{item.image}}" class="poster"></div>'
+			'<div resize-mode = \'{{resizeMode}}\' image-load-height-resize=\'{{item.image}}\' class=\'poster\'></div>'
 		)($scope);
 		parentElement = $compile(
 			'<div></div>'
@@ -46,11 +45,11 @@ describe('Directive: imageLoadHeightResize', function () {
 		compileDirective();
 		var imageUrl = element.attr('image-load-height-resize');
 		expect(imageUrl).toBe($scope.item.image);
-		expect(element.css("background-image")).toEqual('');
+		expect(element.css('background-image')).toEqual('');
 
-		$scope.$broadcast("resetSizes", {force: true});
+		$scope.$broadcast('resetSizes', {force: true});
 		$scope.$digest();
 
-		expect(element.css("background-image")).toContain($scope.item.image);
+		expect(element.css('background-image')).toContain($scope.item.image);
 	}));
 });
