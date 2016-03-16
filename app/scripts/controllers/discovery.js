@@ -9,7 +9,6 @@
  */
 angular.module('webPlayerApp')
 	.controller('DiscoveryCtrl', function (QuickPlayRequestsService, $scope) {
-		$scope.pillars = [];
 		$scope.channels = [];
 
 		function getDiscoverySections () {

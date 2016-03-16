@@ -36,20 +36,19 @@ module.exports = function (config) {
 			'bower_components/angular-mocks/angular-mocks.js',
 			// endbower
 			'app/scripts/**/*.js',
-			'app/**/*.html',
+			'app/views/**/*.html',
 			'test/mock/**/*.js',
 			'test/spec/**/*.js'
 		],
 
 		preprocessors: {
-			'app/**/*.html': ['ng-html2js']
+			'app/views/**/*.html': ['ng-html2js']
 		},
-        //
+
 		ngHtml2JsPreprocessor: {
-			stripPrefix: 'app',
+			// strip this from the file path
+			stripPrefix: 'app/'
 		},
-		//	// strip this from the file path
-		//	stripPrefix: 'app/',
 		//	stripSuffix: '.html',
 		//	// prepend this to the
 		//	prependPrefix: 'served/',

@@ -1,28 +1,19 @@
 describe('Unit testing great quotes', function() {
-	var $compile, $rootScope, $scope, directiveElem, $templateCache, $document, body;
+	var $scope, element;
 
 
 	beforeEach(module('webPlayerApp'));
 	beforeEach(module('views/player/playerThird.html'));
 
-	beforeEach(inject(function(_$compile_, _$rootScope_){
-
-		$compile = _$compile_;
-		$rootScope = _$rootScope_;
+	beforeEach(inject(function($rootScope){
 		$scope = $rootScope.$new();
-
-		//directiveElem = $compile('<div player-third></div>')($rootScope);
-		//$rootScope.$digest();
 	}));
 
-	it('exposes the controller to the template', function() {
-		inject(function($templateCache){
-			var e = $compile('<div player-third></div>')($scope);
-			$scope.$digest();
-			console.log(e);
-			//expect(e.html().indexOf('class') > 0);
-		})
-	});
+	it('exposes the controller to the template', inject(function ($compile) {
+		element = $compile('<div player-third></div>')($scope);
+		$scope.$digest();
+		expect(element.html()).toMatch(/Third player/);
+	}));
 
 
 	//it('should have span element', function () {
