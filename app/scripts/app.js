@@ -131,22 +131,42 @@ angular
 			}
 		})
 		.state({
-			name: 'root.tvShows',
-			url: 'tvshows',
+			name: 'root.shows',
+			url: 'shows',
 			views:{
 				'mainContent@root': {
-					templateUrl: 'views/shows.html',
+					templateUrl: 'views/shows/shows.html',
 					controller: 'ShowsCtrl'
 				}
 			}
 		})
 		.state({
-			name: 'root.tvShow',
-			url: 'tvshows/:showId',
+			name: 'root.show',
+			url: 'shows/:showId',
 			views:{
 				'mainContent@root': {
-					templateUrl: 'views/tvShow.html',
+					templateUrl: 'views/shows/show.html',
 					controller: 'ShowCtrl'
+				}
+			}
+		})
+		.state({
+			name: 'root.show.season',
+			url: 'shows/:showId/seasons/:seasonId',
+			views:{
+				'mainContent@root': {
+					templateUrl: 'views/season/season.html',
+					controller: 'SeasonCtrl'
+				}
+			}
+		})
+		.state({
+			name: 'root.show.episode',
+			url: 'movies/:showId/episodes/:episodeId',
+			views:{
+				'mainContent@root': {
+					templateUrl: 'views/episode/episode.html',
+					controller: 'EpisodeCtrl'
 				}
 			}
 		})

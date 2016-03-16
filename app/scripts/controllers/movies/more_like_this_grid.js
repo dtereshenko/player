@@ -46,10 +46,10 @@ angular.module('webPlayerApp').controller('GetMoreLikeThisCtrl', function ($scop
 	});
 
 	$scope.$watch(function(){
-			return $element[0].offsetHeight
+			return $element[0].offsetHeight;
 		}, function(newVal){
 			if(newVal){
-				$scope.$broadcast("resetSizes", true)
+				$scope.$broadcast("resetSizes", true);
 		}
 	});
 
