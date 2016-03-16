@@ -20,7 +20,7 @@
     buildDropdown: function (manifest) {
       buildTrackList('text', manifest, function (track) {
         return new Option(track.language, track.id);
-      });       
+      });
     }
   };
 
@@ -30,7 +30,7 @@
     buildDropdown: function (manifest) {
       buildTrackList('audio', manifest, function (track) {
         return new Option(track.language + ' @ ' + track.bandwidth, track.id);
-      }); 
+      });
     }
   };
 
@@ -123,13 +123,13 @@
     },
 
     hide: function () {
-      this.element.style.backgroundColor = 'transparent'; 
+      this.element.style.backgroundColor = 'transparent';
     },
 
     /**
      * Couldn't find a nice way to cover the video with pure
      * CSS so this is my fallback solution.
-     */ 
+     */
     resize: function () {
       var videobound = root.app.video.getBoundingClientRect();
 
@@ -174,13 +174,13 @@
     }
   };
 
-  ui.errorMessage.elements.closeButton.addEventListener('click', 
+  ui.errorMessage.elements.closeButton.addEventListener('click',
         ui.errorMessage.hide.bind(ui.errorMessage));
 
   function buildTrackList(type, manifest, option) {
     var dropDown = ui.dropDowns[type].element;
     // Clear dropdown so on update we don't repeat
-    // elements by appening tracks to the end of an 
+    // elements by appening tracks to the end of an
     // existing list.
     dropDown.innerHTML = '';
 

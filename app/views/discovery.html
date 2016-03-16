@@ -28,6 +28,6 @@
 	</div>
 
 	<div class="row sections">
-		<channel-pillar name="{{::channel.name}}" description="{{::channel.description}}" ng-repeat="channel in channels track by $index"></channel-pillar>
+		<channel-pillar location="root.schedules" name="{{::channel.name}}" description="{{::channel.description}}" ng-repeat="channel in channels track by $index"></channel-pillar>
 	</div>
 </div>

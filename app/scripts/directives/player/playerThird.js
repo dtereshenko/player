@@ -8,8 +8,9 @@
  */
 angular.module('webPlayerApp').directive('playerThird', function () {
 	return {
-		template: '<div>html5 player</div>',
+		templateUrl: 'views/player/playerThird.html',
 		restrict: 'A',
+		scope: {},
 		link: function postLink(scope, element, attrs) {
 
 		}

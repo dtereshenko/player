@@ -1,43 +1,30 @@
-//describe('Unit testing great quotes', function() {
-//	var compile, scope, directiveElem;
-//
-//	beforeEach(function(){
-//		module('webPlayerApp');
-//
-//		inject(function(_$compile_, _$rootScope_){
-//			//template = $templateCache.get('views/player/playerThird.html');
-//			//$templateCache.put('views/player/playerThird.html',template);
-//
-//			compile = _$compile_;
-//			scope = _$rootScope_;
-//		});
-//
-//		var $httpBackend;
-//		beforeEach(inject(function($injector) {
-//			$httpBackend = $injector.get('$httpBackend');
-//			$httpBackend.whenGET('../views/root.html').respond(200, '');
-//		}));
-//		//directiveElem = '1asdfasdf';//getCompiledElement();
-//		//console.log('is');
-//	});
-//
-//	//function getCompiledElement(){
-//	//	var element = angular.element('<div player-third></div>');
-//	//	var compiledElement = compile(element)(scope);
-//	//	scope.$digest();
-//	//	console.log('el', compiledElement);
-//	//	return 'asdfasdf';//compiledElement;
-//	//}
-//
-//	it('should have span element', function () {
-//		var element = angular.element('<div player-third></div>');
-//		var compiledElement = compile(element)(scope);
-//		scope.$digest();
-//		//console.log('el');
-//
-//		//console.log(directiveElem);
-//		var spanElement = compiledElement.find('div');
-//		expect(spanElement).toBeDefined();
-//		expect(spanElement.text()).toEqual('html5 player');
-//	});
-//});
+describe('Unit testing great quotes', function() {
+	var $scope, element;
+
+
+	beforeEach(module('webPlayerApp'));
+	beforeEach(module('views/player/playerThird.html'));
+
+	beforeEach(inject(function($rootScope){
+		$scope = $rootScope.$new();
+	}));
+
+	it('exposes the controller to the template', inject(function ($compile) {
+		element = $compile('<div player-third></div>')($scope);
+		$scope.$digest();
+		expect(element.html()).toMatch(/Third player/);
+	}));
+
+
+	//it('should have span element', function () {
+	//	//var element = angular.element('<div player-third></div>');
+	//	var compiledElement = $compile('<div player-third></div>')($rootScope);
+	//	$rootScope.$digest();
+    //
+    //
+	//	//var spanElement = compiledElement.find('div');
+	//	//expect(spanElement).toBeDefined();
+	//	//expect(spanElement.text()).toEqual('html5 player');
+	//});
+});
+

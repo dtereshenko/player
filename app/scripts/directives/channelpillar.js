@@ -6,18 +6,17 @@
  * @description
  * # channelPillar
  */
-angular.module('webPlayerApp')
+angular.module('webPlayerAppDirectives')
 	.directive('channelPillar', function () {
 		return {
-			template: '<div class="col-md-3 discovery-item">\
-	  <h2>{{name}}</h2>\
-	  <h3>{{description}}</h3>\
-	  </div>',
+			templateUrl: 'views/templates/channel_pillar.html',
 			restrict: 'EA',
 			scope: {
 				name: '@',
-				description: '@'
+				description: '@',
+				location: '@'
 			},
+			replace: true,
 			link: function postLink(scope, element, attrs) {
 				//element.text('this is the channelPillar directive');
 			}

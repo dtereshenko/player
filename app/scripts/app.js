@@ -18,7 +18,8 @@ angular
 		'ngSanitize',
 		'ngTouch',
 		'underscore',
-		'ng.deviceDetector'
+		'ng.deviceDetector',
+		'webPlayerAppDirectives'
 	])
 	.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
@@ -56,16 +57,6 @@ angular
 				'mainContent@root': {
 					templateUrl: '../views/auth/welcome.html',
 					controller: 'WelcomeCtrl'
-				}
-			}
-		})
-		.state({
-			name: 'root.home',
-			url: 'home',
-			views:{
-				'mainContent@root': {
-					templateUrl: 'views/home.html',
-					controller: 'HomeCtrl'
 				}
 			}
 		})
@@ -238,6 +229,26 @@ angular
 					controller: 'SearchCtrl'
 				}
 			}
+		})
+		.state({
+			name: 'root.profile',
+			url: 'profile',
+			views: {
+				'mainContent@root': {
+					templateUrl: 'views/profile.html',
+					controller: 'ProfileCtrl'
+				}
+			}
+		})
+		.state({
+			name: 'root.settings',
+			url: 'settings',
+			views: {
+				'mainContent@root': {
+					templateUrl: 'views/settings.html',
+					controller: 'SettingsCtrl'
+				}
+			}
 		});
 
 	})
@@ -265,3 +276,6 @@ angular
 		};
 
 	});
+
+
+angular.module('webPlayerAppDirectives', []);

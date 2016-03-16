@@ -42,13 +42,35 @@ module.exports = function (config) {
 		],
 
 		preprocessors: {
-			'**/*.html': ['ng-html2js']
+			'app/views/**/*.html': ['ng-html2js']
 		},
 
 		ngHtml2JsPreprocessor: {
-			moduleName: 'templates',
+			// strip this from the file path
 			stripPrefix: 'app/'
 		},
+		//	stripSuffix: '.html',
+		//	// prepend this to the
+		//	prependPrefix: 'served/',
+        //
+		//	// or define a custom transform function
+		//	// - cacheId returned is used to load template
+		//	//   module(cacheId) will return template at filepath
+		//	cacheIdFromPath: function(filepath) {
+		//		// example strips 'public/' from anywhere in the path
+		//		// module(app/templates/template.html) => app/public/templates/template.html
+		//		var cacheId = filepath.strip('app/', '');
+		//		return cacheId;
+		//	},
+        //
+		//	// - setting this option will create only a single module that contains templates
+		//	//   from all the files, so you can load them all with module('foo')
+		//	// - you may provide a function(htmlPath, originalPath) instead of a string
+		//	//   if you'd like to generate modules dynamically
+		//	//   htmlPath is a originalPath stripped and/or prepended
+		//	//   with all provided suffixes and prefixes
+		//	moduleName: 'foo'
+		//},
 
 		// list of files / patterns to exclude
 		exclude: [],
@@ -66,16 +88,17 @@ module.exports = function (config) {
 		// - IE (only Windows)
 		browsers: [
 			'PhantomJS'
+			//'Chrome'
 		],
 
 		// Which plugins to enable
 		plugins: [
-			'karma-ng-html2js-preprocessor',
-			'ng-html2js',
 			"karma-spec-reporter",
 			//"karma-verbose-reporter",
 			'karma-phantomjs-launcher',
-			'karma-jasmine'
+			'karma-chrome-launcher',
+			'karma-jasmine',
+			'karma-ng-html2js-preprocessor'
 		],
 
 		reporters: ['spec'],

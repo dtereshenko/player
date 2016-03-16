@@ -6,20 +6,18 @@
  * @description
  * # descoverySection
  */
-angular.module('webPlayerApp')
+angular.module('webPlayerAppDirectives')
 	.directive('discoverySection', function () {
 		return {
-			template: '<div class="col-md-3 discovery-item" ui-sref="{{location}}">\
-	  <h3>{{title}}</h3>\
-		</div>',
+			templateUrl: 'views/templates/discovery_section.html',
 			restrict: 'EA',
 			scope: {
 				title: '@',
 				location: '@'
 			},
+			replace: true,
 			link: function postLink(scope, element, attrs) {
 				//element.text('this is the descoverySection directive');
 			}
-		}
-			;
+		};
 	});
