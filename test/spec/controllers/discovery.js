@@ -17,7 +17,7 @@ describe('Controller: DiscoveryCtrl', function () {
 		});
 	}));
 
-	it('should has empty array data', function () {
-		expect(scope.data).toEqual([]);
+	it('should has channels array defined', function () {
+		expect(scope.channels).toEqual([]);
 	});
 });
