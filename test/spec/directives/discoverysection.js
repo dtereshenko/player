@@ -1,20 +1,23 @@
 'use strict';
 
-describe('Directive: descoverySection', function () {
+describe('Directive: discoverySection', function () {
 
-  // load the directive's module
-  beforeEach(module('webPlayerApp'));
+	// load the directive's module
+	beforeEach(module('webPlayerAppDirectives'));
+	beforeEach(module('views/templates/discovery_section.html'));
 
-  var element,
-    scope;
+	var element,
+		$scope;
 
-  beforeEach(inject(function ($rootScope) {
-    scope = $rootScope.$new();
-  }));
+	beforeEach(inject(function ($rootScope) {
+		$scope = $rootScope.$new();
+		$scope.title = 'FOX +';
+		$scope.location = 'channelLocation';
+	}));
 
-  it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<discovery-section></discovery-section>');
-    element = $compile(element)(scope);
-    expect(element.text()).toBe('this is the descoverySection directive');
-  }));
+	it('should render itself', inject(function ($compile) {
+		element = $compile('<div discovery-section title="{{title}}" location="{{location}}"></div>')($scope);
+		$scope.$digest();
+		expect(element.html()).toMatch(/FOX/);
+	}));
 });
