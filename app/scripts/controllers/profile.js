@@ -13,9 +13,9 @@ angular.module('webPlayerApp')
 	  $scope.validate = function(){
 		  $scope.validation = !$scope.validation;
 	  };
-	  $scope.next = false;
+	  $scope.nextFlag = false;
 	  $scope.next = function(){
-		  $scope.next = !$scope.next;
+		  $scope.nextFlag = !$scope.nextFlag;
 	  };
 	  $scope.shadow = false;
 	  $scope.shadowChange = function(){
