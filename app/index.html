@@ -15,102 +15,111 @@
 	<link rel="stylesheet" href="styles/bootstrap.css">
 	<link rel="stylesheet" href="styles/main.css">
 	<!-- endbuild -->
-	<script src="QP/Silverlight.js"></script>
-	<script src="QP/customListeners.js"></script>
 </head>
 <body ng-app="webPlayerApp">
-	<script>
-		dataLayer = [{
-			'pageCategory': 'DomLoaded',
-			'visitorType': 'high-value'
-		}];
-	</script>
-	<!-- Google Tag Manager -->
-	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-N8PRR2"
-					  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-			'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-	})(window,document,'script','dataLayer','GTM-MBK2K7');</script>
-	<!-- End Google Tag Manager -->
+<script>
+	dataLayer = [{
+		'pageCategory': 'DomLoaded',
+		'visitorType': 'high-value'
+	}];
+</script>
+<!-- Google Tag Manager -->
+<noscript>
+	<iframe src="//www.googletagmanager.com/ns.html?id=GTM-N8PRR2"
+			height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+<script>(function (w, d, s, l, i) {
+	w[l] = w[l] || [];
+	w[l].push({
+		'gtm.start': new Date().getTime(), event: 'gtm.js'
+	});
+	var f = d.getElementsByTagName(s)[0],
+			j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+	j.async = true;
+	j.src =
+			'//www.googletagmanager.com/gtm.js?id=' + i + dl;
+	f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-MBK2K7');</script>
+<!-- End Google Tag Manager -->
 
-	<!--[if lte IE 8]>
-	<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-		your browser</a> to improve your experience.</p>
-	<![endif]-->
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+	your browser</a> to improve your experience.</p>
+<![endif]-->
 
-	<!-- Add your site or application content here -->
+<!-- Add your site or application content here -->
 
-	<div ui-view>
-	</div>
+<div ui-view>
+</div>
 
-	<!-- build:js(.) scripts/vendor.js -->
-	<!-- bower:js -->
-	<script src="bower_components/angular/angular.js"></script>
-	<script src="bower_components/angular-animate/angular-animate.js"></script>
-	<script src="bower_components/angular-cookies/angular-cookies.js"></script>
-	<script src="bower_components/angular-messages/angular-messages.js"></script>
-	<script src="bower_components/angular-resource/angular-resource.js"></script>
-	<script src="bower_components/angular-route/angular-route.js"></script>
-	<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-	<script src="bower_components/angular-touch/angular-touch.js"></script>
-	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-	<script src="bower_components/underscore/underscore.js"></script>
-	<script src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
-	<script src="bower_components/re-tree/re-tree.js"></script>
-	<script src="bower_components/ng-device-detector/ng-device-detector.js"></script>
-	<!-- endbower -->
-	<!-- endbuild -->
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-messages/angular-messages.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
+<script src="bower_components/re-tree/re-tree.js"></script>
+<script src="bower_components/ng-device-detector/ng-device-detector.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
 
-	<!-- build:js({.tmp,app}) scripts/scripts.js -->
-	<script src="scripts/app.js"></script>
-	<script src="scripts/controllers/unbundled.js"></script>
-	<script src="scripts/controllers/abstract/grid.js"></script>
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/unbundled.js"></script>
+<script src="scripts/controllers/abstract/grid.js"></script>
 
-	<script src="scripts/controllers/root.js"></script>
-	<script src="scripts/controllers/movies/more_like_this_grid.js"></script>
-	<script src="scripts/controllers/movies/movies_grid.js"></script>
-	<script src="scripts/controllers/movies/movies.js"></script>
-	<script src="scripts/controllers/movies/movie.js"></script>
-	<script src="scripts/controllers/tvShows/shows.js"></script>
-	<script src="scripts/controllers/tvShows/showsGrid.js"></script>
-	<script src="scripts/controllers/schedules.js"></script>
-	<script src="scripts/controllers/auth/welcome.js"></script>
-	<script src="scripts/controllers/auth/providers.js"></script>
-	<script src="scripts/controllers/auth/verify.js"></script>
-	<script src="scripts/controllers/auth/login.js"></script>
-	<script src="scripts/controllers/player/player.js"></script>
-	<script src="scripts/controllers/search/search.js"></script>
-	<script src="scripts/controllers/search/search_grid.js"></script>
-	<script src="scripts/controllers/for_me.js"></script>
+<script src="scripts/controllers/root.js"></script>
+<script src="scripts/controllers/movies/more_like_this_grid.js"></script>
+<script src="scripts/controllers/movies/movies_grid.js"></script>
+<script src="scripts/controllers/movies/movies.js"></script>
+<script src="scripts/controllers/movies/movie.js"></script>
+<script src="scripts/controllers/tvShows/shows.js"></script>
+<script src="scripts/controllers/tvShows/showsGrid.js"></script>
+<script src="scripts/controllers/schedules.js"></script>
+<script src="scripts/controllers/auth/welcome.js"></script>
+<script src="scripts/controllers/auth/providers.js"></script>
+<script src="scripts/controllers/auth/verify.js"></script>
+<script src="scripts/controllers/auth/login.js"></script>
+<script src="scripts/controllers/player/player.js"></script>
+<script src="scripts/controllers/search/search.js"></script>
+<script src="scripts/controllers/search/search_grid.js"></script>
+<script src="scripts/controllers/for_me.js"></script>
 
-	<script src="scripts/services/providers.js"></script>
-	<script src="scripts/services/countries.js"></script>
-	<script src="scripts/services/qp_api/quick_play_api.js"></script>
-	<script src="scripts/services/qp_api/quick_play_config.js"></script>
-	<script src="scripts/services/qp_api/quick_play_requests.js"></script>
-	<script src="scripts/services/qp_api/quick_play_parsers.js"></script>
+<script src="scripts/services/providers.js"></script>
+<script src="scripts/services/countries.js"></script>
+<script src="scripts/services/qp_api/quick_play_api.js"></script>
+<script src="scripts/services/qp_api/quick_play_config.js"></script>
+<script src="scripts/services/qp_api/quick_play_requests.js"></script>
+<script src="scripts/services/qp_api/quick_play_parsers.js"></script>
 
-	<script src="scripts/directives/loader.js"></script>
-	<script src="scripts/directives/modal.js"></script>
-	<script src="scripts/directives/schedule_grid.js"></script>
-	<script src="scripts/directives/paginator.js"></script>
-	<script src="scripts/directives/image_load_height_resize.js"></script>
-	<script src="scripts/directives/images_grid.js"></script>
-	<script src="scripts/directives/controllers/modal.js"></script>
-	<script src="scripts/directives/player/playerHTML5.js"></script>
-	<script src="scripts/directives/player/playerSilverlight.js"></script>
-	<script src="scripts/directives/player/playerThird.js"></script>
-	<script src="scripts/directives/player/player.js"></script>
-	<script src="scripts/directives/controllers/schedules_grid.js"></script>
-	<script src="scripts/directives/controllers/paginator.js"></script>
+<script src="scripts/directives/loader.js"></script>
+<script src="scripts/directives/modal.js"></script>
+<script src="scripts/directives/schedule_grid.js"></script>
+<script src="scripts/directives/paginator.js"></script>
+<script src="scripts/directives/image_load_height_resize.js"></script>
+<script src="scripts/directives/images_grid.js"></script>
+<script src="scripts/directives/controllers/modal.js"></script>
+<script src="scripts/directives/player/playerHTML5.js"></script>
+<script src="scripts/directives/player/playerSilverlight.js"></script>
+<script src="scripts/directives/player/playerThird.js"></script>
+<script src="scripts/directives/player/player.js"></script>
+<script src="scripts/directives/controllers/schedules_grid.js"></script>
+<script src="scripts/directives/controllers/paginator.js"></script>
 
-    <script src="scripts/controllers/discovery.js"></script>
+<script src="scripts/controllers/discovery.js"></script>
 <script src="scripts/directives/discoverysection.js"></script>
 <script src="scripts/directives/channelpillar.js"></script>
 <script src="scripts/controllers/profile.js"></script>
 <script src="scripts/controllers/settings.js"></script>
-	<!-- endbuild -->
-	</body>
+<script src="QP/Silverlight.js"></script>
+<script src="QP/customListeners.js"></script>
+<!-- endbuild -->
+</body>
 </html>
