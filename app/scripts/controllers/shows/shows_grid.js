@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name webPlayerApp.controller:HomeCtrl
- * @description
- * # HomeCtrl
- * Controller of the webPlayerApp
- */
 angular.module('webPlayerApp').controller('ShowsGridCtrl', function ($scope, $controller, QuickPlayRequestsService, QuickPlayParsersService) {
 	var self = this;
 	angular.extend(this, $controller('GridCtrl', {$scope: $scope}));

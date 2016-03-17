@@ -16,6 +16,6 @@ angular.module('webPlayerApp')
 		{"title": 'What is new', "link": ''},
 		{"title": 'Terms of use', "link": ''},
 		{"title": 'Privacy policy', "link": ''},
-		{"title": 'Help', "link": ''},
-	]
+		{"title": 'Help', "link": ''}
+	];
   });

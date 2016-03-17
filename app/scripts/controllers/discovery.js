@@ -25,10 +25,10 @@ angular.module('webPlayerApp')
 				//TODO remove this code. It's only for POC purposes
 				var channel = $scope.channels[0];
 				while ($scope.channels.length < 10) {
-					$scope.channels.push(channel)
+					$scope.channels.push(channel);
 				}
 
-			})
+			});
 		}
 
 		getDiscoverySections();

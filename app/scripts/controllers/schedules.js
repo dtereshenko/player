@@ -27,7 +27,7 @@ angular.module('webPlayerApp').controller('SchedulesCtrl', function ($scope, Qui
 			$scope.timelineEndTime = new Date(totalEndTime);
 
 		}, function(error){
-			console.log("error", error)
+			console.log("error", error);
 		});
 	};
 	this.checkScheduleBoundaries();

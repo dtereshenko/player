@@ -8,7 +8,7 @@ angular.module('webPlayerApp').factory('QuickPlayAPIService', function ($resourc
 	/*Common resources*/
 	self.searchResourse = $resource(QuickPlayConfigService.host + '/search');
 
-	self.containerResourse = $resource(QuickPlayConfigService.host_our + '/container/:id', {id: '@id'});
+	self.containerResourse = $resource(QuickPlayConfigService.hostOur + '/container/:id', {id: '@id'});
 
 
 	/*Live-related resources*/
@@ -40,19 +40,19 @@ angular.module('webPlayerApp').factory('QuickPlayAPIService', function ($resourc
 
 
 	/*VOD-related resources*/
-	self.tvSeriesResourse = $resource(QuickPlayConfigService.host_our + '/tvseries/:id', {id: '@id'}, {
+	self.tvSeriesResourse = $resource(QuickPlayConfigService.hostOur + '/tvseries/:id', {id: '@id'}, {
 		get: {
 			cache: cache
 		}
 	});
 
-	self.tvSeriesSeasonResourse = $resource(QuickPlayConfigService.host_our + '/tvseriesseason/:id', {id: '@id'}, {
+	self.tvSeriesSeasonResourse = $resource(QuickPlayConfigService.hostOur + '/tvseriesseason/:id', {id: '@id'}, {
 		get: {
 			cache: cache
 		}
 	});
 
-	self.tvEpisodesResourse = $resource(QuickPlayConfigService.host_our + '/tvepisodes/:id', {id: '@id'}, {
+	self.tvEpisodesResourse = $resource(QuickPlayConfigService.hostOur + '/tvepisodes/:id', {id: '@id'}, {
 		get: {
 			cache: cache
 		}

@@ -1,0 +1,22 @@
+<div class="show-container container">
+	<h2 class="title">{{::show.dataForView.title}}</h2>
+
+	<div ng-if = "show.seasons.length > 0">
+		<h4> Select season</h4>
+		<div class="container"
+			 images-grid
+			 additional-data = "show.seasons"
+			 controller-name="SeasonsGridCtrl">
+		</div>
+	</div>
+
+	<div ng-if = "show.episodes">
+		<h4 ng-show = "show.episodes.result.length > 0"> Select episode</h4>
+		<div class="movies-container container"
+			 images-grid
+			 additional-data = "show.episodes"
+			 controller-name="EpisodesGridCtrl">
+		</div>
+		<h4 ng-show = "show.episodes.result.length === 0"> Sorry no data found</h4>
+	</div>
+</div>
