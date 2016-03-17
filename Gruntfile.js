@@ -130,7 +130,12 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     open: true,
-                    base: '<%= yeoman.dist %>'
+					middleware: function (connect) {
+						return [
+							modRewrite(['^[^\\.]*$ /index.html [L]']),
+							connect.static(appConfig.dist)
+						];
+					}
                 }
             }
         },
@@ -436,6 +441,8 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,png,txt}',
                         '{,*/|,**/}*.html',
+						'HTML5/{,*/|,**/}*.js',
+						'QP/{,*/|,**/}*.{js,xap}',
                         'assets/images/{,*/|,**/}*.{webp}',
                         'assets/fonts/{,*/|,**/}*.*'
                     ]
