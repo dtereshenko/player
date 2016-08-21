@@ -7,7 +7,7 @@
  * # HomeCtrl
  * Controller of the webPlayerApp
  */
-angular.module('webPlayerApp').controller('GetMoreLikeThisCtrl', function ($scope, $controller, $element, QuickPlayRequestsService, QuickPlayParsersService) {
+angular.module('webPlayerApp').controller('MoreLikeThisCtrl', function ($scope, $controller, $element, QuickPlayRequestsService, QuickPlayParsersService) {
 	var self = this;
 	angular.extend(this, $controller('GridCtrl', {$scope: $scope}));
 
@@ -48,10 +48,12 @@ angular.module('webPlayerApp').controller('GetMoreLikeThisCtrl', function ($scop
 	$scope.$watch(function(){
 			return $element[0].offsetHeight;
 		}, function(newVal){
-			if(newVal){
-				$scope.$broadcast("resetSizes", true);
-		}
-	});
+			if(newVal > 0){
+				$scope.$broadcast("resetSizes", {reset: true});
+			}
+		},
+		true
+	);
 
 
 

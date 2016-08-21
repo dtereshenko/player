@@ -48,7 +48,7 @@ angular.module('webPlayerApp').controller('SearchGridCtrl', function ($scope, $c
 		return $element[0].offsetHeight;
 	}, function(newVal){
 		if(newVal){
-			$scope.$broadcast("resetSizes", true);
+			$scope.$broadcast("resetSizes", {reset: true});
 		}
 	});
 });

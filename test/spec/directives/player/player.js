@@ -1,3 +1,5 @@
+'use strict';
+
 describe("playerSwitch", function () {
 	var deviceDetector,
 		osConstant,
